@@ -1,15 +1,36 @@
-# Risk Assessment and Remediation - OWASP Juice Shop
+# 🔐 OWASP Juice Shop – Production-Grade Application Security Project
 
-<img width="1483" height="964" alt="image" src="https://github.com/user-attachments/assets/30fd2440-e976-4d1b-8fc9-a5f361151d88" />
+## 📌 Overview
 
-## Summary 
+This project simulates the role of an **Application Security Engineer** securing a vulnerable production web application using OWASP Juice Shop.
 
-The purpose of this project is to do a full risk assessment of the OWASP Juice Shop web application. The project will consist of 3 parts to touch on all stages and parts of a risk assessment:
+Unlike traditional security labs focused only on vulnerability discovery, this project demonstrates:
 
-1. Threat Modeling of the Application (Identifying risk)
-2. Security Testing and Remediation (Conducting DAST and remediation)
-3. Implementing Automated Testing to CI/CD Pipeline (Automating SAST/Secure Code Review)
+- Code-level vulnerability remediation
+- Real-world security control implementation
+- DevSecOps pipeline integration
+- Risk-based prioritization
+- System-level security thinking
 
+---
 
+## 🎯 Objectives
 
+- Identify and exploit real-world web vulnerabilities
+- Implement secure code fixes directly in the application
+- Introduce preventative security controls
+- Integrate security into CI/CD pipelines
+- Demonstrate scalable security practices
 
+---
+
+## 🧠 Security Methodology
+
+```text
+1. Threat Modeling (STRIDE)
+2. Vulnerability Discovery (DAST)
+3. Exploitation (Attacker Perspective)
+4. Root Cause Analysis
+5. Code-Level Remediation
+6. Preventative Controls
+7. DevSecOps Integration
