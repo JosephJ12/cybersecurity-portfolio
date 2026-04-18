@@ -48,6 +48,14 @@ Unlike traditional security labs focused only on vulnerability discovery, this p
 
 **STRIDE Application and Gap Analysis**
 
+| Risk ID | Risk | STRIDE | Expected Control | Status | Gap | Impact | Recommended Remediation |
+|---|---|---|---|---|---|---|---|
+| AUTH-01 | Brute force login | Spoofing | Brute force login protection | Not evident | Rate limiting on login attempts does not seem to be present within the scope. | Increases the likelihood of user impersonation, which may lead to complete account compromise and sensitive information disclosure. | Lockout policy on failed login attempts and enforcing strong password policy upon account creation. | 
+| AUTH-02 | JWT Token forgery | Tampering | Token signing | Present within scope | Auth tokens should be signed to prevent tampering or impersonation. | Absence of token signing may allow attackers to craft or modify their own token to elevate privileges or impersonate another user. | Implement token signing and validation. |
+| AUTH-03 | No login audit logs | Repudiation | Logging login activity | Not evident | Auditing login attempts does not seem evident within the scope. | Increases likelihood of repudiation without audit logs. | Securely store logs on web server log files. | 
+| AUTH-04 | Verbose login error responses | Information Disclosure | Generic error messages upon failed login | Requires validation | Generic error messages should be given for all failed login cases to prevent attackers from enumerating valid users from them. | Increases the likelihood of user enumeration, which may be later used for further attacks. | Implement generic error messages for all login errors. | 
+| AUTH-05 | SQL Injection | Escalation of Privileges | Backend uses parameterized queries to query database | Not evident | the `login()` function does not utilize parameterized queries | SQL Injection may lead to the disclosure of sensitive information or in severe cases, bypassing authentication or remote code execution. | Parameterized queries should be implemented when querying the database. Also doing input santization on user input is highly recommended. |
+
 
 ### 2. Vulnerability Discovery (DAST)
 
