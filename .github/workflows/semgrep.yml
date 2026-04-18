@@ -36,6 +36,9 @@ jobs:
           fetch-depth: 0
 
       - name: Run Semgrep CI
-        run: semgrep ci
+        shell: bash
+        run: |
+          cd 'Risk Assessment Case Study - OWASP Juice Shop/juice-shop'
+          semgrep ci
         env:
           SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
