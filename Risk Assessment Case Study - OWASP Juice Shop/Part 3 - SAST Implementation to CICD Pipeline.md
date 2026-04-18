@@ -15,3 +15,27 @@ We will do this by implementing the popular open source SAST tool, `Semgrep` and
 - Search term input submission
 - Backend search processing and input handling
 - Product lookup and result rendering
+
+## Semgrep Integration and Automation
+
+1. First, we'll need to create and log into our Semgrep account. After logging in, we'll see this page:
+
+<img width="2554" height="1110" alt="image" src="https://github.com/user-attachments/assets/cb58ff56-8285-48d3-86d5-c3b8912ab742" />
+
+2. Next, we'll click on the GitHub button and choose the `Personal account` option
+
+<img width="786" height="765" alt="image" src="https://github.com/user-attachments/assets/2e857354-a0a5-405b-a44f-cca1094c7676" />
+
+3. We'll uncheck the `Enable Autofix` box and click on `Enable for [GitHub_Username] on Github` 
+
+<img width="791" height="734" alt="image" src="https://github.com/user-attachments/assets/bb257579-25f6-4e5c-add0-6a8aa5c9e15f" />
+
+4. We'll confirm our GitHub account by entering the verification code from GitHub and clicking `Verify via email`
+
+<img width="369" height="423" alt="image" src="https://github.com/user-attachments/assets/35e43b79-49b8-4b2e-9da0-511200870b2e" />
+
+5. Then click on the `Create Github App for [GitHub_Username]`
+
+<img width="566" height="292" alt="image" src="https://github.com/user-attachments/assets/82cb7634-a90e-435e-b3d1-215bf87a01ec" />
+
+6. 
