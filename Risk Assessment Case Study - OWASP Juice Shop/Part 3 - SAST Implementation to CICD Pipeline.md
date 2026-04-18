@@ -169,7 +169,3 @@ This is how things should look now:
 Then, we'll `Sync Changes` one more time.
 
 
-23. Finally, we'll go back to our Semgrep portal and click on `Sync projects` at the top-right corner.
-
-<img width="2336" height="441" alt="image" src="https://github.com/user-attachments/assets/43e4bc1f-ff9d-412a-8ce3-b97cbeb131c6" />
-
