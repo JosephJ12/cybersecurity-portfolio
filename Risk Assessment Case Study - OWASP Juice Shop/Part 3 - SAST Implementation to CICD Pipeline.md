@@ -15,6 +15,7 @@ We will do this by implementing the popular open source SAST tool, `Semgrep` and
 - Search term input submission
 - Backend search processing and input handling
 - Product lookup and result rendering
+- All code dependencies listed in package.json
 
 ## Semgrep Setup and Configuration
 
@@ -102,20 +103,25 @@ We will do this by implementing the popular open source SAST tool, `Semgrep` and
 
 18. Now that we've successfully setup and configured our Semgrep settings, we can finally move onto the fun part. We'll integrate Semgrep SAST and SCA scanning into our CI/CD pipeline and automate it to run on every pull request and push to the main and master branches. 
 
-We'll do this by opening up our local copy of the Juice Shop on Visual Studio Code and creating a new file. In the `.github/workflows/` folder, let's create the `semgrep.yml` file.
+  We'll do this by opening up Visual Studio Code and creating a new file. Because GitHub Actions only checks the repo's root folder and our repo root is the `cybersecurity-portfolio` folder (the one above the Risk Assessment folder), we'll create a new folder called  `.github/workflows/`. Then, we'll create the `semgrep.yml` file in it.
 
-19. Then, we'll add the following code and save it:
+19. Let's add the following code and save it:
 
 ```
-# .github/workflows/semgrep.yml
 name: Semgrep CI
 
 on:
-  pull_request: {}
+  pull_request:
+    paths:
+      - 'Risk Assessment Case Study - OWASP Juice Shop/juice-shop/**'
+      - '.github/workflows/semgrep.yml'
   push:
     branches:
       - main
       - master
+    paths:
+      - 'Risk Assessment Case Study - OWASP Juice Shop/juice-shop/**'
+      - '.github/workflows/semgrep.yml'
   workflow_dispatch: {}
 
 permissions:
@@ -129,7 +135,9 @@ jobs:
     container:
       image: semgrep/semgrep:latest
 
-    if: github.actor != 'dependabot[bot]'
+    defaults:
+      run:
+        working-directory: Risk Assessment Case Study - OWASP Juice Shop/juice-shop
 
     steps:
       - name: Check out repository
@@ -145,27 +153,33 @@ jobs:
 
 This is how things should look now:
 
-<img width="914" height="846" alt="image" src="https://github.com/user-attachments/assets/afd76af9-44a8-4fa7-a5c1-c121b81960e8" />
-
-20. We'll first stage our changes.
-
-<img width="640" height="423" alt="image" src="https://github.com/user-attachments/assets/030be322-a965-4058-b3e3-50afe53f2097" />
+<img width="1640" height="792" alt="image" src="https://github.com/user-attachments/assets/4888f214-f7b1-40dc-aec8-5db47bac9d91" />
 
 
-21. Then, let's commit our changes and push to the remote branch.
+20. Now, if we commit this file as is, Semgrep will scan every single file in the juice-shop folder. However, since our scope is only the product search feature, we'll reduce the noise by scanning only these 2 files:
 
-<img width="907" height="728" alt="image" src="https://github.com/user-attachments/assets/3fc89cc7-f211-483e-9ed7-3ca8bceb92ad" />
+```
+search.ts // where the product search logic is
+package.json // where all the code dependencies are
+```
 
+21. To do this, we'll create a `.semgrepignore` file in the `juice-shop` root, with these contents and save it:
 
-21. Click on `Sync Changes`.
+```
+# We will configure Semgrep to only scan 2 files:
+# juice-shop/routes/search.ts and juice-shop/package.json
+# Therefore, we will ignore every file and reintroduce just those 2 to scan
 
-<img width="438" height="387" alt="image" src="https://github.com/user-attachments/assets/46a1d4f0-7a35-408f-9544-da0e3ed5ca97" />
+# Ignore Everything
+*
 
+# Re-include directories so Semgrep can traverse
+!*/
+!routes/
 
-22. **If step 21 worked fine, skip this step.** Because we had some changes to our remote repo, we'll open a Terminal on Visual Studio Code and run this command:
+# Re-include just target 2 files
+!package.json
+!routes/search.ts
+```
 
-`git config pull.rebase false`
-
-Then, we'll `Sync Changes` one more time.
-
-
+22. 
