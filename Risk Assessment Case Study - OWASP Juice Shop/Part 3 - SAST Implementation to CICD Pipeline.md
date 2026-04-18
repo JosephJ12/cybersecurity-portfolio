@@ -95,4 +95,10 @@ We will do this by implementing the popular open source SAST tool, `Semgrep` and
 <img width="1165" height="792" alt="image" src="https://github.com/user-attachments/assets/2c1c911a-4e45-4ecf-be62-105f98a0938d" />
 
 
-17. 
+17. Also, the Semgrep Tokens page should also look like this:
+
+<img width="1220" height="491" alt="image" src="https://github.com/user-attachments/assets/98255989-9a9a-467d-9640-4fcba4f14228" />
+
+
+18. 
+
