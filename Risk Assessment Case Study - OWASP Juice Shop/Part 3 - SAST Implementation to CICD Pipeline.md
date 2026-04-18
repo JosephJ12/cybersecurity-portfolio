@@ -73,9 +73,26 @@ We will do this by implementing the popular open source SAST tool, `Semgrep` and
 <img width="1327" height="388" alt="image" src="https://github.com/user-attachments/assets/289b8abb-a0bc-4f11-98f3-b4174e3f4650" />
 
 
-12. Once again, on the projects tab, we'll find our GitHub repo and click on the `Add CI job` button.
+12. Now, let's go to `Settings` on the left navigation bar, then `Tokens` on the top, and click `Create new token`.
 
-<img width="2559" height="469" alt="image" src="https://github.com/user-attachments/assets/4ac5cc6a-35fa-46c3-abbd-ea914d4c4279" />
+<img width="1424" height="1099" alt="image" src="https://github.com/user-attachments/assets/7452d771-acb2-4eac-b669-161c46012470" />
 
 
-13. 
+13. We'll name the token any name we choose and copy the secrets value. Then, click on `Save`.
+
+<img width="619" height="498" alt="image" src="https://github.com/user-attachments/assets/163f0190-a0a0-4406-beb4-bcadd9da9448" />
+
+
+14. Going back to GitHub, we'll click on `Settings` on the top menu, `Secrets and variables` on the left menu, then `Actions` on the dropdown.
+
+<img width="1815" height="889" alt="image" src="https://github.com/user-attachments/assets/d2d664a6-476c-47a1-b045-01a5628ec562" />
+
+
+15. Enter the token name and secret value, making sure it is the same as the one created on Semgrep. Then click on `Add secret`.
+
+16. If saved successfully, we should return to a page like this:
+
+<img width="1165" height="792" alt="image" src="https://github.com/user-attachments/assets/2c1c911a-4e45-4ecf-be62-105f98a0938d" />
+
+
+17. 
