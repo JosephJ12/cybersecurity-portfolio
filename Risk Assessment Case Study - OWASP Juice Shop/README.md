@@ -19,7 +19,7 @@ Going beyond traditional security labs focused only on vulnerability discovery, 
 - Identify and exploit real-world web vulnerabilities
 - Implement secure code fixes directly in the application
 - Introduce preventative security controls
-- Integrate security into CI/CD pipelines
+- Shift security left into CI/CD pipelines
 - Demonstrate threat modeling and risk assessment
 
 ---
