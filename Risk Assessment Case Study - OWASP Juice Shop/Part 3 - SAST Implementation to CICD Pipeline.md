@@ -58,4 +58,24 @@ We will do this by implementing the popular open source SAST tool, `Semgrep` and
 <img width="792" height="624" alt="image" src="https://github.com/user-attachments/assets/5234259a-af1f-44d8-a23f-dbff653896f1" />
 
 
-9. 
+9. Click on the `Projects` tab on the left navigation bar and click `Scan new project`.
+
+<img width="1705" height="947" alt="image" src="https://github.com/user-attachments/assets/8fc3883c-4058-44a9-82c7-29a6f4c04454" />
+
+
+10. We'll choose the `CI/CD` option:
+
+<img width="876" height="725" alt="image" src="https://github.com/user-attachments/assets/810b606b-dc3d-4d5a-8bce-87881cb75ce9" />
+
+
+11. Then choose `GitHub Actions`. After, click on `Sync projects`.
+
+<img width="1327" height="388" alt="image" src="https://github.com/user-attachments/assets/289b8abb-a0bc-4f11-98f3-b4174e3f4650" />
+
+
+12. Once again, on the projects tab, we'll find our GitHub repo and click on the `Add CI job` button.
+
+<img width="2559" height="469" alt="image" src="https://github.com/user-attachments/assets/4ac5cc6a-35fa-46c3-abbd-ea914d4c4279" />
+
+
+13. 
