@@ -36,6 +36,6 @@ jobs:
           fetch-depth: 0
 
       - name: Run Semgrep CI
-        run: semgrep ci --debug
+        run: semgrep ci --no-git-ignore
         env:
           SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
