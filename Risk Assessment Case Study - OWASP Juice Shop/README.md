@@ -44,9 +44,7 @@ Going beyond traditional security labs focused only on vulnerability discovery, 
 
 ## 🌟 Project Highlights
 
-### 1. Threat Modeling
-
-**STRIDE Application and Gap Analysis**
+### 1. Threat Modeling -- STRIDE Application and Gap Analysis
 
 | Risk ID | Risk | STRIDE | Expected Control | Status | Gap | Impact | Recommended Remediation |
 |---|---|---|---|---|---|---|---|
@@ -56,9 +54,7 @@ Going beyond traditional security labs focused only on vulnerability discovery, 
 | AUTH-04 | Verbose login error responses | Information Disclosure | Generic error messages upon failed login | Requires validation | Generic error messages should be given for all failed login cases to prevent attackers from enumerating valid users from them. | Increases the likelihood of user enumeration, which may be later used for further attacks. | Implement generic error messages for all login errors. | 
 | AUTH-05 | SQL Injection | Escalation of Privileges | Backend uses parameterized queries to query database | Not evident | the `login()` function does not utilize parameterized queries | SQL Injection may lead to the disclosure of sensitive information or in severe cases, bypassing authentication or remote code execution. | Parameterized queries should be implemented when querying the database. Also doing input santization on user input is highly recommended. |
 
-### 2. Vulnerability Discovery (DAST)
-
-**Code-Level Remediation**
+### 2. Vulnerability Discovery (DAST) -- Code-Level Remediation
 
 SQL Injection Vulnerable Code:
 <img width="1806" height="274" alt="image" src="https://github.com/user-attachments/assets/f5a02e08-96ce-430d-b08a-a95b4b0a1f8b" />
@@ -66,6 +62,4 @@ SQL Injection Vulnerable Code:
 SQLI-Free Parameterized Query Code:
 <img width="1323" height="537" alt="image" src="https://github.com/user-attachments/assets/b305c08e-6462-496b-b144-28217df8e7b6" />
 
-### 3. Secure Coding Practices
-
-**SAST Integration and Automation**
+### 3. Secure Coding Practices -- SAST Integration and Automation
