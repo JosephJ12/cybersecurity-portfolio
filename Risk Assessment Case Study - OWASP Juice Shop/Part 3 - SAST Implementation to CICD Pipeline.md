@@ -157,7 +157,7 @@ This is how things should look now:
 <img width="907" height="728" alt="image" src="https://github.com/user-attachments/assets/3fc89cc7-f211-483e-9ed7-3ca8bceb92ad" />
 
 
-21. Finally, click on `Sync Changes`.
+21. Click on `Sync Changes`.
 
 <img width="438" height="387" alt="image" src="https://github.com/user-attachments/assets/46a1d4f0-7a35-408f-9544-da0e3ed5ca97" />
 
@@ -169,4 +169,7 @@ This is how things should look now:
 Then, we'll `Sync Changes` one more time.
 
 
+23. Finally, we'll go back to our Semgrep portal and click on `Sync projects` at the top-right corner.
+
+<img width="2336" height="441" alt="image" src="https://github.com/user-attachments/assets/43e4bc1f-ff9d-412a-8ce3-b97cbeb131c6" />
 
