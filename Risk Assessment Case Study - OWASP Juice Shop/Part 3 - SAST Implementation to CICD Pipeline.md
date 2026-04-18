@@ -100,5 +100,46 @@ We will do this by implementing the popular open source SAST tool, `Semgrep` and
 <img width="1220" height="491" alt="image" src="https://github.com/user-attachments/assets/98255989-9a9a-467d-9640-4fcba4f14228" />
 
 
-18. 
+18. Now that we've successfully setup and configured our Semgrep settings, we can finally move onto the fun part. We'll integrate Semgrep SAST and SCA scanning into our CI/CD pipeline and automate it to run on every pull request and push to the main and master branches. 
+
+We'll do this by creating a new file on our local Juice Shop folder. In the `.github/workflows/` folder, let's create the `semgrep.yml` file.
+
+19. Then, we'll add the following code and save it:
+
+```
+# .github/workflows/semgrep.yml
+name: Semgrep CI
+
+on:
+  pull_request: {}
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  semgrep:
+    name: semgrep
+    runs-on: ubuntu-latest
+
+    container:
+      image: semgrep/semgrep:latest
+
+    if: github.actor != 'dependabot[bot]'
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Semgrep CI
+        run: semgrep ci
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+```
 
