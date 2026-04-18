@@ -1,4 +1,4 @@
-# 🔐 OWASP Juice Shop – Production-Grade Application Security Project
+# 🔐 OWASP Juice Shop – Application Security Project
 
 ## 📌 Overview
 
