@@ -4,7 +4,7 @@
 
 This project simulates the role of an **Application Security Engineer** securing a vulnerable production web application using OWASP Juice Shop.
 
-Unlike traditional security labs focused only on vulnerability discovery, this project demonstrates:
+Going beyond traditional security labs focused only on vulnerability discovery, this project demonstrates:
 
 - Code-level vulnerability remediation
 - Real-world security control implementation
