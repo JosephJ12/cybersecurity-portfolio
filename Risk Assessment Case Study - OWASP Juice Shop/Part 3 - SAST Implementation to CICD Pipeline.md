@@ -163,7 +163,7 @@ search.ts // where the product search logic is
 package.json // where all the code dependencies are
 ```
 
-21. To do this, we'll create a `.semgrepignore` file in the `juice-shop` root, with these contents and save it:
+21. To do this, we'll create a `.semgrepignore` file in the `juice-shop` folder, with these contents and save it:
 
 ```
 # We will configure Semgrep to only scan 2 files:
@@ -182,4 +182,20 @@ package.json // where all the code dependencies are
 !routes/search.ts
 ```
 
-22. 
+22. Before we push our changes to the remote branch, we'll first rebase our repo in case there were any changes to it. Let's open a terminal in Visual Studio Code and enter this command:
+
+`git pull origin main --rebase`
+
+<img width="2228" height="372" alt="image" src="https://github.com/user-attachments/assets/2f8bcc43-ae5b-4dc1-902f-5ae211a8537d" />
+
+23. Then, wew'll stage both our file changes by click on the `+` button next to it.
+
+<img width="1376" height="724" alt="image" src="https://github.com/user-attachments/assets/1925cd03-95ec-4124-9f1d-f4e5aec09fb8" />
+
+24. Add a commit message and then click on the `Commit` button.
+
+<img width="782" height="714" alt="image" src="https://github.com/user-attachments/assets/c44da80f-de27-4c20-b136-b20252a11578" />
+
+25. Then, click on `Sync Changes` and press `Ok`.
+
+<img width="760" height="540" alt="image" src="https://github.com/user-attachments/assets/5cd0ac89-7d50-4a25-85d7-08d7ab913c47" />
