@@ -1,0 +1,14 @@
+# We will configure Semgrep to only scan 2 files:
+# juice-shop/routes/search.ts and juice-shop/package.json
+# Therefore, we will ignore every file and reintroduce just those 2 to scan
+
+# Ignore Everything
+*
+
+# Re-include directories so Semgrep can traverse
+!*/
+!routes/
+
+# Re-include just target 2 files
+!package.json
+!routes/search.ts
