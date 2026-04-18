@@ -22,20 +22,40 @@ We will do this by implementing the popular open source SAST tool, `Semgrep` and
 
 <img width="2554" height="1110" alt="image" src="https://github.com/user-attachments/assets/cb58ff56-8285-48d3-86d5-c3b8912ab742" />
 
-2. Next, we'll click on the GitHub button and choose the `Personal account` option
+
+2. Next, we'll click on the GitHub button and choose the `Personal account` option.
 
 <img width="786" height="765" alt="image" src="https://github.com/user-attachments/assets/2e857354-a0a5-405b-a44f-cca1094c7676" />
 
-3. We'll uncheck the `Enable Autofix` box and click on `Enable for [GitHub_Username] on Github` 
+
+3. We'll uncheck the `Enable Autofix` box and click on `Enable for [GitHub_Username] on Github`.
 
 <img width="791" height="734" alt="image" src="https://github.com/user-attachments/assets/bb257579-25f6-4e5c-add0-6a8aa5c9e15f" />
 
-4. We'll confirm our GitHub account by entering the verification code from GitHub and clicking `Verify via email`
+
+4. We'll confirm our GitHub account by entering the verification code from GitHub and clicking `Verify via email`.
 
 <img width="369" height="423" alt="image" src="https://github.com/user-attachments/assets/35e43b79-49b8-4b2e-9da0-511200870b2e" />
 
-5. Then click on the `Create Github App for [GitHub_Username]`
+
+5. Then click on the `Create Github App for [GitHub_Username]`.
 
 <img width="566" height="292" alt="image" src="https://github.com/user-attachments/assets/82cb7634-a90e-435e-b3d1-215bf87a01ec" />
 
-6. 
+
+6. Click on `Install`.
+
+<img width="1037" height="279" alt="image" src="https://github.com/user-attachments/assets/13e713a7-a8e5-45bd-848a-98ab90028346" />
+
+
+7. For our purposes, we'll select `Only select repositories` and choose our cybersecurity-portfolio repo. Click on `Install`.
+
+<img width="577" height="961" alt="image" src="https://github.com/user-attachments/assets/bc68bd10-70b1-4916-afdd-750bb1569998" />
+
+
+8. Now back on the Semgrep website, we'll click `Set up repositories`.
+
+<img width="792" height="624" alt="image" src="https://github.com/user-attachments/assets/5234259a-af1f-44d8-a23f-dbff653896f1" />
+
+
+9. 
