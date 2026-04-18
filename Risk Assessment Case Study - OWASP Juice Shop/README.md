@@ -64,7 +64,7 @@ SQLI-Free Parameterized Query Code:
 
 ------
 
-Login Endpoint Without Rate Limiting:
+Login Endpoint Susceptible to Brute Force Attacks:
 
 
 Login Endpoint With IP and IP+Account Rate Limiting:
