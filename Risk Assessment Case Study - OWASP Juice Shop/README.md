@@ -31,8 +31,7 @@ Unlike traditional security labs focused only on vulnerability discovery, this p
   - System Architecture
   - Data Flow Diagram
   - Trust Boundaries
-  - STRIDE
-  - Gap Analysis
+  - STRIDE Application and Gap Analysis
 2. Vulnerability Discovery (DAST)
   - Risk Verification and Exploitation
   - Code-Level Remediation
@@ -42,3 +41,20 @@ Unlike traditional security labs focused only on vulnerability discovery, this p
   - SCA (Software Component Analysis) Implementation
   - DevSecOps CI/CD Pipeline
 ```
+
+## 🌟 Project Highlights
+
+### 1. Threat Modeling
+
+**STRIDE Application and Gap Analysis**
+
+
+### 2. Vulnerability Discovery (DAST)
+
+**Code-Level Remediation**
+
+
+
+### 3. Secure Coding Practices
+
+**SAST Integration and Automation**
