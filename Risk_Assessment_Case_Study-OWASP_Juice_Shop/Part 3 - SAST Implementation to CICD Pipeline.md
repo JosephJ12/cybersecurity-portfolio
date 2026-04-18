@@ -137,7 +137,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: Risk Assessment Case Study - OWASP Juice Shop/juice-shop
+        working-directory: Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop
 
     steps:
       - name: Check out repository
@@ -199,3 +199,13 @@ package.json // where all the code dependencies are
 25. Then, click on `Sync Changes` and press `Ok`.
 
 <img width="760" height="540" alt="image" src="https://github.com/user-attachments/assets/5cd0ac89-7d50-4a25-85d7-08d7ab913c47" />
+
+26. We can confirm the Actions is running on GitHub and Semgrep.
+
+<img width="1560" height="1354" alt="image" src="https://github.com/user-attachments/assets/4ef58108-7d59-47b7-b3e7-1ad6db69115b" />
+
+<img width="2858" height="688" alt="image" src="https://github.com/user-attachments/assets/109dba6b-035f-4f0b-823c-8665acfbf833" />
+
+## SAST and SCA Using Semgrep
+
+1. 
