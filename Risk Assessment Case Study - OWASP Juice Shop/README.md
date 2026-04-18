@@ -61,6 +61,11 @@ Unlike traditional security labs focused only on vulnerability discovery, this p
 
 **Code-Level Remediation**
 
+SQL Injection Vulnerable Code:
+<img width="1806" height="274" alt="image" src="https://github.com/user-attachments/assets/f5a02e08-96ce-430d-b08a-a95b4b0a1f8b" />
+
+SQLI-Free Parameterized Query Code:
+<img width="1823" height="560" alt="image" src="https://github.com/user-attachments/assets/e83c6770-a37b-40e0-9526-38d2c7b006c4" />
 
 
 ### 3. Secure Coding Practices
