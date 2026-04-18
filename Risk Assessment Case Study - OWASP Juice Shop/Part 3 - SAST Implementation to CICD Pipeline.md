@@ -16,7 +16,7 @@ We will do this by implementing the popular open source SAST tool, `Semgrep` and
 - Backend search processing and input handling
 - Product lookup and result rendering
 
-## Semgrep Integration and Automation
+## Semgrep Setup and Configuration
 
 1. First, we'll need to create and log into our Semgrep account. After logging in, we'll see this page:
 
@@ -146,4 +146,27 @@ jobs:
 This is how things should look now:
 
 <img width="914" height="846" alt="image" src="https://github.com/user-attachments/assets/afd76af9-44a8-4fa7-a5c1-c121b81960e8" />
+
+20. We'll first stage our changes.
+
+<img width="640" height="423" alt="image" src="https://github.com/user-attachments/assets/030be322-a965-4058-b3e3-50afe53f2097" />
+
+
+21. Then, let's commit our changes and push to the remote branch.
+
+<img width="907" height="728" alt="image" src="https://github.com/user-attachments/assets/3fc89cc7-f211-483e-9ed7-3ca8bceb92ad" />
+
+
+21. Finally, click on `Sync Changes`.
+
+<img width="438" height="387" alt="image" src="https://github.com/user-attachments/assets/46a1d4f0-7a35-408f-9544-da0e3ed5ca97" />
+
+
+22. **If step 21 worked fine, skip this step.** Because we had some changes to our remote repo, we'll open a Terminal on Visual Studio Code and run this command:
+
+`git config pull.rebase false`
+
+Then, we'll `Sync Changes` one more time.
+
+
 
