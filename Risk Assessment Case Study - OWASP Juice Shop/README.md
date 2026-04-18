@@ -36,7 +36,7 @@ Going beyond traditional security labs focused only on vulnerability discovery, 
   - Risk Verification and Exploitation
   - Code-Level Remediation
   - Preventative Control Verification
-3. Secure Coding Practices
+3. Secure Coding Practices via Semgrep
   - SAST Integration and Automation
   - SCA (Software Component Analysis) Implementation
   - DevSecOps CI/CD Pipeline
