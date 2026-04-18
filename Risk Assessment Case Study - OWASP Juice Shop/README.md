@@ -27,10 +27,18 @@ Unlike traditional security labs focused only on vulnerability discovery, this p
 ## 🧠 Security Methodology
 
 ```text
-1. Threat Modeling (STRIDE)
+1. Threat Modeling
+  - System Architecture
+  - Data Flow Diagram
+  - Trust Boundaries
+  - STRIDE
+  - Gap Analysis
 2. Vulnerability Discovery (DAST)
-3. Exploitation (Attacker Perspective)
-4. Code-Level Remediation
-5. Preventative Control Verification
-6. SAST Integration
-7. DevSecOps Automation
+  - Risk Verification and Exploitation
+  - Code-Level Remediation
+  - Preventative Control Verification
+3. Secure Coding Practices
+  - SAST Integration and Automation
+  - SCA (Software Component Analysis) Implementation
+  - DevSecOps CI/CD Pipeline
+```
