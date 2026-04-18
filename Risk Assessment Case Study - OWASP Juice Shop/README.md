@@ -30,7 +30,7 @@ Unlike traditional security labs focused only on vulnerability discovery, this p
 1. Threat Modeling (STRIDE)
 2. Vulnerability Discovery (DAST)
 3. Exploitation (Attacker Perspective)
-4. Root Cause Analysis
-5. Code-Level Remediation
-6. Preventative Controls
-7. DevSecOps Integration
+4. Code-Level Remediation
+5. Preventative Control Verification
+6. SAST Integration
+7. DevSecOps Automation
