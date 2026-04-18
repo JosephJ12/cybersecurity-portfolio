@@ -27,7 +27,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: 'Risk Assessment Case Study - OWASP Juice Shop/juice-shop'
+        working-directory: Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop
 
     steps:
       - name: Check out repository
@@ -36,9 +36,6 @@ jobs:
           fetch-depth: 0
 
       - name: Run Semgrep CI
-        shell: bash
-        run: |
-          cd Risk\ Assessment\ Case\ Study\ -\ OWASP\ Juice\ Shop/juice-shop/
-          semgrep ci
+        run: semgrep ci
         env:
           SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
