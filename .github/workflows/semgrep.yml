@@ -27,7 +27,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: Risk Assessment Case Study - OWASP Juice Shop/juice-shop
+        working-directory: 'Risk Assessment Case Study - OWASP Juice Shop/juice-shop'
 
     steps:
       - name: Check out repository
