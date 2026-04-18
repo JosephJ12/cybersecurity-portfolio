@@ -102,7 +102,7 @@ We will do this by implementing the popular open source SAST tool, `Semgrep` and
 
 18. Now that we've successfully setup and configured our Semgrep settings, we can finally move onto the fun part. We'll integrate Semgrep SAST and SCA scanning into our CI/CD pipeline and automate it to run on every pull request and push to the main and master branches. 
 
-We'll do this by creating a new file on our local Juice Shop folder. In the `.github/workflows/` folder, let's create the `semgrep.yml` file.
+We'll do this by opening up our local copy of the Juice Shop on Visual Studio Code and creating a new file. In the `.github/workflows/` folder, let's create the `semgrep.yml` file.
 
 19. Then, we'll add the following code and save it:
 
@@ -142,4 +142,8 @@ jobs:
         env:
           SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
 ```
+
+This is how things should look now:
+
+<img width="914" height="846" alt="image" src="https://github.com/user-attachments/assets/afd76af9-44a8-4fa7-a5c1-c121b81960e8" />
 
