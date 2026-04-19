@@ -6,5 +6,6 @@
 *
 
 # Re-include directories so Semgrep can traverse
+!*
 !*/
 !routes/
