@@ -3,8 +3,8 @@
 # Therefore, we will ignore every file and reintroduce just those 2 to scan
 
 # Ignore Everything
-.js
-.json
+*.js
+*.json
 *.MD
 *.ts
 .*
