@@ -3,11 +3,19 @@
 # Therefore, we will ignore every file and reintroduce just those 2 to scan
 
 # Ignore Everything
-*
-
-# Re-include directories so Semgrep can traverse
-!routes/
-
-routes/*
-
-!routes/search.ts
+.*
+.*/
+config/*
+data/*
+frontend/*
+ftp/*
+i18n/*
+lib/*
+models/*
+monitoring/*
+rsn/*
+screenshots/*
+test/*
+uploads/*
+vagrant/*
+views/*
