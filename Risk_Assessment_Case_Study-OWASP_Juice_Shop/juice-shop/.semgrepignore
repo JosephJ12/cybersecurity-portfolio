@@ -6,6 +6,5 @@
 *
 
 # Re-include directories so Semgrep can traverse
-!*
-!*/
-!routes/
+!package.json
+!routes/search.ts
