@@ -171,13 +171,29 @@ package.json // where all the code dependencies are
 # Therefore, we will ignore every file and reintroduce just those 2 to scan
 
 # Ignore Everything
-*
+*.js
+*.json
+*.MD
+*.ts
+.*
+.*/
+config/*
+data/*
+frontend/*
+ftp/*
+i18n/*
+lib/*
+models/*
+monitoring/*
+routes/*
+rsn/*
+screenshots/*
+test/*
+uploads/*
+vagrant/*
+views/*
 
-# Re-include directories so Semgrep can traverse
-!*/
-!routes/
-
-# Re-include just target 2 files
+# Ignore all files except routes/search.ts and package.json
 !package.json
 !routes/search.ts
 ```
@@ -208,4 +224,10 @@ package.json // where all the code dependencies are
 
 ## SAST and SCA Using Semgrep
 
-1. 
+1. After the scan finishes, we look at the findings in the `Code` section:
+
+<img width="2432" height="1244" alt="image" src="https://github.com/user-attachments/assets/5426c0f4-6b93-41b4-8196-faae5ffe0b07" />
+
+We have 2 findings, which essentially warn us of the same vulnerability. It warns us of SQL Injection in our search query and recommends we use parameterized queries. Let's remediate this finding.
+
+2. 
