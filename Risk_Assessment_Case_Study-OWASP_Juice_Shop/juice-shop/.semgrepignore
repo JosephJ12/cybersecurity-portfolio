@@ -5,7 +5,7 @@
 # Ignore everything
 *
 
-# Re-allow required directories (FULL PATH CHAIN)
+# Re-allow required directory and file
 !routes
 !routes/search.ts
 
