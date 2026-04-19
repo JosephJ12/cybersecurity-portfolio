@@ -72,3 +72,66 @@ Login Endpoint With IP and IP+Account Rate Limiting:
 
 
 ### 3️⃣ Secure Coding Practices — SAST Integration and Automation
+
+**Semgrep.yml File**
+```
+name: Semgrep CI
+
+on:
+  pull_request:
+    paths:
+      - 'Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop/**'
+      - '.github/workflows/semgrep.yml'
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop/**'
+      - '.github/workflows/semgrep.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  semgrep:
+    name: semgrep
+    runs-on: ubuntu-latest
+
+    container:
+      image: semgrep/semgrep:latest
+
+    defaults:
+      run:
+        working-directory: 'Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop'
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Semgrep CI
+        run: semgrep ci
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+```
+
+**.Semgrepignore File**
+
+```
+# We will configure Semgrep to only scan 2 files:
+# juice-shop/routes/search.ts and juice-shop/package.json
+# Therefore, we will ignore every file and reintroduce just those 2 to scan
+
+# Ignore everything
+*
+
+# Re-allow required directory and file
+!routes
+!routes/search.ts
+
+# Allow dependency file
+!package.json
+```
