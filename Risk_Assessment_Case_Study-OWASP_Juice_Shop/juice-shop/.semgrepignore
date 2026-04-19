@@ -2,29 +2,9 @@
 # juice-shop/routes/search.ts and juice-shop/package.json
 # Therefore, we will ignore every file and reintroduce just those 2 to scan
 
-# Ignore Everything
-*.js
-*.json
-*.MD
-*.ts
-.*
-.*/
-config/*
-data/*
-frontend/*
-ftp/*
-i18n/*
-lib/*
-models/*
-monitoring/*
-routes/*
-rsn/*
-screenshots/*
-test/*
-uploads/*
-vagrant/*
-views/*
-
 # Ignore all files except routes/search.ts and package.json
 !package.json
 !routes/search.ts
+
+# Ignore everything else
+*
