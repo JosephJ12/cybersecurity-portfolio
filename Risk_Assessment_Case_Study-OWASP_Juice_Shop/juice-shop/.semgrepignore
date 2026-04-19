@@ -4,8 +4,7 @@
 
 # Ignore Everything
 *
-/routes/*
+routes/*
 
 # Re-include directories so Semgrep can traverse
-!package.json
-!routes/search.ts
+!server.ts
