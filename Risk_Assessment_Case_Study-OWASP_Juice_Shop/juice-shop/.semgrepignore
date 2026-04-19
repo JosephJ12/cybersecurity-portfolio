@@ -3,8 +3,9 @@
 # Therefore, we will ignore every file and reintroduce just those 2 to scan
 
 # Ignore Everything
+.json
 *.MD
-*.js
+*.ts
 .*
 .*/
 config/*
@@ -15,6 +16,7 @@ i18n/*
 lib/*
 models/*
 monitoring/*
+routes/*
 rsn/*
 screenshots/*
 test/*
@@ -22,6 +24,6 @@ uploads/*
 vagrant/*
 views/*
 
-# Ignore all files in routes subdirectory except search.ts
-routes/*
+# Ignore all files except routes/search.ts and package.json
+!package.json
 !routes/search.ts
