@@ -3,6 +3,7 @@
 # Therefore, we will ignore every file and reintroduce just those 2 to scan
 
 # Ignore Everything
+*.MD
 .*
 .*/
 config/*
@@ -19,3 +20,7 @@ test/*
 uploads/*
 vagrant/*
 views/*
+
+# Ignore all files in routes subdirectory except search.ts
+routes/*
+!routes/search.ts
