@@ -7,4 +7,4 @@
 routes/*
 
 # Re-include directories so Semgrep can traverse
-!server.ts
+!/routes/search.ts
