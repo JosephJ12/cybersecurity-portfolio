@@ -2,9 +2,12 @@
 # juice-shop/routes/search.ts and juice-shop/package.json
 # Therefore, we will ignore every file and reintroduce just those 2 to scan
 
-# Ignore all files except routes/search.ts and package.json
-!package.json
+# Ignore everything
+*
+
+# Re-allow required directories (FULL PATH CHAIN)
+!routes
 !routes/search.ts
 
-# Ignore everything else
-*
+# Allow dependency file
+!package.json
