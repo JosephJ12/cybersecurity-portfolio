@@ -4,7 +4,10 @@
 
 # Ignore Everything
 *
-routes/*
 
 # Re-include directories so Semgrep can traverse
-!/routes/search.ts
+!routes/
+
+routes/*
+
+!routes/search.ts
