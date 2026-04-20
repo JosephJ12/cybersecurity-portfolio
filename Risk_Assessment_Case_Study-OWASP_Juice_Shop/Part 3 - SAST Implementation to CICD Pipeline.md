@@ -17,6 +17,8 @@ We will do this by implementing the popular open source SAST tool, `Semgrep` and
 - Product lookup and result rendering
 - All code dependencies listed in package.json
 
+We'll proceed to scan the `search.ts` file where the product search code lies and the `package.json` file with the dependencies. Then, we'll remediate all the findings Semgrep returns to us and scan again to confirm the finding has been fixed. Let's get started!
+
 ## Semgrep Setup and Configuration
 
 1. First, we'll need to create and log into our Semgrep account. After logging in, we'll see this page:
@@ -170,32 +172,15 @@ package.json // where all the code dependencies are
 # juice-shop/routes/search.ts and juice-shop/package.json
 # Therefore, we will ignore every file and reintroduce just those 2 to scan
 
-# Ignore Everything
-*.js
-*.json
-*.MD
-*.ts
-.*
-.*/
-config/*
-data/*
-frontend/*
-ftp/*
-i18n/*
-lib/*
-models/*
-monitoring/*
-routes/*
-rsn/*
-screenshots/*
-test/*
-uploads/*
-vagrant/*
-views/*
+# Ignore everything
+*
 
-# Ignore all files except routes/search.ts and package.json
-!package.json
+# Re-allow required directory and file
+!routes
 !routes/search.ts
+
+# Allow dependency file
+!package.json
 ```
 
 22. Before we push our changes to the remote branch, we'll first rebase our repo in case there were any changes to it. Let's open a terminal in Visual Studio Code and enter this command:
@@ -228,6 +213,34 @@ views/*
 
 <img width="2432" height="1244" alt="image" src="https://github.com/user-attachments/assets/5426c0f4-6b93-41b4-8196-faae5ffe0b07" />
 
-We have 2 findings, which essentially warn us of the same vulnerability. It warns us of SQL Injection in our search query and recommends we use parameterized queries. Let's remediate this finding.
+We have 2 findings, which essentially warn us of the same vulnerability. It warns us of SQL Injection in our search query and recommends we use parameterized queries. 
 
-2. 
+2. Our current vulnerable code is on line 23:
+
+<img width="1427" height="141" alt="image" src="https://github.com/user-attachments/assets/e4567e3d-f80f-4bab-b692-0f31d739f960" />
+
+3. We'll change that line to use parameterized queries instead of directly inputting the criteria into the SQL query itself. 
+
+```
+    // ORIGINAL SQLI VULNERABLE CODE
+    //models.sequelize.query(`SELECT * FROM Products WHERE ((name LIKE '%${criteria}%' OR description LIKE '%${criteria}%') AND deletedAt IS NULL) ORDER BY name`) // vuln-code-snippet vuln-line unionSqlInjectionChallenge dbSchemaChallenge
+    models.sequelize.query(
+      `SELECT * 
+      FROM Products 
+      WHERE ((name LIKE $criteria OR description LIKE $criteria) 
+      AND deletedAt IS NULL) 
+      ORDER BY name
+      `,
+      {
+        bind: {
+          criteria: criteria
+        }
+      }
+    )
+```
+
+<img width="1439" height="328" alt="image" src="https://github.com/user-attachments/assets/31b50490-5df5-4a9d-899c-15dff1b237a8" />
+
+4. Let's push these changes so that Semgrep can scan it again.
+
+
