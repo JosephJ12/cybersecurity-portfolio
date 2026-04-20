@@ -219,4 +219,15 @@ We have 2 findings, which essentially warn us of the same vulnerability. It warn
 
 <img width="1427" height="141" alt="image" src="https://github.com/user-attachments/assets/e4567e3d-f80f-4bab-b692-0f31d739f960" />
 
-3. 
+3. We'll change that line to use parameterized queries instead of directly inputting the criteria into the SQL query itself. 
+
+```
+
+
+```
+
+<img width="1439" height="328" alt="image" src="https://github.com/user-attachments/assets/31b50490-5df5-4a9d-899c-15dff1b237a8" />
+
+4. Let's push these changes so that Semgrep can scan it again.
+
+
