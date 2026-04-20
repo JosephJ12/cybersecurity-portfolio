@@ -241,6 +241,8 @@ We have 2 findings, which essentially warn us of the same vulnerability. It warn
 
 <img width="1439" height="328" alt="image" src="https://github.com/user-attachments/assets/31b50490-5df5-4a9d-899c-15dff1b237a8" />
 
-4. Let's push these changes so that Semgrep can scan it again.
+4. Let's push these changes so that Semgrep can scan it again. Click the `+` sign next to `search.ts` to stage the changes, then type in a commit message and press `Commit`. Finally, click on `Sync Changes` to push our changes to the main branch.
 
+<img width="364" height="470" alt="image" src="https://github.com/user-attachments/assets/dc7e73dc-5e8c-4ff5-ba4c-ef06186088b7" />
 
+5. 
