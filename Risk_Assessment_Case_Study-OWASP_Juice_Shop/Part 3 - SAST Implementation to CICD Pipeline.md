@@ -222,8 +222,21 @@ We have 2 findings, which essentially warn us of the same vulnerability. It warn
 3. We'll change that line to use parameterized queries instead of directly inputting the criteria into the SQL query itself. 
 
 ```
-
-
+    // ORIGINAL SQLI VULNERABLE CODE
+    //models.sequelize.query(`SELECT * FROM Products WHERE ((name LIKE '%${criteria}%' OR description LIKE '%${criteria}%') AND deletedAt IS NULL) ORDER BY name`) // vuln-code-snippet vuln-line unionSqlInjectionChallenge dbSchemaChallenge
+    models.sequelize.query(
+      `SELECT * 
+      FROM Products 
+      WHERE ((name LIKE $criteria OR description LIKE $criteria) 
+      AND deletedAt IS NULL) 
+      ORDER BY name
+      `,
+      {
+        bind: {
+          criteria: criteria
+        }
+      }
+    )
 ```
 
 <img width="1439" height="328" alt="image" src="https://github.com/user-attachments/assets/31b50490-5df5-4a9d-899c-15dff1b237a8" />
