@@ -213,7 +213,7 @@ package.json // where all the code dependencies are
 
 <img width="2432" height="1244" alt="image" src="https://github.com/user-attachments/assets/5426c0f4-6b93-41b4-8196-faae5ffe0b07" />
 
-We have 2 findings, which essentially warn us of the same vulnerability. It warns us of SQL Injection in our search query and recommends we use parameterized queries. 
+We have 2 findings, which essentially warn us of the same vulnerability. It warns us of SQL Injection in our search query and recommends we use parameterized queries. This will map to the risks we assessed earlier: `SEARCH-01` and `SEARCH-02`.
 
 2. Our current vulnerable code is on line 23:
 
@@ -248,4 +248,6 @@ We have 2 findings, which essentially warn us of the same vulnerability. It warn
 5. Checking the scan results, we confirm that the SQL Injection finding has been remediated!
 
 <img width="1077" height="511" alt="image" src="https://github.com/user-attachments/assets/4ab263da-2158-432f-9b6b-dd7d4251d9c6" />
+
+## Post SAST Gap Analysis
 
