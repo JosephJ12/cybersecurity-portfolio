@@ -17,6 +17,8 @@ We will do this by implementing the popular open source SAST tool, `Semgrep` and
 - Product lookup and result rendering
 - All code dependencies listed in package.json
 
+We'll proceed to scan the `search.ts` file where the product search code lies and the `package.json` file with the dependencies. Then, we'll remediate all the findings Semgrep returns to us and scan again to confirm the finding has been fixed. Let's get started!
+
 ## Semgrep Setup and Configuration
 
 1. First, we'll need to create and log into our Semgrep account. After logging in, we'll see this page:
@@ -170,32 +172,15 @@ package.json // where all the code dependencies are
 # juice-shop/routes/search.ts and juice-shop/package.json
 # Therefore, we will ignore every file and reintroduce just those 2 to scan
 
-# Ignore Everything
-*.js
-*.json
-*.MD
-*.ts
-.*
-.*/
-config/*
-data/*
-frontend/*
-ftp/*
-i18n/*
-lib/*
-models/*
-monitoring/*
-routes/*
-rsn/*
-screenshots/*
-test/*
-uploads/*
-vagrant/*
-views/*
+# Ignore everything
+*
 
-# Ignore all files except routes/search.ts and package.json
-!package.json
+# Re-allow required directory and file
+!routes
 !routes/search.ts
+
+# Allow dependency file
+!package.json
 ```
 
 22. Before we push our changes to the remote branch, we'll first rebase our repo in case there were any changes to it. Let's open a terminal in Visual Studio Code and enter this command:
