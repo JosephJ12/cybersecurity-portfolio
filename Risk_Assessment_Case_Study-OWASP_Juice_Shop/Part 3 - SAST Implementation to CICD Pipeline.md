@@ -245,4 +245,7 @@ We have 2 findings, which essentially warn us of the same vulnerability. It warn
 
 <img width="364" height="470" alt="image" src="https://github.com/user-attachments/assets/dc7e73dc-5e8c-4ff5-ba4c-ef06186088b7" />
 
-5. 
+5. Checking the scan results, we confirm that the SQL Injection finding has been remediated!
+
+<img width="1077" height="511" alt="image" src="https://github.com/user-attachments/assets/4ab263da-2158-432f-9b6b-dd7d4251d9c6" />
+
