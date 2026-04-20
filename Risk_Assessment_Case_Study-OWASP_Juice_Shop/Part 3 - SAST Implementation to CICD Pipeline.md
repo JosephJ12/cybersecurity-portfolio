@@ -251,3 +251,7 @@ We have 2 findings, which essentially warn us of the same vulnerability. It warn
 
 ## Post SAST Gap Analysis
 
+| Risk ID | Risk | Expected Control | Status | Gap | Impact | Recommended Remediation |
+|---|---|---|---|---|---|---|
+| SEARCH-01 | SQL Injection - Product Data Exposure | Input sanitization and parameterized queries | Not evident | No evidence of input sanitization or parameterized query usage found in code base for scope | A malicious actor can read and possibly modify unauthorized product data in database | Sanitize user search input and query database using parameterized queries |
+| SEARCH-02 | SQL Injection - User Data Enumeration | Input sanitization and parameterized queries | Not evident | No evidence of input sanitization or parameterized query usage found in code base for scope | A malicious actor can read data from Users table and possibly even retrieve their PII and credentials | Sanitize user search input and query database using parameterized queries |
