@@ -22,7 +22,7 @@ We'll proceed to scan the `search.ts` file where the product search code lies an
 ## Semgrep Setup and Configuration
 
 1. First, we'll need to create a Semgrep account and secret token to link to our GitHub Actions workflow. For the sake of brevity, I've included those steps in another page which I'll link here:
-[Semgrep Account Setup](Semgrep-Account-Setup.md)
+[Semgrep Account Setup](../Semgrep-Account-Setup.md)
 
 2. Now that we've successfully setup and configured our Semgrep settings, we can finally move onto the fun part. We'll integrate Semgrep SAST and SCA scanning into our CI/CD pipeline and automate it to run on every pull request and push to the main and master branches. 
 
