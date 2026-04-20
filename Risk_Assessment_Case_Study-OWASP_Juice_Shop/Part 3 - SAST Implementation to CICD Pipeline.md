@@ -213,6 +213,10 @@ package.json // where all the code dependencies are
 
 <img width="2432" height="1244" alt="image" src="https://github.com/user-attachments/assets/5426c0f4-6b93-41b4-8196-faae5ffe0b07" />
 
-We have 2 findings, which essentially warn us of the same vulnerability. It warns us of SQL Injection in our search query and recommends we use parameterized queries. Let's remediate this finding.
+We have 2 findings, which essentially warn us of the same vulnerability. It warns us of SQL Injection in our search query and recommends we use parameterized queries. 
 
-2. 
+2. Our current vulnerable code is on line 23:
+
+<img width="1427" height="141" alt="image" src="https://github.com/user-attachments/assets/e4567e3d-f80f-4bab-b692-0f31d739f960" />
+
+3. 
