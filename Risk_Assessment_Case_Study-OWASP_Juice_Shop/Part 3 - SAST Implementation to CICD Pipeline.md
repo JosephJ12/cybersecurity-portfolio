@@ -36,14 +36,14 @@ name: Semgrep CI
 on:
   pull_request:
     paths:
-      - 'Risk Assessment Case Study - OWASP Juice Shop/juice-shop/**'
+      - 'Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop/**'
       - '.github/workflows/semgrep.yml'
   push:
     branches:
       - main
       - master
     paths:
-      - 'Risk Assessment Case Study - OWASP Juice Shop/juice-shop/**'
+      - 'Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop/**'
       - '.github/workflows/semgrep.yml'
   workflow_dispatch: {}
 
@@ -60,7 +60,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop
+        working-directory: 'Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop'
 
     steps:
       - name: Check out repository
