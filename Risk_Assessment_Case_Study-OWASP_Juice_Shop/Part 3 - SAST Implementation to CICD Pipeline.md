@@ -255,3 +255,5 @@ We have 2 findings, which essentially warn us of the same vulnerability. It warn
 |---|---|---|---|---|---|---|
 | SEARCH-01 | SQL Injection - Product Data Exposure | Parameterized queries | Evident in scope | Parameterized queries have been confirmed and tested by Semgrep in scope. | A malicious actor can read and possibly modify unauthorized product data in database | Sanitize user search input and query database using parameterized queries |
 | SEARCH-02 | SQL Injection - User Data Enumeration | Parameterized queries | Evident in scope | Parameterized queries have been confirmed and tested by Semgrep in scope. | A malicious actor can read data from Users table and possibly even retrieve their PII and credentials | Sanitize user search input and query database using parameterized queries |
+
+By integrating Semgrep SAST into our CI/CD pipeline via GitHub Actions, we were able to find and confirm the mitigation of 2 risk regarding SQL Injection in our product search code.
