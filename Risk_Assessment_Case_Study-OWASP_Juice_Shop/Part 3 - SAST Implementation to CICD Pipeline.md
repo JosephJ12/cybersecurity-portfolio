@@ -76,8 +76,7 @@ jobs:
 
 This is how things should look now:
 
-<img width="1640" height="792" alt="image" src="https://github.com/user-attachments/assets/4888f214-f7b1-40dc-aec8-5db47bac9d91" />
-
+<img width="1097" height="916" alt="image" src="https://github.com/user-attachments/assets/29ed21e8-2171-4a43-95ce-aafdf1a711dd" />
 
 4. Now, if we commit this file as is, Semgrep will scan every single file in the juice-shop folder. However, since our scope is only the product search feature, we'll reduce the noise by scanning only these 2 files:
 
