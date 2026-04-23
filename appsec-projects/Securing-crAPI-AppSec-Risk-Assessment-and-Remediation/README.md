@@ -28,7 +28,8 @@ flowchart LR
 ```
 
 ## 🔄 Data Flow (DFD)
-```flowchart TD
+```mermaid
+flowchart TD
     U[User] -->|Login Request| A[API Endpoint]
     A -->|Validate Credentials| Auth
     Auth -->|Token| A
