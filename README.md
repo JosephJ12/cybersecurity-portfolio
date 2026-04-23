@@ -23,7 +23,7 @@ My work goes beyond finding bugs — I focus on:
 - Threat Modeling (STRIDE, DFDs, Trust Boundaries)
 - Secure Code Review (SAST)
 - Dynamic Testing (DAST)
-- Vulnerability Remediation
+- Code-Level Vulnerability Remediation
 
 ### ⚙️ DevSecOps
 - CI/CD Security Integration (GitHub Actions)
@@ -36,13 +36,6 @@ My work goes beyond finding bugs — I focus on:
 - Access Control (BOLA, BFLA)
 - Input Validation & Injection Prevention
 - Rate Limiting & Abuse Prevention
-
-### 🛠️ Tools & Technologies
-- Burp Suite, OWASP ZAP
-- Semgrep
-- Node.js / TypeScript
-- Git & GitHub
-- Docker (basic)
 
 ---
 
