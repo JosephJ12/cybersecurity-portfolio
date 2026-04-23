@@ -65,7 +65,7 @@ flowchart TD
 
 ## 🔁 DevSecOps Integration
 
-```
+```mermaid
 flowchart LR
     Dev --> GitHub
     GitHub --> CI[GitHub Actions]
