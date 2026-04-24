@@ -149,14 +149,6 @@ Focus was placed on **high-impact vulnerabilities affecting authentication and d
 
 ---
 
-## 🧠 Key Learnings
-
-- Security must be embedded **early in the SDLC**
-- Many vulnerabilities stem from **design and logic flaws**, not just code issues
-- Effective remediation requires understanding **root cause and system behavior**
-- Automation (DevSecOps) is essential for **scaling security practices**
-
-
 
 ## 🌟 Project Highlights
 
@@ -251,3 +243,14 @@ jobs:
 # Allow dependency file
 !package.json
 ```
+
+---
+
+## 🧠 Key Learnings
+
+- Security must be embedded **early in the SDLC**
+- Many vulnerabilities stem from **design and logic flaws**, not just code issues
+- Effective remediation requires understanding **root cause and system behavior**
+- Automation (DevSecOps) is essential for **scaling security practices**
+
+---
