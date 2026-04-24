@@ -1,46 +1,162 @@
-# 🔐 OWASP Juice Shop – Application Security Project
+# 🔐 OWASP Juice Shop — Application Security Case Study
 
 ## 📌 Overview
 
-This project simulates the role of an **Application Security Engineer** securing a vulnerable production web application using OWASP Juice Shop.
+This project is a **risk-based Application Security (AppSec) assessment and remediation** of the vulnerable web application **OWASP Juice Shop**.
 
-Going beyond traditional security labs focused only on vulnerability discovery, this project demonstrates:
-
-- Code-level vulnerability remediation
-- Real-world security control implementation
-- DevSecOps pipeline integration
-- Risk-based prioritization
-- System-level security thinking
+The goal was to simulate how a junior Application Security Engineer would evaluate a real-world application:
+- Understand system architecture
+- Identify and exploit vulnerabilities
+- Determine root causes
+- Implement secure, production-aligned fixes
+- Integrate security into the development lifecycle (DevSecOps)
 
 ---
 
 ## 🎯 Objectives
 
-- Identify and exploit real-world web vulnerabilities
-- Implement secure code fixes directly in the application
-- Introduce preventative security controls
-- Shift security left into CI/CD pipelines
-- Demonstrate threat modeling and risk assessment
+- Perform **end-to-end AppSec assessment**
+- Apply **threat modeling (STRIDE, DFDs, trust boundaries)**
+- Identify vulnerabilities aligned with **OWASP Top 10**
+- Implement **secure coding fixes**
+- Integrate **security into CI/CD pipelines**
 
 ---
 
-## 🧠 Security Methodology
+## 🏗️ Application Architecture & Scope
 
-```text
-1. Threat Modeling
-  - System Architecture
-  - Data Flow Diagram
-  - Trust Boundaries
-  - STRIDE Application and Gap Analysis
-2. Vulnerability Discovery (DAST)
-  - Risk Verification and Exploitation
-  - Code-Level Remediation
-  - Preventative Control Verification
-3. Secure Coding Practices via Semgrep
-  - SAST Integration and Automation
-  - SCA (Software Component Analysis) Implementation
-  - DevSecOps CI/CD Pipeline
-```
+The application follows a typical modern web architecture:
+
+- **Frontend:** Angular (client-side)
+- **Backend:** Node.js / Express API
+- **Database:** SQLite
+- **Authentication:** Session-based login
+
+### Scope of Assessment
+
+Focus areas:
+- Authentication and login flows
+- Input handling and database interactions
+- API endpoints and business logic
+
+---
+
+## 🧠 Methodology
+
+### 1. Architecture Review
+- Created **Data Flow Diagrams (DFD)**
+- Identified **trust boundaries**
+- Mapped data movement between components
+
+### 2. Threat Modeling
+Applied **STRIDE** to key components:
+- Authentication
+- Search functionality
+- User input handling
+
+### 3. Security Testing
+- Dynamic testing using **Burp Suite**
+- Manual exploitation of vulnerabilities
+- Request/response manipulation
+
+### 4. Remediation
+- Implemented secure coding fixes
+- Addressed root causes (not just symptoms)
+
+### 5. DevSecOps Integration
+- Integrated **Semgrep (SAST)** into CI/CD using GitHub Actions
+- Automated detection of insecure patterns
+- Code-level remediation and rescan
+
+---
+
+## 🚨 Key Findings
+
+### 1. SQL Injection (High)
+
+**Vulnerability:**  
+User-controlled input was directly concatenated into SQL queries.
+
+**Impact:**  
+- Authentication bypass  
+- Unauthorized data access  
+
+**Root Cause:**  
+Lack of parameterized queries / input sanitization
+
+**Remediation:**  
+- Replaced SQL queries with **parameterized queries**
+
+---
+
+### 2. Brute Force Authentication (High)
+
+**Vulnerability:**  
+Login endpoint allowed unlimited attempts.
+
+**Impact:**  
+- Account takeover risk  
+- Credential stuffing attacks  
+
+**Root Cause:**  
+No rate limiting or account lockout mechanism
+
+**Remediation:**  
+- Implemented **combined rate limiting**:
+  - Per-IP throttling
+  - Per-account throttling
+- Configured time-based reset logic
+
+---
+
+## 🔧 Remediation Highlights
+
+### ✅ Secure Coding Improvements
+- Parameterized database queries
+
+### ✅ Authentication Hardening
+- Account + IP-based rate limiting
+- Protection against brute force and credential stuffing
+
+### ✅ Security Controls
+- Reduced attack surface
+- Improved resilience against common web attacks
+
+---
+
+## ⚙️ DevSecOps Integration
+
+Security was integrated into the development lifecycle:
+
+- **SAST Tool:** Semgrep
+- **CI/CD:** GitHub Actions
+
+### Pipeline Capabilities:
+- Automated static code analysis on pull requests
+- Detection of insecure patterns
+- Early vulnerability identification
+
+---
+
+## 📊 Risk-Based Approach
+
+Findings were prioritized based on:
+- Exploitability
+- Business impact
+- Likelihood of abuse
+
+Focus was placed on **high-impact vulnerabilities affecting authentication and data integrity**.
+
+---
+
+## 🧠 Key Learnings
+
+- Security must be embedded **early in the SDLC**
+- Many vulnerabilities stem from **design and logic flaws**, not just code issues
+- Effective remediation requires understanding **root cause and system behavior**
+- Automation (DevSecOps) is essential for **scaling security practices**
+
+
 
 ## 🌟 Project Highlights
 
