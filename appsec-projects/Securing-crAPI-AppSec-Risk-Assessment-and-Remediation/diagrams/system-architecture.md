@@ -1,3 +1,4 @@
+```
 flowchart LR
     %% =========================
     %% External Users / Clients
@@ -80,3 +81,4 @@ flowchart LR
     Community -->|Reads/Writes| MongoDB
     Chatbot -->|Reads/Writes Embeddings| Chroma
     Chatbot -->|Reads App Data| MongoDB
+```
