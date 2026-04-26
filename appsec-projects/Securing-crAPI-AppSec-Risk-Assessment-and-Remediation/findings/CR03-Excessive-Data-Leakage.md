@@ -28,7 +28,7 @@ Create a separate model for post authors, one that only gives the necessary info
 ## Retest Result
 Retrieving community posts no longer leaks the author's email and vehicleID. 
 
-## OWASP API3 2023: Broken Object Property Level Authorization?
+## OWASP API3 2023: Broken Object Property Level Authorization
 
 API3 2023: Broken Object Property Level Authorization (BOPLA) is often confused with API1 2023: Broken Object Level Authorization (BOLA). The main difference between API3 and API1 is, in terms of data retrieval from databases, API3 is getting the wrong data columns while API1 is getting the wrong row. BOPLA involves getting or modifying unauthorized data fields for the right object. BOLA involves getting the wrong object altogether.
 
