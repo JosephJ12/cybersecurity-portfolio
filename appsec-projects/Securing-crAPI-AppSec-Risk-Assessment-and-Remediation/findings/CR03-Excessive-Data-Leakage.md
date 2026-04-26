@@ -4,6 +4,7 @@ The Post model includes an Author field, which populates the email and vehicleID
 
 ## CVSS Severity
 Medium (5.0)
+
 AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N
 
 ## Affected Endpoint
