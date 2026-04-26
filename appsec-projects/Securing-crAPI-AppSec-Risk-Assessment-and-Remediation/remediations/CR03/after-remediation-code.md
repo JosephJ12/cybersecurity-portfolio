@@ -1,5 +1,9 @@
 # New Post Model Code 
 
+- Change Date: 4/26/2026
+- Changed By: Joseph Jung
+- File: services/community/api/models/post.go
+
 ```go
 /*
  * Licensed under the Apache License, Version 2.0 (the “License”);
