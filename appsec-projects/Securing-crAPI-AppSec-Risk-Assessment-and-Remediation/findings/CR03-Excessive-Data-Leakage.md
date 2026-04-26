@@ -3,7 +3,8 @@
 The Post model includes an Author field, which populates the email and vehicleID fields as wewll. This leaks the post author's sensitive data on every post retrieval. The unauthorized retrieval or modification of an object's field is number 3 on the OWASP API Top 10. 
 
 ## CVSS Severity
-Medium
+Medium (5.0)
+AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N
 
 ## Affected Endpoint
 1. `GET /community/api/v2/community/posts/[POST_ID]`
