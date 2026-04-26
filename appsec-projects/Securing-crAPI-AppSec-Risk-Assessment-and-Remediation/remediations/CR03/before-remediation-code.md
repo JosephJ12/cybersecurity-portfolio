@@ -1,4 +1,4 @@
-# Before Remediation Code
+# Old Post Model Code
 
 ```go
 // File: services/community/api/models/post.go
