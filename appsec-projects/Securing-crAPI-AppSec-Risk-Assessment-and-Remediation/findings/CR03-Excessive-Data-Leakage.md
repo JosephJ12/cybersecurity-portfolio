@@ -1,6 +1,6 @@
 # CR03: Excessive Data Leakage on Community Post
 
-The Post model includes a nested Author object field, which populates the email and vehicleID fields as wewll. This leaks the post author's sensitive data on every post retrieval. The unauthorized retrieval or modification of an object's field is number 3 on the OWASP API Top 10. 
+The Post model includes a nested Author object field, which populates the email and vehicleID fields as well. This leaks the post author's sensitive data on every post retrieval. The unauthorized retrieval or modification of an object's field is number 3 on the OWASP API Top 10. 
 
 ## CVSS Severity
 Medium (5.0)
@@ -23,10 +23,10 @@ See:
 - evidence/manual-tests/sql-injection-curl-before.md
 
 ## Remediation
-Create a separate model for post authors, one that only gives the necessary information on Post retrievals.
+Create a separate model for post authors, one that only gives the necessary information on Post retrievals. Then, change the Author object to the Post Author object in the Post model.
 
 ## Retest Result
-N/A
+Retrieving community posts no longer leaks the author's email and vehicleID. 
 
 ## OWASP API3 2023: Broken Object Property Level Authorization?
 
