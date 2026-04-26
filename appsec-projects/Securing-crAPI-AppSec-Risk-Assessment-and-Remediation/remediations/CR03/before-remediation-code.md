@@ -1,8 +1,8 @@
 # Old Post Model Code
 
-```go
-// File: services/community/api/models/post.go
+- File: services/community/api/models/post.go
 
+```go
 /*
  * Licensed under the Apache License, Version 2.0 (the “License”);
  * you may not use this file except in compliance with the License.
