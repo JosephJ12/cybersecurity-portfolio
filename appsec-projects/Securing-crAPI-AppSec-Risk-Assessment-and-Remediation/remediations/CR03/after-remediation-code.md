@@ -2,6 +2,8 @@
 
 Add the following code to the user model file
 
+- Change Date: 4/26/2026
+- Changed By: Joseph Jung
 - File: services/community/api/models/user.go
 
 ```go
