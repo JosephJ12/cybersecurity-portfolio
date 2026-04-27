@@ -28,10 +28,17 @@ See:
 - ![Screenshot 2](../evidence/CR03/excessive-data-exposure-2.png)
 
 ## Remediation
-Create a separate model for post authors, one that only gives the necessary information on Post retrievals. Then, change the Author object to the Post Author object in the Post model.
+Create a separate model for post authors, one that hides sensitive information and only exposes necessary data that is safe for public use. Then, change the Post model code to use the PostAuthor object instead of Author.
+
+- [Original Vulnerable Code](../remediations/CR03/before-remediation-code.md)
+- [Remediated Code](../remediations/CR03/after-remediation-code.md)
 
 ## Retest Result
 Retrieving community posts no longer leaks the author's email and vehicleID. 
+
+See:
+1. ![Retest 1](../evidence/CR03/after-remediation-1.png)
+2. ![Retest 2](../evidence/CR03/after-remediation-2.png)
 
 ## OWASP API3 2023: Broken Object Property Level Authorization
 
