@@ -1,3 +1,21 @@
+# Adding PostAuthor Model Code
+
+Add the following code to the user model file
+
+- File: services/community/api/models/user.go
+
+```go
+
+// PostAuthor model
+// PostAuthor is the public-safe version of Author.
+// It intentionally excludes Email, VehicleID, and createdAt fields to hide them on public pages
+type PostAuthor struct {
+	Nickname string `bson:"nickname" json:"nickname"`
+	Picurl   string `bson:"profile_pic_url" json:"profile_pic_url"`
+}
+
+```
+
 # New Post Model Code 
 
 - Change Date: 4/26/2026
@@ -36,12 +54,13 @@ import (
 )
 
 // Post Field
-// Old Post model using Author object
-/*type Post struct {
+// New Post model using PostAuthor object
+// removes email and vehicleID fields from previous Author object
+type Post struct {
 	ID        string     `gorm:"primary_key;auto_increment" json:"id"`
 	Title     string     `gorm:"size:255;not null;unique" json:"title"`
 	Content   string     `gorm:"size:255;not null;" json:"content"`
-	Author    Author     `json:"author"`
+	Author    PostAuthor     `bson:"author" json:"author"`
 	Comments  []Comments `json:"comments"`
 	AuthorID  uint64     `sql:"type:int REFERENCES users(id)" json:"authorid"`
 	CreatedAt time.Time
@@ -53,31 +72,6 @@ func (post *Post) Prepare() {
 	post.Title = html.EscapeString(strings.TrimSpace(post.Title))
 	post.Content = html.EscapeString(strings.TrimSpace(post.Content))
 	post.Author = Prepare()
-	post.AuthorID = autherID
-	post.Comments = []Comments{}
-	post.CreatedAt = time.Now()
-}
-*/
-
-// Post Field
-// New Post model using PostAuthor object
-// removes email and vehicleID fields from previous Author object
-type Post struct {
-	ID        string     `gorm:"primary_key;auto_increment" json:"id"`
-	Title     string     `gorm:"size:255;not null;unique" json:"title"`
-	Content   string     `gorm:"size:255;not null;" json:"content"`
-	PostAuthor    PostAuthor     `json:"postauthor"`
-	Comments  []Comments `json:"comments"`
-	AuthorID  uint64     `sql:"type:int REFERENCES users(id)" json:"authorid"`
-	CreatedAt time.Time
-}
-
-// Prepare initialize data
-func (post *Post) Prepare() {
-	post.ID = shortuuid.New()
-	post.Title = html.EscapeString(strings.TrimSpace(post.Title))
-	post.Content = html.EscapeString(strings.TrimSpace(post.Content))
-	post.PostAuthor = Prepare()
 	post.AuthorID = autherID
 	post.Comments = []Comments{}
 	post.CreatedAt = time.Now()
@@ -122,11 +116,10 @@ func Prepare() Author {
 // Prepare initialize Field
 // new Post Author field initialization
 func Prepare() PostAuthor {
-	var u PostAuthor
-	u.Nickname = nickname
-	u.CreatedAt = time.Now()
-	u.Picurl = picurl
-	return u
+	var p PostAuthor
+	p.Nickname = nickname
+	p.Picurl = picurl
+	return p
 }
 	
 
@@ -206,3 +199,4 @@ func FindAllPost(client *mongo.Client, offset int64, limit int64) (PostsResponse
 }
 
 ```
+
