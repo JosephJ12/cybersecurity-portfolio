@@ -23,9 +23,9 @@ See:
 - ![Root Cause 2](../evidence/CR02/root-cause-2.png)
 
 ## Evidence
-See:
-- evidence/screenshots/sql-injection-before.png
-- evidence/manual-tests/sql-injection-curl-before.md
+Screenshots:
+1. evidence/screenshots/sql-injection-before.png
+2. evidence/manual-tests/sql-injection-curl-before.md
 
 ## Remediation
 Create a separate model for post authors, one that only gives the necessary information on Post retrievals. Then, change the Author object to the Post Author object in the Post model.
