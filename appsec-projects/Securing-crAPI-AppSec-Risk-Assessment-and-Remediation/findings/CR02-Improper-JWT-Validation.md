@@ -18,12 +18,12 @@ An attacker can potentially impersonate as any user, even allowing administrator
 ## Root Cause
 The JWT Provider code mishandles tokens. It retrieves usernames without first verifying the signature and validates tokens without enforcing strict hashing algorithms for the signature.
 
-See:
-- ![Root Cause 1](../evidence/CR02/root-cause-1.png)
-- ![Root Cause 2](../evidence/CR02/root-cause-2.png)
+Screenshots:
+1. ![Root Cause 1](../evidence/CR02/root-cause-1.png)
+2. ![Root Cause 2](../evidence/CR02/root-cause-2.png)
 
 ## Evidence
-Screenshots:
+See:
 1. evidence/screenshots/sql-injection-before.png
 2. evidence/manual-tests/sql-injection-curl-before.md
 
