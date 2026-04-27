@@ -17,10 +17,15 @@ An attacker could view user emails and vehicle IDs, which can be leveraged when 
 ## Root Cause
 The Post model nests an Author object inside, which includes sensitive information such as their email and vehicleID.
 
+Screenshots:
+1. ![Root Cause 1](../evidenceroot-cause-1.png)
+2. ![Root Cause 2](../evidenceroot-cause-2.png)
+3. ![Root Cause 3](../evidenceroot-cause-3.png)
+
 ## Evidence
 See:
-- evidence/screenshots/sql-injection-before.png
-- evidence/manual-tests/sql-injection-curl-before.md
+- ![Screenshot 1](../evidence/excessive-data-exposure-1.png)
+- ![Screenshot 2](../evidence/excessive-data-exposure-2.png)
 
 ## Remediation
 Create a separate model for post authors, one that only gives the necessary information on Post retrievals. Then, change the Author object to the Post Author object in the Post model.
