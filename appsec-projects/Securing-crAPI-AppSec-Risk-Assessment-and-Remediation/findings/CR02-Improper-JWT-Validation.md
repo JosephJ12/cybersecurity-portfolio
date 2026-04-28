@@ -24,8 +24,8 @@ Screenshots:
 
 ## Evidence
 Screenshots for no signature JWT token
-1. evidence/screenshots/sql-injection-before.png
-2. evidence/manual-tests/sql-injection-curl-before.md
+1. ![](evidence/no-signature-1.png)
+2. ![](evidence/no-signature-2.png)
 
 ## Remediation
 Create a separate model for post authors, one that only gives the necessary information on Post retrievals. Then, change the Author object to the Post Author object in the Post model.
