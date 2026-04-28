@@ -5,9 +5,9 @@ The application uses JWT tokens to authenticate and authorize users. However, th
 These 2 findings fall under the OWASP API Top 10: Broken Authentication category. 
 
 ## CVSS Severity
-Medium (5.0)
+Critical (9.9)
 
-AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N
+AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:L
 
 ## Affected Endpoint
 1. Any endpoint that utilizes JWT authentication will be affected
@@ -59,4 +59,4 @@ JWT tokens are now properly validated. RS256 algorithm is now enforced, tokens a
 
 ## OWASP API2 2023: Broken Authentication
 
-Broken authentication addresses the impersonation problem in cybersecurity and comes in at number 2 on the OWASP API Top 10. API2 2023 relates to Spoofing in the STRIDE threat modeling framework.
+Broken authentication addresses the impersonation problem in cybersecurity and comes in at number 2 on the OWASP API Top 10. API2 2023 relates to Spoofing and Escalation of Privileges in the STRIDE threat modeling framework.
