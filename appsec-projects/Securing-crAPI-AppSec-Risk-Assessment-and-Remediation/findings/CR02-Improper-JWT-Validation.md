@@ -40,9 +40,11 @@ Screenshots:
 
 
 ## Remediation
-We will make 2 code remediations. One is to enforce token signatures by disabling the `None` algorithm in the header. The other is to verify the token signature before using any data from the payload, such as the username. 
+We will make 2 code remediations. One is to enforce a secure algorithm, such as RS256. The other is to verify the token signature before using any data from the payload, such as the username. 
 
+1. Check for valid JWT token before retrieving username from token
 
+![](../evidence/CR02/code-remediation-1.png)
 
 ## Retest Result
 Retrieving community posts no longer leaks the author's email and vehicleID. 
