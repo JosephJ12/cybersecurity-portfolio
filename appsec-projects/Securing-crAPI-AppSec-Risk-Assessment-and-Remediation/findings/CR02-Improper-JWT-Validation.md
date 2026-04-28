@@ -42,13 +42,21 @@ Screenshots:
 ## Remediation
 We will make 2 code remediations. One is to enforce a secure algorithm, such as RS256. The other is to verify the token signature before using any data from the payload, such as the username. 
 
-1. Check for valid JWT token before retrieving username from token
+1. Forge admin user token without signature
 
-![](../evidence/CR02/code-remediation-1.png)
+![](../evidence/CR02/after-remediation-1.png)
+
+2. Token validation failed due to no RS256 signature
+
+![](../evidence/CR02/after-remediation-2.png)
+
+3. Token is validated before retrieving username
+
+![](../evidence/CR02/after-remediation-3.png)
 
 ## Retest Result
-Retrieving community posts no longer leaks the author's email and vehicleID. 
-
+JWT tokens are now properly validated. RS256 algorithm is now enforced, tokens are invalidated without signatures, and tokens are properly validated before returning the username. 
 
 ## OWASP API2 2023: Broken Authentication
 
+Broken authentication addresses the impersonation problem in cybersecurity and comes in at number 2 on the OWASP API Top 10. API2 2023 relates to Spoofing in the STRIDE threat modeling framework.
