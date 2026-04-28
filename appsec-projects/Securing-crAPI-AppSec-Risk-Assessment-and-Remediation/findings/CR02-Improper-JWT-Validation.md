@@ -27,11 +27,13 @@ Screenshots:
 Screenshots:
 
 1. Setting no signature JWT token still gives valid token response
+
 ![](../evidence/CR02/no-signature-1.png)
 
 ![](../evidence/CR02/no-signature-2.png)
 
-2. Impersonate admin with forged JWT token
+2. Impersonate admin user with forged JWT token
+
 ![](../evidence/CR02/forged-admin-token-1.png)
 
 ![](../evidence/CR02/forged-admin-token-2.png)
