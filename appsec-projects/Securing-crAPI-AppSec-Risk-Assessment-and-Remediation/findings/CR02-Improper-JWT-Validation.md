@@ -23,9 +23,19 @@ Screenshots:
 2. ![Root Cause 2](../evidence/CR02/root-cause-2.png)
 
 ## Evidence
-Screenshots for no signature JWT token
-1. ![](evidence/no-signature-1.png)
-2. ![](evidence/no-signature-2.png)
+
+Screenshots:
+
+1. Setting no signature JWT token still gives valid token response
+![](../evidence/CR02/no-signature-1.png)
+
+![](../evidence/CR02/no-signature-2.png)
+
+2. Impersonate admin with forged JWT token
+![](../evidence/CR02/forged-admin-token-1.png)
+
+![](../evidence/CR02/forged-admin-token-2.png)
+
 
 ## Remediation
 Create a separate model for post authors, one that only gives the necessary information on Post retrievals. Then, change the Author object to the Post Author object in the Post model.
