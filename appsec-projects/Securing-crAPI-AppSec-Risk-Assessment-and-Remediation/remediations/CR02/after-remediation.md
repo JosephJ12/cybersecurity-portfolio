@@ -1,8 +1,9 @@
 # Modifying JWT Token Validation Code
 
-Modified the JwtProvider code in 2 ways:
+Modified the JwtProvider code in 3 ways:
 1. Token verifier will only validate a token using RS256 algorithm and signed with the local secret key.
 2. Validates token before retrieving the username from the payload.
+3. Removed unecessary imports and functions no longer used
 
 - Change Date: 4/28/2026
 - Changed By: Joseph Jung
