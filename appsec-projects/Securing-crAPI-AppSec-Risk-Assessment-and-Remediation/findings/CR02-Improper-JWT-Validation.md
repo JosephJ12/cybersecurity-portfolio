@@ -23,7 +23,7 @@ Screenshots:
 2. ![Root Cause 2](../evidence/CR02/root-cause-2.png)
 
 ## Evidence
-See:
+Screenshots for no signature JWT token
 1. evidence/screenshots/sql-injection-before.png
 2. evidence/manual-tests/sql-injection-curl-before.md
 
