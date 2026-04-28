@@ -40,7 +40,9 @@ Screenshots:
 
 
 ## Remediation
-Create a separate model for post authors, one that only gives the necessary information on Post retrievals. Then, change the Author object to the Post Author object in the Post model.
+We will make 2 code remediations. One is to enforce token signatures by disabling the `None` algorithm in the header. The other is to verify the token signature before using any data from the payload, such as the username. 
+
+
 
 ## Retest Result
 Retrieving community posts no longer leaks the author's email and vehicleID. 
