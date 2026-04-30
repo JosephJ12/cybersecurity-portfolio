@@ -1,4 +1,6 @@
-# CR04: Unauthorized Credit Addition
+# CR04: Unauthorized Profile Video Deletion
+
+A non-admin user is able to utilize the admin functionality of deleting an arbitrary user's profile video given its video ID number.
 
 ## CVSS Severity
 Medium (5.0)
@@ -6,14 +8,13 @@ Medium (5.0)
 AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N
 
 ## Affected Endpoint
-1. `GET /community/api/v2/community/posts/[POST_ID]`
-2. `GET /community/api/v2/community/posts/recent`
+1. `DELETE /identity/api/v2/admin/videos/[VIDEO_ID]`
 
 ## Impact
-An attacker could view user emails and vehicle IDs, which can be leveraged when chaining with other vulnerabilities for higher impact. This vulnerability violates the Confidentiality part of the CIA triad and is an example of Information Disclosure from the STRIDE threat modeling framework. 
+A non-admin user is able to utilize the admin functionality of deleting an arbitrary user's profile video given its video ID number. 
 
 ## Root Cause
-The Post model nests an Author object inside, which includes sensitive information such as their email and vehicleID.
+The service implementation code does not validate whether the use has sufficient access to delete the profile video. 
 
 ## Evidence
 See:
