@@ -14,35 +14,49 @@ End-to-end application security assessment of crAPI, simulating how a real AppSe
 
 ```mermaid
 flowchart LR
-    User -->|HTTP Requests| Client
-    Client --> API[crAPI Server]
-    API --> Auth[Auth Service]
-    API --> DB[(Database)]
-    API --> External[External Services]
+    User -->|HTTP Requests| crapi-web[CRAPI-WEB: Web Client Service]
+    crapi-web --> crapi-identity[CRAPI-IDENTITY: Auth Service]
+    crapi-web --> crapi-community[CRAPI-COMMUNITY: Community Forum Service]
+    crapi-web --> crapi-workshop[CRAPI-WORKSHOP: Shop Service]
+    crapi-web --> crapi-chatbot[CRPAPI-CHATBOT: AI Chatbot Service]
+    crapi-identity --> db[Mongo DB]
+    crapi-community --> db[Mongo DB]
+    crapi-workshop --> db[Mongo DB]
+    crapi-chatbot --> cdb[Chroma DB]
 
-    subgraph Trust Boundary
-        API
-        Auth
-        DB
+    subgraph Trust Boundary 1: Authenticated User Layer
+        crapi-identity
+        crapi-community
+        crapi-workshop
+        crapi-chatbot
+    end
+    subgraph Trust Boundary 2: Data Layer
+        db
+        cdb
     end
 ```
 
 ## 🔄 Data Flow (DFD)
 ```mermaid
 flowchart TD
-    U[User] -->|Login Request| A[API Endpoint]
-    A -->|Validate Credentials| Auth
-    Auth -->|Token| A
-    A -->|Fetch Data| DB
-    DB -->|Response| A
-    A -->|JSON Response| U
+    U[User] -->|HTTP Requests| crapi-web[CRAPI-WEB]
+    crapi-web -->|Login Request| crapi-identity[CRAPI-IDENTITY]
+    crapi-identity -->|JWT Token| crapi-web
+    crapi-web -->|JWT Token| crapi-community[CRAPI-COMMUNITY]
+    crapi-web -->|JWT Token| crapi-workshop[CRAPI-WORKSHOP]
+    crapi-community -->|Validates token| DB
+    crapi-workshop -->|Validates token| DB
+    DB --> crapi-community
+    DB --> crapi-workshop
+    crapi-community -->|Json Response| crapi-web
+    crapi-workshop -->|Json Response| crapi-web
 ```
 
 ## ⚠️ Threat Modeling (STRIDE)
 | Category        | Example in crAPI                |
 | --------------- | ------------------------------- |
-| Spoofing        | Weak authentication             |
-| Tampering       | Unsanitized input               |
+| Spoofing        | JWT Token Forgery               |
+| Tampering       | Improper JWT Token Validation   |
 | Repudiation     | Lack of logging                 |
 | Info Disclosure | Excessive data exposure         |
 | DoS             | No rate limiting                |
@@ -51,16 +65,14 @@ flowchart TD
 ## 🔍 Key Vulnerabilities
 - Broken Object Level Authorization (BOLA)
 - Broken Authentication
-- Injection (SQL/NoSQL)
 - Excessive Data Exposure
-- No Rate Limiting
+- Improper Access Control on Function
 
 ## 🔐 Remediation Highlights
-- Parameterized queries → prevent injection
-- Authorization checks → fix BOLA
-- Input validation & sanitization
-- Rate limiting (IP + account-based)
-- Improved authentication controls
+- Check data ownership → IDOR prevention
+- JWT token validation → Fix broken authentication
+- Create separate public user model → Hide sensitive data
+- Improved authentication controls → Implement authorized access to admin functions
 
 
 ## 🔁 DevSecOps Integration
@@ -76,6 +88,6 @@ flowchart LR
 ```
 
 ## 📊 Impact
-- Reduced OWASP API Top 10 risks
+- Mitigated the Top 4 of OWASP API Top 10 risks
 - Shifted security left (CI/CD)
 - Improved resilience against real-world API attacks
