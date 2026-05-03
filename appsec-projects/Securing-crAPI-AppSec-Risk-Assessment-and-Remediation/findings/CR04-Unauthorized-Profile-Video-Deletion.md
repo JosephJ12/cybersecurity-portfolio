@@ -16,6 +16,10 @@ Any user can delete the profile video of another user. This goes against proper 
 ## Root Cause
 The service implementation code does not validate whether the requesting user has admin access before deleting the profile video. 
 
+Screenshots:
+1. ![](../evidence/CR04/root-cause-1.png)
+2. ![](../evidence/CR04/root-cause-2.png)
+
 ## Evidence
 See:
 - ![](../evidence/CR04/broken-function-level-authorization-1.png)
