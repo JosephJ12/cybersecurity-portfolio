@@ -53,14 +53,14 @@ flowchart TD
 ```
 
 ## ⚠️ Threat Modeling (STRIDE)
-| Category        | Example in crAPI                |
-| --------------- | ------------------------------- |
-| Spoofing        | JWT Token Forgery               |
-| Tampering       | Improper JWT Token Validation   |
-| Repudiation     | Lack of logging                 |
-| Info Disclosure | Excessive data exposure         |
-| DoS             | No rate limiting                |
-| Elevation       | Broken object-level auth (BOLA) |
+| Category        | Example in crAPI                      |
+| --------------- | ------------------------------------- |
+| Spoofing        | JWT Token Forgery [CR02]              |
+| Tampering       | Improper JWT Token Validation [CR02]  |
+| Repudiation     | Lack of logging                       |
+| Info Disclosure | Excessive data exposure [CR03]        |
+| DoS             | No rate limiting                      |
+| Elevation       | Broken object-level auth (BOLA) [CR04]|
 
 ## 🔍 Key Vulnerabilities
 - Broken Object Level Authorization (BOLA)
@@ -83,7 +83,8 @@ flowchart LR
     GitHub --> CI[GitHub Actions]
     CI --> SAST[Semgrep SAST]
     CI --> SCA[Dependency Scan]
-    CI --> Build
+    SAST --> Build
+    SCA --> Build
     Build --> Deploy
 ```
 
