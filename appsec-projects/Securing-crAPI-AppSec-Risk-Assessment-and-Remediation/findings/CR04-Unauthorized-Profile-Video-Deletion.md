@@ -18,9 +18,9 @@ The service implementation code does not validate whether the requesting user ha
 
 ## Evidence
 See:
-- [evidence/CR04/broken-function-level-authorization-1.png]
-- [evidence/CR04/broken-function-level-authorization-2.png]
-- [evidence/CR04/broken-function-level-authorization-3.png]
+- ![](../evidence/CR04/broken-function-level-authorization-1.png)
+- ![](../evidence/CR04/broken-function-level-authorization-2.png)
+- ![](../evidence/CR04/broken-function-level-authorization-3.png)
 
 ## Remediation
 Create a separate model for post authors, one that only gives the necessary information on Post retrievals. Then, change the Author object to the Post Author object in the Post model.
