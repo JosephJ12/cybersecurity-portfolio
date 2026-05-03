@@ -23,11 +23,11 @@ See:
 - ![](../evidence/CR04/broken-function-level-authorization-3.png)
 
 ## Remediation
-Create a separate model for post authors, one that only gives the necessary information on Post retrievals. Then, change the Author object to the Post Author object in the Post model.
+After validating the JWT token, retrieve the username and role. Then check whether the user has the ADMIN role and has sufficient rights to delete profile videos.
 
 ## Retest Result
-Retrieving community posts no longer leaks the author's email and vehicleID. 
+Only admin users are able to delete profile videos.
 
 
-## OWASP API3 2023: Broken Object Property Level Authorization
+## OWASP API4 2023: Broken Function Level Authorization
 
