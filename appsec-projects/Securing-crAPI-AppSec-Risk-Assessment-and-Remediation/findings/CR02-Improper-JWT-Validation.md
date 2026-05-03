@@ -42,6 +42,12 @@ Screenshots:
 ## Remediation
 We will make 2 code remediations. One is to enforce a secure algorithm, such as RS256. The other is to verify the token signature before using any data from the payload, such as the username. 
 
+- [Before Remediation Code](../remediations/before-remediation.md)
+- [Remediated Code](../remediations/after-remediation.md)
+
+## Retest Result
+JWT tokens are now properly validated. RS256 algorithm is now enforced, tokens are invalidated without signatures, and tokens are properly validated before returning the username. 
+
 1. Forge admin user token without signature
 
 ![](../evidence/CR02/after-remediation-1.png)
@@ -53,9 +59,6 @@ We will make 2 code remediations. One is to enforce a secure algorithm, such as 
 3. Token is validated before retrieving username
 
 ![](../evidence/CR02/after-remediation-3.png)
-
-## Retest Result
-JWT tokens are now properly validated. RS256 algorithm is now enforced, tokens are invalidated without signatures, and tokens are properly validated before returning the username. 
 
 ## OWASP API2 2023: Broken Authentication
 
