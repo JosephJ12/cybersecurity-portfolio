@@ -14,12 +14,13 @@ AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N
 Any user can delete the profile video of another user. This goes against proper business flow and is a violation of secure access controls.
 
 ## Root Cause
-The service implementation code does not validate whether the use has sufficient access to delete the profile video. 
+The service implementation code does not validate whether the requesting user has admin access before deleting the profile video. 
 
 ## Evidence
 See:
-- evidence/screenshots/sql-injection-before.png
-- evidence/manual-tests/sql-injection-curl-before.md
+- [evidence/CR04/broken-function-level-authorization-1.png]
+- [evidence/CR04/broken-function-level-authorization-2.png]
+- [evidence/CR04/broken-function-level-authorization-3.png]
 
 ## Remediation
 Create a separate model for post authors, one that only gives the necessary information on Post retrievals. Then, change the Author object to the Post Author object in the Post model.
