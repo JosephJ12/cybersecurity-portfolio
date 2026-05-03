@@ -32,6 +32,17 @@ After validating the JWT token, retrieve the username and role. Then check wheth
 ## Retest Result
 Only admin users are able to delete profile videos.
 
+1. Nonadmin user JWT token
+![](../evidence/CR04/after-remediation-1.png)
+
+2. Verify nonadmin user cannot delete profile video
+![](../evidence/CR04/after-remediation-2.png)
+
+3. Try again with forged admin JWT token
+![](../evidence/CR04/after-remediation-3.png)
+
+4. Verify cannot impersonate admin to delete profile video
+![](../evidence/CR04/after-remediation-4.png)
 
 ## OWASP API4 2023: Broken Function Level Authorization
 
