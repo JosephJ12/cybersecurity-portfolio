@@ -53,17 +53,17 @@ flowchart TD
 ```
 
 ## ⚠️ Threat Modeling (STRIDE)
-| Category        | Example in crAPI                      |
-| --------------- | ------------------------------------- |
-| Spoofing        | JWT Token Forgery [CR02]              |
-| Tampering       | Improper JWT Token Validation [CR02]  |
-| Repudiation     | Lack of logging                       |
-| Info Disclosure | Excessive data exposure [CR03]        |
-| DoS             | No rate limiting                      |
-| Elevation       | Broken object-level auth (BOLA) [CR04]|
+| Category        | Example in crAPI                        |
+| --------------- | --------------------------------------- |
+| Spoofing        | JWT Token Forgery [CR02]                |
+| Tampering       | Improper JWT Token Validation [CR02]    |
+| Repudiation     | Lack of logging                         |
+| Info Disclosure | Excessive data exposure [CR03]          |
+| DoS             | No rate limiting                        |
+| Elevation       | Broken function-level auth (BOLA) [CR04]|
 
 ## 🔍 Key Vulnerabilities
-- Broken Object Level Authorization (BOLA)
+- Broken Object Level Authorization (IDOR)
 - Broken Authentication
 - Excessive Data Exposure
 - Improper Access Control on Function
