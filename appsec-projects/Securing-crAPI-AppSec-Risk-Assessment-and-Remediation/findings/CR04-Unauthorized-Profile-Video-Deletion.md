@@ -29,6 +29,9 @@ See:
 ## Remediation
 After validating the JWT token, retrieve the username and role. Then check whether the user has the ADMIN role and has sufficient rights to delete profile videos.
 
+- [Before Remediation Code](../remediations/CR04/before-remediation-code.md)
+- [After Remediation Code](../remediations/CR04/after-remediation-code.md)
+
 ## Retest Result
 Only admin users are able to delete profile videos.
 
