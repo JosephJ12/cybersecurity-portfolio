@@ -1,5 +1,9 @@
 # Remediated Code
 
+Implemented check for admin role before deleting profile video in `deleteAdminProfileVideo` function.
+
+- Change Date: 5/4/2026
+- Changed By: Joseph Jung
 - File: services/identity/src/main/java/com/crapi/service/Impl/ProfileServiceImpl.java
 
 ```java
