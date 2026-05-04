@@ -47,5 +47,6 @@ Only admin users are able to delete profile videos.
 4. Verify cannot impersonate admin to delete profile video
 ![](../evidence/CR04/after-remediation-4.png)
 
-## OWASP API4 2023: Broken Function Level Authorization
+## OWASP API5 2023: Broken Function Level Authorization
 
+Broken Function Level Authorization is when improper access controls lead to unauthorized access of admin functions and features. Not to be confused with API3 (Broken Object Property Level Authorization), the main difference is that API3 is about what an object is and API5 is about what an one can do to an object. In the case of CR04, because one can delete another user's profile video, which should be a function accessible only to admin users, this is an example of Borken Function Level Authorization (API5).
