@@ -1,3 +1,8 @@
+# New Post Model Code 
+
+- Change Date: 4/26/2026
+- Changed By: Joseph Jung
+- File: services/community/api/models/post.go
 
 ```go
 // Post Field
@@ -11,5 +16,30 @@ type Post struct {
 	Comments  []Comments `json:"comments"`
 	AuthorID  uint64     `sql:"type:int REFERENCES users(id)" json:"authorid"`
 	CreatedAt time.Time
+}
+
+==========
+
+// Prepare initialize Field
+// old Author field initialization
+/*
+func Prepare() Author {
+	var u Author
+	u.Nickname = nickname
+	u.Email = userEmail
+	u.VehicleID = vehicleID
+	u.CreatedAt = time.Now()
+	u.Picurl = picurl
+	return u
+}
+*/
+
+// Prepare initialize Field
+// new Post Author field initialization
+func Prepare() PostAuthor {
+	var p PostAuthor
+	p.Nickname = nickname
+	p.Picurl = picurl
+	return p
 }
 ```
