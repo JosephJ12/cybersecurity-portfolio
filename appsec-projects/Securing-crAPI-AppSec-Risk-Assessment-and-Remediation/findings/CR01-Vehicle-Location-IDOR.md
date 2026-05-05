@@ -34,4 +34,12 @@ This involved refactoring the following files:
 ## Retest Result
 Vehicle ownership is checked before vehicle location retrieval. Therefore, one can only get the location of their own vehicles. 
 
+Retesting the vehicle location functionality with the same JWT token and car ID now properly denies the request and only gives the vehicle location for the owner of the vehicle.
+
+See:
+- ![Token for test@test.com user](../evidence/CR01/vehicle-location-idor-1.png)
+- ![Deny location for test@test.com user](../evidence/CR01/retest-results-1.png)
+- ![Token for vehicle owner](../evidence/CR01/retest-results-2.png)
+- ![Get location for robot001@example.com user](../evidence/CR01/retest-results-3.png)
+
 ## OWASP API1 2023: Broken Object Level Authorization
