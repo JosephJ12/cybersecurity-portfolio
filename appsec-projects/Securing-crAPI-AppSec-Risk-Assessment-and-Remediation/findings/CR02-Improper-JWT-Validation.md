@@ -46,7 +46,7 @@ Modified the JwtProvider code in 3 ways:
 2. Validates token before retrieving the username from the payload.
 3. Removed unecessary imports and functions no longer used
 
-- [JwtProvider.java](../remediations/JwtProvider.java.md)
+- [JwtProvider.java](../remediations/CR02/JwtProvider.java.md)
 
 ## Retest Result
 JWT tokens are now properly validated. RS256 algorithm is now enforced, tokens are invalidated without signatures, and tokens are properly validated before returning the username. 
