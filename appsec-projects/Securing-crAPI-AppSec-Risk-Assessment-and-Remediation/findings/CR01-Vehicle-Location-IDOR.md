@@ -36,9 +36,11 @@ Vehicle ownership is checked before vehicle location retrieval. Therefore, one c
 
 Retesting the vehicle location functionality with the same JWT token and car ID now properly denies the request and only gives the vehicle location for the owner of the vehicle.
 
-See:
+Unauthorized user attempt to get vehicle location:
 - ![Token for test@test.com user](../evidence/CR01/vehicle-location-idor-1.png)
 - ![Deny location for test@test.com user](../evidence/CR01/retest-results-1.png)
+
+Vehicle owner attempt to get vehicle location:
 - ![Token for vehicle owner](../evidence/CR01/retest-results-2.png)
 - ![Get location for robot001@example.com user](../evidence/CR01/retest-results-3.png)
 
