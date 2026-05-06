@@ -30,8 +30,8 @@ See:
 ## Remediation
 Create a separate model for post authors, one that hides sensitive information and only exposes necessary data that is safe for public use. Then, change the Post model code to use the PostAuthor object instead of Author.
 
-- [Original Vulnerable Code](../remediations/CR03/before-remediation-code.md)
-- [Remediated Code](../remediations/CR03/after-remediation-code.md)
+- [user.go](../remediations/CR03/user.go.md)
+- [post.go](../remediations/CR03/post.go.md)
 
 ## Retest Result
 Retrieving community posts no longer leaks the author's email and vehicleID. 

@@ -40,10 +40,13 @@ Screenshots:
 
 
 ## Remediation
-We will make 2 code remediations. One is to enforce a secure algorithm, such as RS256. The other is to verify the token signature before using any data from the payload, such as the username. 
+Modified the JwtProvider code in 3 ways:
 
-- [Before Remediation Code](../remediations/before-remediation.md)
-- [Remediated Code](../remediations/after-remediation.md)
+1. Token verifier will only validate a token using RS256 algorithm and signed with the local secret key.
+2. Validates token before retrieving the username from the payload.
+3. Removed unecessary imports and functions no longer used
+
+- [JwtProvider.java](../remediations/JwtProvider.java.md)
 
 ## Retest Result
 JWT tokens are now properly validated. RS256 algorithm is now enforced, tokens are invalidated without signatures, and tokens are properly validated before returning the username. 
