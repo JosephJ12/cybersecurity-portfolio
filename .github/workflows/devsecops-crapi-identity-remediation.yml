@@ -43,61 +43,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Verify Docker Compose service exists
-        run: |
-          echo "Available Compose services:"
-          docker compose -f "$COMPOSE_FILE" config --services
-
-          if ! docker compose -f "$COMPOSE_FILE" config --services | grep -Fxq "$SERVICE_NAME"; then
-            echo "ERROR: Compose service '$SERVICE_NAME' does not exist."
-            exit 1
-          fi
-
-      - name: Show resolved crAPI identity Compose config
-        run: |
-          echo "VERSION=$VERSION"
-          echo "IMAGE_REF=$IMAGE_REF"
-          docker compose -f "$COMPOSE_FILE" config | sed -n "/$SERVICE_NAME:/,/^[a-zA-Z0-9_-]*:/p"
-
       - name: Build crAPI identity image from local source
         run: |
-          docker compose -f "$COMPOSE_FILE" build --pull --no-cache "$SERVICE_NAME"
-
-      - name: Verify expected image exists
-        id: image
-        run: |
-          echo "Expected image: $IMAGE_REF"
-          echo "Docker images after build:"
-          docker images
-
-          if ! docker image inspect "$IMAGE_REF" >/dev/null 2>&1; then
-            echo "ERROR: Expected image '$IMAGE_REF' was not created."
-            echo
-            echo "Resolved Compose config:"
-            docker compose -f "$COMPOSE_FILE" config | sed -n "/$SERVICE_NAME:/,/^[a-zA-Z0-9_-]*:/p"
-            exit 1
-          fi
-
-          echo "image_ref=$IMAGE_REF" >> "$GITHUB_OUTPUT"
-          echo "Resolved image ref: $IMAGE_REF"
-
-      - name: Trivy scan identity image for critical vulnerabilities
+          docker build \
+            --pull \
+            --no-cache \
+            -t crapi/crapi-identity:${{ github.sha }} \
+            appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/services/identity
+      
+      - name: Scan rebuilt image with Trivy
         uses: aquasecurity/trivy-action@master
         with:
-          scan-type: 'image'
-          image-ref: '${{ steps.image.outputs.image_ref }}'
-          scanners: 'vuln'
-          severity: 'CRITICAL'
+          scan-type: image
+          image-ref: crapi/crapi-identity:${{ github.sha }}
+          scanners: vuln
+          severity: CRITICAL
           ignore-unfixed: true
-          format: 'sarif'
-          output: 'trivy-crapi-identity-critical.sarif'
           exit-code: '1'
-
-      - name: Upload Trivy SARIF
-        uses: github/codeql-action/upload-sarif@v3
-        if: always()
-        with:
-          sarif_file: 'trivy-crapi-identity-critical.sarif'
 
       - name: Upload Trivy evidence artifact
         uses: actions/upload-artifact@v4
