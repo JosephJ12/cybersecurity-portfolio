@@ -346,20 +346,3 @@ configurations.all {
         force 'org.springframework.security:spring-security-web:6.5.9'
     }
 }
-
-/*
- * Security remediation overrides added for Trivy critical findings.
- * These force patched versions for vulnerable dependencies discovered
- * in identity-service-1.0-SNAPSHOT.jar.
- */
-configurations.all {
-    resolutionStrategy {
-        force 'org.apache.logging.log4j:log4j-core:2.23.1'
-        force 'org.apache.tomcat.embed:tomcat-embed-core:10.1.54'
-        force 'org.postgresql:postgresql:42.7.11'
-        force 'org.springframework.security:spring-security-config:6.5.9'
-        force 'org.springframework.security:spring-security-core:6.5.9'
-        force 'org.springframework.security:spring-security-crypto:6.5.9'
-        force 'org.springframework.security:spring-security-web:6.5.9'
-    }
-}

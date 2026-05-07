@@ -1,0 +1,4 @@
+crapi/crapi-identity:latest
+crapi/mailhog:latest
+mongo:4.4
+postgres:14
