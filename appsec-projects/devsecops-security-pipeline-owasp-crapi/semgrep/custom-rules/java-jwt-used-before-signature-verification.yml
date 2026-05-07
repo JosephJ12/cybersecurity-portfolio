@@ -1,0 +1,52 @@
+rules:
+  - id: crapi.java.jwt-claims-used-before-signature-verification
+    languages:
+      - java
+    severity: WARNING
+    message: >
+      JWT claims appear to be read after parsing the token, but without verifying
+      the token signature first. Do not trust token claims until the JWT signature,
+      algorithm, issuer, audience, and expiration have been validated.
+    metadata:
+      category: security
+      cwe:
+        - "CWE-347: Improper Verification of Cryptographic Signature"
+        - "CWE-345: Insufficient Verification of Data Authenticity"
+      owasp-api:
+        - "API2:2023 Broken Authentication"
+      confidence: medium
+      technology:
+        - java
+        - jwt
+        - nimbus-jose-jwt
+      project: "OWASP crAPI"
+    patterns:
+      - pattern-inside: |
+          $JWT = SignedJWT.parse($TOKEN);
+          ...
+      - pattern-either:
+          - pattern: $JWT.getJWTClaimsSet()
+          - pattern: $JWT.getJWTClaimsSet().$METHOD(...)
+          - pattern: $CLAIMS = $JWT.getJWTClaimsSet()
+      - pattern-not-inside: |
+          $JWT = SignedJWT.parse($TOKEN);
+          ...
+          $JWT.verify($VERIFIER);
+          ...
+          $JWT.getJWTClaimsSet()
+      - pattern-not-inside: |
+          $JWT = SignedJWT.parse($TOKEN);
+          ...
+          if (!$JWT.verify($VERIFIER)) {
+            ...
+          }
+          ...
+          $JWT.getJWTClaimsSet()
+      - pattern-not-inside: |
+          $JWT = SignedJWT.parse($TOKEN);
+          ...
+          if ($JWT.verify($VERIFIER)) {
+            ...
+            $JWT.getJWTClaimsSet()
+            ...
+          }

@@ -1,0 +1,201 @@
+
+Report Summary
+
+┌────────────────────────────────────────────┬────────┬─────────────────┬─────────┐
+│                   Target                   │  Type  │ Vulnerabilities │ Secrets │
+├────────────────────────────────────────────┼────────┼─────────────────┼─────────┤
+│ crapi/crapi-identity:latest (ubuntu 24.04) │ ubuntu │        9        │    -    │
+├────────────────────────────────────────────┼────────┼─────────────────┼─────────┤
+│ app/identity-service-1.0-SNAPSHOT.jar      │  jar   │       36        │    -    │
+└────────────────────────────────────────────┴────────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+crapi/crapi-identity:latest (ubuntu 24.04)
+==========================================
+Total: 9 (HIGH: 9, CRITICAL: 0)
+
+┌─────────────┬────────────────┬──────────┬────────┬───────────────────┬───────────────────┬──────────────────────────────────────────────────────────────┐
+│   Library   │ Vulnerability  │ Severity │ Status │ Installed Version │   Fixed Version   │                            Title                             │
+├─────────────┼────────────────┼──────────┼────────┼───────────────────┼───────────────────┼──────────────────────────────────────────────────────────────┤
+│ dirmngr     │ CVE-2025-68973 │ HIGH     │ fixed  │ 2.4.4-2ubuntu17.3 │ 2.4.4-2ubuntu17.4 │ GnuPG: GnuPG: Information disclosure and potential arbitrary │
+│             │                │          │        │                   │                   │ code execution via out-of-bounds write...                    │
+│             │                │          │        │                   │                   │ https://avd.aquasec.com/nvd/cve-2025-68973                   │
+├─────────────┤                │          │        │                   │                   │                                                              │
+│ gnupg       │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+├─────────────┤                │          │        │                   │                   │                                                              │
+│ gnupg-utils │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+├─────────────┤                │          │        │                   │                   │                                                              │
+│ gpg         │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+├─────────────┤                │          │        │                   │                   │                                                              │
+│ gpg-agent   │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+├─────────────┤                │          │        │                   │                   │                                                              │
+│ gpgconf     │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+├─────────────┤                │          │        │                   │                   │                                                              │
+│ gpgsm       │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+├─────────────┤                │          │        │                   │                   │                                                              │
+│ gpgv        │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+├─────────────┤                │          │        │                   │                   │                                                              │
+│ keyboxd     │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+│             │                │          │        │                   │                   │                                                              │
+└─────────────┴────────────────┴──────────┴────────┴───────────────────┴───────────────────┴──────────────────────────────────────────────────────────────┘
+
+Java (jar)
+==========
+Total: 36 (HIGH: 28, CRITICAL: 8)
+
+┌─────────────────────────────────────────────────────┬────────────────┬──────────┬────────┬───────────────────┬──────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────────┐
+│                       Library                       │ Vulnerability  │ Severity │ Status │ Installed Version │                    Fixed Version                     │                            Title                             │
+├─────────────────────────────────────────────────────┼────────────────┼──────────┼────────┼───────────────────┼──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ com.google.protobuf:protobuf-java                   │ CVE-2022-3509  │ HIGH     │ fixed  │ 3.21.1            │ 3.16.3, 3.19.6, 3.20.3, 3.21.7                       │ protobuf-java: Textformat parsing issue leads to DoS         │
+│ (identity-service-1.0-SNAPSHOT.jar)                 │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2022-3509                    │
+│                                                     ├────────────────┤          │        │                   │                                                      ├──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2022-3510  │          │        │                   │                                                      │ protobuf-java: Message-Type Extensions parsing issue leads   │
+│                                                     │                │          │        │                   │                                                      │ to DoS                                                       │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2022-3510                    │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2024-7254  │          │        │                   │ 3.25.5, 4.27.5, 4.28.2                               │ protobuf: StackOverflow vulnerability in Protocol Buffers    │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2024-7254                    │
+├─────────────────────────────────────────────────────┼────────────────┼──────────┤        ├───────────────────┼──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ org.apache.logging.log4j:log4j-core                 │ CVE-2021-44228 │ CRITICAL │        │ 2.14.0            │ 2.15.0, 2.3.1, 2.12.2                                │ log4j-core: Remote code execution in Log4j 2.x when logs     │
+│ (identity-service-1.0-SNAPSHOT.jar)                 │                │          │        │                   │                                                      │ contain an attacker-controlled...                            │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2021-44228                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2021-45046 │          │        │                   │ 2.16.0, 2.12.2                                       │ log4j-core: DoS in log4j 2.x with thread context message     │
+│                                                     │                │          │        │                   │                                                      │ pattern and context...                                       │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2021-45046                   │
+│                                                     ├────────────────┼──────────┤        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2021-45105 │ HIGH     │        │                   │ 2.12.3, 2.17.0, 2.3.1                                │ log4j-core: DoS in log4j 2.x with Thread Context Map (MDC)   │
+│                                                     │                │          │        │                   │                                                      │ input data...                                                │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2021-45105                   │
+├─────────────────────────────────────────────────────┼────────────────┼──────────┤        ├───────────────────┼──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ org.apache.tomcat.embed:tomcat-embed-core           │ CVE-2025-24813 │ CRITICAL │        │ 10.1.18           │ 11.0.3, 10.1.35, 9.0.99                              │ tomcat: Potential RCE and/or information disclosure and/or   │
+│ (identity-service-1.0-SNAPSHOT.jar)                 │                │          │        │                   │                                                      │ information corruption with partial PUT...                   │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2025-24813                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2026-29145 │          │        │                   │ 9.0.116, 10.1.53, 11.0.20                            │ Apache Tomcat: Apache Tomcat: Authentication bypass due to   │
+│                                                     │                │          │        │                   │                                                      │ CLIENT_CERT soft fail misconfiguration...                    │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2026-29145                   │
+│                                                     ├────────────────┼──────────┤        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2024-34750 │ HIGH     │        │                   │ 11.0.0-M21, 10.1.25, 9.0.90                          │ tomcat: Improper Handling of Exceptional Conditions          │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2024-34750                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2024-50379 │          │        │                   │ 11.0.2, 10.1.34, 9.0.98                              │ tomcat: RCE due to TOCTOU issue in JSP compilation           │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2024-50379                   │
+│                                                     ├────────────────┤          │        │                   │                                                      ├──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2024-56337 │          │        │                   │                                                      │ tomcat: Incomplete fix for CVE-2024-50379 - RCE due to       │
+│                                                     │                │          │        │                   │                                                      │ TOCTOU issue in...                                           │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2024-56337                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2025-48988 │          │        │                   │ 11.0.8, 10.1.42, 9.0.106                             │ tomcat: Apache Tomcat DoS in multipart upload                │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2025-48988                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2025-48989 │          │        │                   │ 11.0.10, 10.1.44, 9.0.108                            │ tomcat: http/2 "MadeYouReset" DoS attack through HTTP/2      │
+│                                                     │                │          │        │                   │                                                      │ control frames                                               │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2025-48989                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2025-52520 │          │        │                   │ 11.0.9, 10.1.43, 9.0.107                             │ tomcat: Apache Tomcat denial of service                      │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2025-52520                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2025-53506 │          │        │                   │ 9.0.107, 10.1.43, 11.0.9                             │ tomcat: Apache Tomcat denial of service                      │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2025-53506                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2025-55752 │          │        │                   │ 11.0.11, 10.1.45, 9.0.109                            │ tomcat: org.apache.tomcat/tomcat-catalina: Apache Tomcat:    │
+│                                                     │                │          │        │                   │                                                      │ Directory traversal via rewrite with possible RCE            │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2025-55752                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2026-24734 │          │        │                   │ 11.0.18, 10.1.52, 9.0.115                            │ tomcat: Apache Tomcat: Certificate revocation bypass due to  │
+│                                                     │                │          │        │                   │                                                      │ improper OCSP response validation...                         │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2026-24734                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2026-34483 │          │        │                   │ 9.0.116, 10.1.54, 11.0.21                            │ Apache Tomcat: Apache Tomcat: Information disclosure due to  │
+│                                                     │                │          │        │                   │                                                      │ improper encoding in JsonAccessLogValve...                   │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2026-34483                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2026-34487 │          │        │                   │ 9.0.117, 10.1.54, 11.0.21                            │ Apache Tomcat: Apache Tomcat: Information disclosure via     │
+│                                                     │                │          │        │                   │                                                      │ sensitive data in log files...                               │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2026-34487                   │
+├─────────────────────────────────────────────────────┼────────────────┼──────────┤        ├───────────────────┼──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ org.postgresql:postgresql                           │ CVE-2024-1597  │ CRITICAL │        │ 42.4.0            │ 42.2.28, 42.3.9, 42.4.4, 42.5.5, 42.6.1, 42.7.2      │ pgjdbc: PostgreSQL JDBC Driver allows attacker to inject SQL │
+│ (identity-service-1.0-SNAPSHOT.jar)                 │                │          │        │                   │                                                      │ if using PreferQueryMode=SIMPLE...                           │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2024-1597                    │
+│                                                     ├────────────────┼──────────┤        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2022-31197 │ HIGH     │        │                   │ 42.2.26, 42.4.1, 42.3.7                              │ postgresql: SQL Injection in ResultSet.refreshRow() with     │
+│                                                     │                │          │        │                   │                                                      │ malicious column names                                       │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2022-31197                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2026-42198 │          │        │                   │ 42.7.11                                              │ jdbc.postgresql.org: pgjdbc: Client-side Denial of Service   │
+│                                                     │                │          │        │                   │                                                      │ via malicious SCRAM-SHA-256 authentication                   │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2026-42198                   │
+├─────────────────────────────────────────────────────┼────────────────┤          │        ├───────────────────┼──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ org.springframework.boot:spring-boot                │ CVE-2025-22235 │          │        │ 3.2.2             │ 3.3.11, 3.4.5                                        │ org.springframework.boot/spring-boot: Spring Boot            │
+│ (identity-service-1.0-SNAPSHOT.jar)                 │                │          │        │                   │                                                      │ EndpointRequest.to() creates wrong matcher if actuator       │
+│                                                     │                │          │        │                   │                                                      │ endpoint is not...                                           │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2025-22235                   │
+├─────────────────────────────────────────────────────┼────────────────┼──────────┤        ├───────────────────┼──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ org.springframework.security:spring-security-config │ CVE-2023-34034 │ CRITICAL │        │ 6.0.3             │ 5.6.12, 5.7.10, 5.8.5, 6.0.5, 6.1.2                  │ spring-security-webflux: path wildcard leads to security     │
+│ (identity-service-1.0-SNAPSHOT.jar)                 │                │          │        │                   │                                                      │ bypass                                                       │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2023-34034                   │
+│                                                     ├────────────────┼──────────┤        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2023-34035 │ HIGH     │        │                   │ 5.8.5, 6.0.5, 6.1.2                                  │ Spring Security's authorization rules can be misconfigured   │
+│                                                     │                │          │        │                   │                                                      │ when using multiple servlets                                 │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2023-34035                   │
+├─────────────────────────────────────────────────────┼────────────────┤          │        ├───────────────────┼──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ org.springframework.security:spring-security-core   │ CVE-2024-22234 │          │        │ 6.2.1             │ 6.1.7, 6.2.2                                         │ spring-security: Broken Access Control in Spring Security    │
+│ (identity-service-1.0-SNAPSHOT.jar)                 │                │          │        │                   │                                                      │ With Direct Use of isFullyAuthenticated...                   │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2024-22234                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2024-22257 │          │        │                   │ 5.7.12, 5.8.11, 6.1.8, 6.2.3                         │ spring-security: Broken Access Control With Direct Use of    │
+│                                                     │                │          │        │                   │                                                      │ AuthenticatedVoter                                           │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2024-22257                   │
+├─────────────────────────────────────────────────────┼────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ org.springframework.security:spring-security-crypto │ CVE-2025-22228 │          │        │                   │ 6.3.8, 6.4.4, 6.2.10, 6.1.14, 6.0.16, 5.8.18, 5.7.16 │ spring-security-core: Spring Security BCryptPasswordEncoder  │
+│ (identity-service-1.0-SNAPSHOT.jar)                 │                │          │        │                   │                                                      │ does not enforce maximum password length                     │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2025-22228                   │
+├─────────────────────────────────────────────────────┼────────────────┼──────────┤        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ org.springframework.security:spring-security-web    │ CVE-2024-38821 │ CRITICAL │        │                   │ 5.7.13, 5.8.15, 6.2.7, 6.0.13, 6.1.11, 6.3.4         │ Spring-WebFlux: Authorization Bypass of Static Resources in  │
+│ (identity-service-1.0-SNAPSHOT.jar)                 │                │          │        │                   │                                                      │ WebFlux Applications                                         │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2024-38821                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2026-22732 │          │        │                   │ 6.5.9, 7.0.4                                         │ Spring Security: Spring Security: Security policy bypass and │
+│                                                     │                │          │        │                   │                                                      │ information disclosure due to...                             │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2026-22732                   │
+├─────────────────────────────────────────────────────┼────────────────┼──────────┤        ├───────────────────┼──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ org.springframework:spring-core                     │ CVE-2025-41249 │ HIGH     │        │ 6.1.3             │ 6.2.11                                               │ org.springframework/spring-core: Spring Framework Annotation │
+│ (identity-service-1.0-SNAPSHOT.jar)                 │                │          │        │                   │                                                      │ Detection Vulnerability                                      │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2025-41249                   │
+├─────────────────────────────────────────────────────┼────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ org.springframework:spring-web                      │ CVE-2024-22243 │          │        │                   │ 6.1.4, 6.0.17, 5.3.32                                │ springframework: URL Parsing with Host Validation            │
+│ (identity-service-1.0-SNAPSHOT.jar)                 │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2024-22243                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2024-22259 │          │        │                   │ 6.1.5, 6.0.18, 5.3.33                                │ springframework: URL Parsing with Host Validation            │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2024-22259                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2024-22262 │          │        │                   │ 5.3.34, 6.0.19, 6.1.6                                │ springframework: URL Parsing with Host Validation            │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2024-22262                   │
+├─────────────────────────────────────────────────────┼────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ org.springframework:spring-webmvc                   │ CVE-2024-38816 │          │        │                   │ 6.1.13                                               │ spring-webmvc: Path Traversal Vulnerability in Spring        │
+│ (identity-service-1.0-SNAPSHOT.jar)                 │                │          │        │                   │                                                      │ Applications Using RouterFunctions and FileSystemResource    │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2024-38816                   │
+│                                                     ├────────────────┤          │        │                   ├──────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                                     │ CVE-2024-38819 │          │        │                   │ 6.1.14                                               │ org.springframework:spring-webmvc: Path traversal            │
+│                                                     │                │          │        │                   │                                                      │ vulnerability in functional web frameworks                   │
+│                                                     │                │          │        │                   │                                                      │ https://avd.aquasec.com/nvd/cve-2024-38819                   │
+└─────────────────────────────────────────────────────┴────────────────┴──────────┴────────┴───────────────────┴──────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────────┘

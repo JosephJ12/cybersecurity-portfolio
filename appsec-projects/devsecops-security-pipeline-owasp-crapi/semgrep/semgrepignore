@@ -1,0 +1,22 @@
+# Build artifacts
+**/target/**
+**/build/**
+**/dist/**
+**/.gradle/**
+**/.mvn/**
+
+# Dependencies
+**/node_modules/**
+**/vendor/**
+**/venv/**
+**/__pycache__/**
+
+# Runtime/deployment/docs excluded from first-pass SAST
+**/deploy/**
+**/docs/**
+**/postman_collections/**
+**/openapi-spec/**
+
+# Generated/minified/static assets
+**/*.min.js
+**/*.map

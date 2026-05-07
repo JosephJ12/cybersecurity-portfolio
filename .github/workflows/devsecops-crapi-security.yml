@@ -1,0 +1,127 @@
+name: DevSecOps Security Pipeline - OWASP crAPI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'appsec-projects/devsecops-security-pipeline-owasp-crapi/**'
+      - '.github/workflows/devsecops-crapi-security.yml'
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'appsec-projects/devsecops-security-pipeline-owasp-crapi/**'
+      - '.github/workflows/devsecops-crapi-security.yml'
+
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+jobs:
+  semgrep-sast:
+    name: Semgrep SAST
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Semgrep baseline rules
+        uses: docker://semgrep/semgrep:latest
+        with:
+          args: >
+            semgrep scan
+            --config p/default
+            --config p/owasp-top-ten
+            .
+
+      - name: Run custom crAPI Semgrep rules
+        uses: docker://semgrep/semgrep:latest
+        with:
+          args: >
+            semgrep scan
+            --config ../semgrep/custom-rules
+            .
+
+  trivy-filesystem-scan:
+    name: Trivy Filesystem Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Trivy filesystem scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: 'appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi'
+          scanners: 'vuln,secret,misconfig'
+          severity: 'HIGH,CRITICAL'
+          ignore-unfixed: true
+          format: 'sarif'
+          output: 'trivy-fs-results.sarif'
+
+      - name: Upload Trivy filesystem SARIF to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-fs-results.sarif'
+
+  trivy-container-scan:
+    name: Trivy Container Image Scan
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build crAPI Docker images
+        run: |
+          docker compose -f deploy/docker/docker-compose.yml --compatibility build
+
+      - name: List built Docker images
+        run: |
+          docker images
+
+      - name: Scan all crAPI-related Docker images with Trivy
+        run: |
+          mkdir -p ../evidence/container
+
+          docker images --format "{{.Repository}}:{{.Tag}}" \
+            | grep -Ei "crapi|identity|community|workshop|web" \
+            | sort -u \
+            | while read image; do
+                safe_name=$(echo "$image" | sed 's#[/:]#_#g')
+                echo "Scanning $image"
+
+                docker run --rm \
+                  -v /var/run/docker.sock:/var/run/docker.sock \
+                  -v "$PWD/../evidence/container:/output" \
+                  aquasec/trivy:latest \
+                  image \
+                  --severity HIGH,CRITICAL \
+                  --ignore-unfixed \
+                  --format table \
+                  "$image" | tee "../evidence/container/trivy-${safe_name}.txt"
+              done
+
+      - name: Upload Trivy container scan evidence
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trivy-container-scan-results
+          path: appsec-projects/devsecops-security-pipeline-owasp-crapi/evidence/container/

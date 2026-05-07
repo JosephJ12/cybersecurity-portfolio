@@ -1,0 +1,1179 @@
+                     
+                     
+┌───────────────────┐
+│ 122 Code Findings │
+└───────────────────┘
+                                                          
+  [36m[22m[24m  deploy/k8s/base/chatbot/deployment.yaml[0m
+     ❱ yaml.kubernetes.security.run-as-non-root.run-as-non-root
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          When running containers in Kubernetes, it's important to ensure that they  are properly secured to  
+          prevent privilege escalation attacks.  One potential vulnerability is when a container is allowed to
+          run  applications as the root user, which could allow an attacker to gain  access to sensitive      
+          resources. To mitigate this risk, it's recommended to  add a `securityContext` to the container,    
+          with the parameter `runAsNonRoot`  set to `true`. This will ensure that the container runs as a non-
+          root user,  limiting the damage that could be caused by any potential attacks. By  adding a         
+          `securityContext` to the container in your Kubernetes pod, you can  help to ensure that your        
+          containerized applications are more secure and  less vulnerable to privilege escalation attacks.    
+          Details: https://sg.run/dgP5                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ spec: securityContext: runAsNonRoot: true #
+           14┆ spec:
+   
+    ❯❱ yaml.kubernetes.security.allow-privilege-escalation-no-securitycontext.allow-privilege-escalation-no-
+       securitycontext                                                                                      
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          In Kubernetes, each pod runs in its own isolated environment with its own set of security policies. 
+          However, certain container images may contain `setuid` or `setgid` binaries that could allow an     
+          attacker to perform privilege escalation and gain access to sensitive resources. To mitigate this   
+          risk, it's recommended to add a `securityContext` to the container in the pod, with the parameter   
+          `allowPrivilegeEscalation` set to `false`. This will prevent the container from running any         
+          privileged processes and limit the impact of any potential attacks. By adding a `securityContext` to
+          your Kubernetes pod, you can help to ensure that your containerized applications are more secure and
+          less vulnerable to privilege escalation attacks.                                                    
+          Details: https://sg.run/eleR                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ securityContext: allowPrivilegeEscalation: false name
+           16┆ - name: crapi-chatbot
+                                                            
+  [36m[22m[24m  deploy/k8s/base/chromadb/statefulset.yaml[0m
+     ❱ yaml.kubernetes.security.run-as-non-root.run-as-non-root
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          When running containers in Kubernetes, it's important to ensure that they  are properly secured to  
+          prevent privilege escalation attacks.  One potential vulnerability is when a container is allowed to
+          run  applications as the root user, which could allow an attacker to gain  access to sensitive      
+          resources. To mitigate this risk, it's recommended to  add a `securityContext` to the container,    
+          with the parameter `runAsNonRoot`  set to `true`. This will ensure that the container runs as a non-
+          root user,  limiting the damage that could be caused by any potential attacks. By  adding a         
+          `securityContext` to the container in your Kubernetes pod, you can  help to ensure that your        
+          containerized applications are more secure and  less vulnerable to privilege escalation attacks.    
+          Details: https://sg.run/dgP5                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ spec: securityContext: runAsNonRoot: true #
+           17┆ spec:
+   
+    ❯❱ yaml.kubernetes.security.allow-privilege-escalation-no-securitycontext.allow-privilege-escalation-no-
+       securitycontext                                                                                      
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          In Kubernetes, each pod runs in its own isolated environment with its own set of security policies. 
+          However, certain container images may contain `setuid` or `setgid` binaries that could allow an     
+          attacker to perform privilege escalation and gain access to sensitive resources. To mitigate this   
+          risk, it's recommended to add a `securityContext` to the container in the pod, with the parameter   
+          `allowPrivilegeEscalation` set to `false`. This will prevent the container from running any         
+          privileged processes and limit the impact of any potential attacks. By adding a `securityContext` to
+          your Kubernetes pod, you can help to ensure that your containerized applications are more secure and
+          less vulnerable to privilege escalation attacks.                                                    
+          Details: https://sg.run/eleR                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ securityContext: allowPrivilegeEscalation: false name
+           19┆ - name: chromadb
+                                                            
+  [36m[22m[24m  deploy/k8s/base/community/deployment.yaml[0m
+     ❱ yaml.kubernetes.security.run-as-non-root.run-as-non-root
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          When running containers in Kubernetes, it's important to ensure that they  are properly secured to  
+          prevent privilege escalation attacks.  One potential vulnerability is when a container is allowed to
+          run  applications as the root user, which could allow an attacker to gain  access to sensitive      
+          resources. To mitigate this risk, it's recommended to  add a `securityContext` to the container,    
+          with the parameter `runAsNonRoot`  set to `true`. This will ensure that the container runs as a non-
+          root user,  limiting the damage that could be caused by any potential attacks. By  adding a         
+          `securityContext` to the container in your Kubernetes pod, you can  help to ensure that your        
+          containerized applications are more secure and  less vulnerable to privilege escalation attacks.    
+          Details: https://sg.run/dgP5                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ spec: securityContext: runAsNonRoot: true #
+           14┆ spec:
+   
+    ❯❱ yaml.kubernetes.security.allow-privilege-escalation-no-securitycontext.allow-privilege-escalation-no-
+       securitycontext                                                                                      
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          In Kubernetes, each pod runs in its own isolated environment with its own set of security policies. 
+          However, certain container images may contain `setuid` or `setgid` binaries that could allow an     
+          attacker to perform privilege escalation and gain access to sensitive resources. To mitigate this   
+          risk, it's recommended to add a `securityContext` to the container in the pod, with the parameter   
+          `allowPrivilegeEscalation` set to `false`. This will prevent the container from running any         
+          privileged processes and limit the impact of any potential attacks. By adding a `securityContext` to
+          your Kubernetes pod, you can help to ensure that your containerized applications are more secure and
+          less vulnerable to privilege escalation attacks.                                                    
+          Details: https://sg.run/eleR                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ securityContext: allowPrivilegeEscalation: false name
+           35┆ - name: crapi-community
+                                                                  
+  [36m[22m[24m  deploy/k8s/base/gateway-service/deployment.yaml[0m
+     ❱ yaml.kubernetes.security.run-as-non-root.run-as-non-root
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          When running containers in Kubernetes, it's important to ensure that they  are properly secured to  
+          prevent privilege escalation attacks.  One potential vulnerability is when a container is allowed to
+          run  applications as the root user, which could allow an attacker to gain  access to sensitive      
+          resources. To mitigate this risk, it's recommended to  add a `securityContext` to the container,    
+          with the parameter `runAsNonRoot`  set to `true`. This will ensure that the container runs as a non-
+          root user,  limiting the damage that could be caused by any potential attacks. By  adding a         
+          `securityContext` to the container in your Kubernetes pod, you can  help to ensure that your        
+          containerized applications are more secure and  less vulnerable to privilege escalation attacks.    
+          Details: https://sg.run/dgP5                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ spec: securityContext: runAsNonRoot: true #
+           14┆ spec:
+   
+    ❯❱ yaml.kubernetes.security.allow-privilege-escalation-no-securitycontext.allow-privilege-escalation-no-
+       securitycontext                                                                                      
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          In Kubernetes, each pod runs in its own isolated environment with its own set of security policies. 
+          However, certain container images may contain `setuid` or `setgid` binaries that could allow an     
+          attacker to perform privilege escalation and gain access to sensitive resources. To mitigate this   
+          risk, it's recommended to add a `securityContext` to the container in the pod, with the parameter   
+          `allowPrivilegeEscalation` set to `false`. This will prevent the container from running any         
+          privileged processes and limit the impact of any potential attacks. By adding a `securityContext` to
+          your Kubernetes pod, you can help to ensure that your containerized applications are more secure and
+          less vulnerable to privilege escalation attacks.                                                    
+          Details: https://sg.run/eleR                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ securityContext: allowPrivilegeEscalation: false name
+           16┆ - name: gateway-service
+                                                           
+  [36m[22m[24m  deploy/k8s/base/identity/deployment.yaml[0m
+     ❱ yaml.kubernetes.security.run-as-non-root.run-as-non-root
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          When running containers in Kubernetes, it's important to ensure that they  are properly secured to  
+          prevent privilege escalation attacks.  One potential vulnerability is when a container is allowed to
+          run  applications as the root user, which could allow an attacker to gain  access to sensitive      
+          resources. To mitigate this risk, it's recommended to  add a `securityContext` to the container,    
+          with the parameter `runAsNonRoot`  set to `true`. This will ensure that the container runs as a non-
+          root user,  limiting the damage that could be caused by any potential attacks. By  adding a         
+          `securityContext` to the container in your Kubernetes pod, you can  help to ensure that your        
+          containerized applications are more secure and  less vulnerable to privilege escalation attacks.    
+          Details: https://sg.run/dgP5                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ spec: securityContext: runAsNonRoot: true #
+           14┆ spec:
+   
+    ❯❱ yaml.kubernetes.security.allow-privilege-escalation-no-securitycontext.allow-privilege-escalation-no-
+       securitycontext                                                                                      
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          In Kubernetes, each pod runs in its own isolated environment with its own set of security policies. 
+          However, certain container images may contain `setuid` or `setgid` binaries that could allow an     
+          attacker to perform privilege escalation and gain access to sensitive resources. To mitigate this   
+          risk, it's recommended to add a `securityContext` to the container in the pod, with the parameter   
+          `allowPrivilegeEscalation` set to `false`. This will prevent the container from running any         
+          privileged processes and limit the impact of any potential attacks. By adding a `securityContext` to
+          your Kubernetes pod, you can help to ensure that your containerized applications are more secure and
+          less vulnerable to privilege escalation attacks.                                                    
+          Details: https://sg.run/eleR                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ securityContext: allowPrivilegeEscalation: false name
+           27┆ - name: crapi-identity
+                                                          
+  [36m[22m[24m  deploy/k8s/base/mailhog/deployment.yaml[0m
+    ❯❱ yaml.kubernetes.security.allow-privilege-escalation-no-securitycontext.allow-privilege-escalation-no-
+       securitycontext                                                                                      
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          In Kubernetes, each pod runs in its own isolated environment with its own set of security policies. 
+          However, certain container images may contain `setuid` or `setgid` binaries that could allow an     
+          attacker to perform privilege escalation and gain access to sensitive resources. To mitigate this   
+          risk, it's recommended to add a `securityContext` to the container in the pod, with the parameter   
+          `allowPrivilegeEscalation` set to `false`. This will prevent the container from running any         
+          privileged processes and limit the impact of any potential attacks. By adding a `securityContext` to
+          your Kubernetes pod, you can help to ensure that your containerized applications are more secure and
+          less vulnerable to privilege escalation attacks.                                                    
+          Details: https://sg.run/eleR                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ securityContext: allowPrivilegeEscalation: false name
+           24┆ - name: mailhog
+                                                           
+  [36m[22m[24m  deploy/k8s/base/mongodb/statefulset.yaml[0m
+     ❱ yaml.kubernetes.security.run-as-non-root.run-as-non-root
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          When running containers in Kubernetes, it's important to ensure that they  are properly secured to  
+          prevent privilege escalation attacks.  One potential vulnerability is when a container is allowed to
+          run  applications as the root user, which could allow an attacker to gain  access to sensitive      
+          resources. To mitigate this risk, it's recommended to  add a `securityContext` to the container,    
+          with the parameter `runAsNonRoot`  set to `true`. This will ensure that the container runs as a non-
+          root user,  limiting the damage that could be caused by any potential attacks. By  adding a         
+          `securityContext` to the container in your Kubernetes pod, you can  help to ensure that your        
+          containerized applications are more secure and  less vulnerable to privilege escalation attacks.    
+          Details: https://sg.run/dgP5                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ spec: securityContext: runAsNonRoot: true #
+           15┆ spec:
+   
+    ❯❱ yaml.kubernetes.security.allow-privilege-escalation-no-securitycontext.allow-privilege-escalation-no-
+       securitycontext                                                                                      
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          In Kubernetes, each pod runs in its own isolated environment with its own set of security policies. 
+          However, certain container images may contain `setuid` or `setgid` binaries that could allow an     
+          attacker to perform privilege escalation and gain access to sensitive resources. To mitigate this   
+          risk, it's recommended to add a `securityContext` to the container in the pod, with the parameter   
+          `allowPrivilegeEscalation` set to `false`. This will prevent the container from running any         
+          privileged processes and limit the impact of any potential attacks. By adding a `securityContext` to
+          your Kubernetes pod, you can help to ensure that your containerized applications are more secure and
+          less vulnerable to privilege escalation attacks.                                                    
+          Details: https://sg.run/eleR                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ securityContext: allowPrivilegeEscalation: false name
+           17┆ - name: mongodb
+                                                            
+  [36m[22m[24m  deploy/k8s/base/postgres/statefulset.yaml[0m
+     ❱ yaml.kubernetes.security.run-as-non-root.run-as-non-root
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          When running containers in Kubernetes, it's important to ensure that they  are properly secured to  
+          prevent privilege escalation attacks.  One potential vulnerability is when a container is allowed to
+          run  applications as the root user, which could allow an attacker to gain  access to sensitive      
+          resources. To mitigate this risk, it's recommended to  add a `securityContext` to the container,    
+          with the parameter `runAsNonRoot`  set to `true`. This will ensure that the container runs as a non-
+          root user,  limiting the damage that could be caused by any potential attacks. By  adding a         
+          `securityContext` to the container in your Kubernetes pod, you can  help to ensure that your        
+          containerized applications are more secure and  less vulnerable to privilege escalation attacks.    
+          Details: https://sg.run/dgP5                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ spec: securityContext: runAsNonRoot: true #
+           15┆ spec:
+   
+    ❯❱ yaml.kubernetes.security.allow-privilege-escalation-no-securitycontext.allow-privilege-escalation-no-
+       securitycontext                                                                                      
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          In Kubernetes, each pod runs in its own isolated environment with its own set of security policies. 
+          However, certain container images may contain `setuid` or `setgid` binaries that could allow an     
+          attacker to perform privilege escalation and gain access to sensitive resources. To mitigate this   
+          risk, it's recommended to add a `securityContext` to the container in the pod, with the parameter   
+          `allowPrivilegeEscalation` set to `false`. This will prevent the container from running any         
+          privileged processes and limit the impact of any potential attacks. By adding a `securityContext` to
+          your Kubernetes pod, you can help to ensure that your containerized applications are more secure and
+          less vulnerable to privilege escalation attacks.                                                    
+          Details: https://sg.run/eleR                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ securityContext: allowPrivilegeEscalation: false name
+           17┆ - name: postgres
+                                                      
+  [36m[22m[24m  deploy/k8s/base/web/deployment.yaml[0m
+     ❱ yaml.kubernetes.security.run-as-non-root.run-as-non-root
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          When running containers in Kubernetes, it's important to ensure that they  are properly secured to  
+          prevent privilege escalation attacks.  One potential vulnerability is when a container is allowed to
+          run  applications as the root user, which could allow an attacker to gain  access to sensitive      
+          resources. To mitigate this risk, it's recommended to  add a `securityContext` to the container,    
+          with the parameter `runAsNonRoot`  set to `true`. This will ensure that the container runs as a non-
+          root user,  limiting the damage that could be caused by any potential attacks. By  adding a         
+          `securityContext` to the container in your Kubernetes pod, you can  help to ensure that your        
+          containerized applications are more secure and  less vulnerable to privilege escalation attacks.    
+          Details: https://sg.run/dgP5                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ spec: securityContext: runAsNonRoot: true #
+           14┆ spec:
+   
+    ❯❱ yaml.kubernetes.security.allow-privilege-escalation-no-securitycontext.allow-privilege-escalation-no-
+       securitycontext                                                                                      
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          In Kubernetes, each pod runs in its own isolated environment with its own set of security policies. 
+          However, certain container images may contain `setuid` or `setgid` binaries that could allow an     
+          attacker to perform privilege escalation and gain access to sensitive resources. To mitigate this   
+          risk, it's recommended to add a `securityContext` to the container in the pod, with the parameter   
+          `allowPrivilegeEscalation` set to `false`. This will prevent the container from running any         
+          privileged processes and limit the impact of any potential attacks. By adding a `securityContext` to
+          your Kubernetes pod, you can help to ensure that your containerized applications are more secure and
+          less vulnerable to privilege escalation attacks.                                                    
+          Details: https://sg.run/eleR                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ securityContext: allowPrivilegeEscalation: false name
+           16┆ - name: crapi-web
+                                                           
+  [36m[22m[24m  deploy/k8s/base/workshop/deployment.yaml[0m
+     ❱ yaml.kubernetes.security.run-as-non-root.run-as-non-root
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          When running containers in Kubernetes, it's important to ensure that they  are properly secured to  
+          prevent privilege escalation attacks.  One potential vulnerability is when a container is allowed to
+          run  applications as the root user, which could allow an attacker to gain  access to sensitive      
+          resources. To mitigate this risk, it's recommended to  add a `securityContext` to the container,    
+          with the parameter `runAsNonRoot`  set to `true`. This will ensure that the container runs as a non-
+          root user,  limiting the damage that could be caused by any potential attacks. By  adding a         
+          `securityContext` to the container in your Kubernetes pod, you can  help to ensure that your        
+          containerized applications are more secure and  less vulnerable to privilege escalation attacks.    
+          Details: https://sg.run/dgP5                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ spec: securityContext: runAsNonRoot: true #
+           14┆ spec:
+   
+    ❯❱ yaml.kubernetes.security.allow-privilege-escalation-no-securitycontext.allow-privilege-escalation-no-
+       securitycontext                                                                                      
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          In Kubernetes, each pod runs in its own isolated environment with its own set of security policies. 
+          However, certain container images may contain `setuid` or `setgid` binaries that could allow an     
+          attacker to perform privilege escalation and gain access to sensitive resources. To mitigate this   
+          risk, it's recommended to add a `securityContext` to the container in the pod, with the parameter   
+          `allowPrivilegeEscalation` set to `false`. This will prevent the container from running any         
+          privileged processes and limit the impact of any potential attacks. By adding a `securityContext` to
+          your Kubernetes pod, you can help to ensure that your containerized applications are more secure and
+          less vulnerable to privilege escalation attacks.                                                    
+          Details: https://sg.run/eleR                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ securityContext: allowPrivilegeEscalation: false name
+           29┆ - name: crapi-workshop
+                                                                    
+  [36m[22m[24m  postman_collections/crAPI.postman_collection.json[0m
+   ❯❯❱ generic.secrets.security.detected-jwt-token.detected-jwt-token
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          JWT token detected          
+          Details: https://sg.run/05N5
+                                      
+          1197┆ "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb25zdGVyQGRhcmt3ZWIuY29tIiwiaWF0IjoxNjA4
+               MDMxMDk5LCJleHAiOjE2MDgxMTc0OTl9.lQr14VeNm_lOmKiOIKwO6mRu_47VEU8HVWEsyBzbeaVXzIthwnTC4mNmYb
+               0qNW2--T20_P9sOjTWtMJjKRQCJA"                                                              
+            ⋮┆----------------------------------------
+          1841┆ "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb25zdGVyQGRhcmt3ZWIuY29tIiwiaWF0IjoxNjA4
+               NTQzODI0LCJleHAiOjE2MDg2MzAyMjR9.AAIvhrtstlloPf7-NNCcmhEZm-                                
+               XkO1aO3x3CLns1em7ft9U77B88LpK9jIrF8C-IH32JPWVazRFo0gBIBZ9FpA"                              
+            ⋮┆----------------------------------------
+          2023┆ "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb25zdGVyQGRhcmt3ZWIuY29tIiwiaWF0IjoxNjA4
+               NTQzODI0LCJleHAiOjE2MDg2MzAyMjR9.AAIvhrtstlloPf7-NNCcmhEZm-                                
+               XkO1aO3x3CLns1em7ft9U77B88LpK9jIrF8C-IH32JPWVazRFo0gBIBZ9FpA"                              
+            ⋮┆----------------------------------------
+          2128┆ "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb25zdGVyQGRhcmt3ZWIuY29tIiwiaWF0IjoxNjA4
+               NTQzODI0LCJleHAiOjE2MDg2MzAyMjR9.AAIvhrtstlloPf7-NNCcmhEZm-                                
+               XkO1aO3x3CLns1em7ft9U77B88LpK9jIrF8C-IH32JPWVazRFo0gBIBZ9FpA"                              
+                                              
+  [36m[22m[24m  services/chatbot/Dockerfile[0m
+   ❯❯❱ dockerfile.security.missing-user.missing-user
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          By not specifying a USER, a program in the container may run as 'root'. This is a security hazard.
+          If an attacker can control a process running as root, they may have control over the container.   
+          Ensure that the last USER in a Dockerfile is a USER other than 'root'.                            
+          Details: https://sg.run/Gbvn                                                                      
+                                                                                                            
+           ▶▶┆ Autofix ▶ USER non-root CMD /app/entrypoint.sh
+           24┆ CMD /app/entrypoint.sh
+                                                    
+  [36m[22m[24m  services/chatbot/certs/server.key[0m
+   ❯❯❱ generic.secrets.security.detected-private-key.detected-private-key
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead,
+          store this in a separate, private file.                                                        
+          Details: https://sg.run/b7dr                                                                   
+                                                                                                         
+            1┆ -----BEGIN PRIVATE KEY-----
+            2┆ MIIJRAIBADANBgkqhkiG9w0BAQEFAASCCS4wggkqAgEAAoICAQD17BcGoFYiZupD
+                                                                  
+  [36m[22m[24m  services/chatbot/src/chatbot/aws_credentials.py[0m
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "[BASE_SESSION] Session created -
+          credential_method: %s, access_key_prefix: %s" being logged. This may lead to secret credentials  
+          being exposed. Make sure that the logger is not logging  sensitive information.                  
+          Details: https://sg.run/ydNx                                                                     
+                                                                                                           
+           64┆ logger.info(
+           65┆     "[BASE_SESSION] Session created - credential_method: %s, access_key_prefix: %s",
+           66┆     creds.method if hasattr(creds, "method") else "unknown",
+           67┆     creds.access_key[:8] + "..." if creds and creds.access_key else "(none)",
+           68┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "Cached new credentials -          
+          expires_at: %s" being logged. This may lead to secret credentials being exposed. Make sure that the
+          logger is not logging  sensitive information.                                                      
+          Details: https://sg.run/ydNx                                                                       
+                                                                                                             
+          187┆ logger.debug(
+          188┆     "Cached new credentials - expires_at: %s", credentials["expiry_time"]
+          189┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "[AWS_CREDS] get_aws_credentials  
+          called - region: %s, AWS_ASSUME_ROLE_ARN: %s, "         "has_static_access_key: %s,               
+          has_static_secret_key: %s, has_bearer_token: %s" being logged. This may lead to secret credentials
+          being exposed. Make sure that the logger is not logging  sensitive information.                   
+          Details: https://sg.run/ydNx                                                                      
+                                                                                                            
+          203┆ logger.info(
+          204┆     "[AWS_CREDS] get_aws_credentials called - region: %s, AWS_ASSUME_ROLE_ARN: %s, "
+          205┆     "has_static_access_key: %s, has_static_secret_key: %s, has_bearer_token: %s",
+          206┆     region,
+          207┆     Config.AWS_ASSUME_ROLE_ARN or "(not set)",
+          208┆     bool(os.getenv("AWS_ACCESS_KEY_ID")),
+          209┆     bool(os.getenv("AWS_SECRET_ACCESS_KEY")),
+          210┆     bool(Config.AWS_BEARER_TOKEN_BEDROCK),
+          211┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "[AWS_CREDS] Using CACHED assume 
+          role credentials - access_key_prefix: %s" being logged. This may lead to secret credentials being
+          exposed. Make sure that the logger is not logging  sensitive information.                        
+          Details: https://sg.run/ydNx                                                                     
+                                                                                                           
+          221┆ logger.info(
+          222┆     "[AWS_CREDS] Using CACHED assume role credentials - access_key_prefix: %s",
+          223┆     cached["access_key"][:8] + "..."
+          224┆     if cached.get("access_key")
+          225┆     else "(none)",
+          226┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "[AWS_CREDS] Using STATIC          
+          credentials from env - access_key_prefix: %s, has_session_token: %s" being logged. This may lead to
+          secret credentials being exposed. Make sure that the logger is not logging  sensitive information. 
+          Details: https://sg.run/ydNx                                                                       
+                                                                                                             
+          257┆ logger.info(
+          258┆     "[AWS_CREDS] Using STATIC credentials from env - access_key_prefix: %s,
+               has_session_token: %s",                                                    
+          259┆     access_key[:8] + "..." if access_key else "(none)",
+          260┆     bool(session_token),
+          261┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "[BEDROCK_CLIENT] Using credentials
+          - access_key_prefix: %s, has_token: %s, region: %s" being logged. This may lead to secret          
+          credentials being exposed. Make sure that the logger is not logging  sensitive information.        
+          Details: https://sg.run/ydNx                                                                       
+                                                                                                             
+          311┆ logger.info(
+          312┆     "[BEDROCK_CLIENT] Using credentials - access_key_prefix: %s, has_token: %s, region:
+               %s",                                                                                   
+          313┆     credentials["access_key"][:8] + "..."
+          314┆     if credentials.get("access_key")
+          315┆     else "(none)",
+          316┆     bool(credentials.get("token")),
+          317┆     region,
+          318┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "[BEDROCK_KWARGS] Failed to get 
+          credentials: %s - %s" being logged. This may lead to secret credentials being exposed. Make sure
+          that the logger is not logging  sensitive information.                                          
+          Details: https://sg.run/ydNx                                                                    
+                                                                                                          
+          352┆ logger.error(
+          353┆     "[BEDROCK_KWARGS] Failed to get credentials: %s - %s",
+          354┆     type(e).__name__,
+          355┆     str(e),
+          356┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "[BEDROCK_KWARGS] Using explicit  
+          credentials - access_key_prefix: %s, has_token: %s, region: %s" being logged. This may lead to    
+          secret credentials being exposed. Make sure that the logger is not logging  sensitive information.
+          Details: https://sg.run/ydNx                                                                      
+                                                                                                            
+          377┆ logger.info(
+          378┆     "[BEDROCK_KWARGS] Using explicit credentials - access_key_prefix: %s, has_token: %s,
+               region: %s",                                                                            
+          379┆     credentials["access_key"][:8] + "..."
+          380┆     if credentials.get("access_key")
+          381┆     else "(none)",
+          382┆     bool(credentials.get("token")),
+          383┆     region,
+          384┆ )
+                                                           
+  [36m[22m[24m  services/chatbot/src/chatbot/chat_api.py[0m
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "OpenAI API Key %s" being logged.
+          This may lead to secret credentials being exposed. Make sure that the logger is not logging      
+          sensitive information.                                                                           
+          Details: https://sg.run/ydNx                                                                     
+                                                                                                           
+           89┆ logger.debug("OpenAI API Key %s", openai_api_key[:5])
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "Anthropic API Key %s" being logged.
+          This may lead to secret credentials being exposed. Make sure that the logger is not logging         
+          sensitive information.                                                                              
+          Details: https://sg.run/ydNx                                                                        
+                                                                                                              
+          104┆ logger.debug("Anthropic API Key %s", anthropic_api_key[:5])
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "=== CHAT AI CONFIG === session_id:
+          %s, provider: %s, model_name: %s, has_api_key: %s, has_jwt: %s" being logged. This may lead to     
+          secret credentials being exposed. Make sure that the logger is not logging  sensitive information. 
+          Details: https://sg.run/ydNx                                                                       
+                                                                                                             
+          155┆ logger.info(
+          156┆     "=== CHAT AI CONFIG === session_id: %s, provider: %s, model_name: %s, has_api_key: %s,
+               has_jwt: %s",                                                                             
+          157┆     session_id,
+          158┆     provider,
+          159┆     model_name or "(will derive default)",
+          160┆     bool(provider_api_key),
+          161┆     bool(user_jwt),
+          162┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "API key missing for provider -    
+          session_id: %s, provider: %s" being logged. This may lead to secret credentials being exposed. Make
+          sure that the logger is not logging  sensitive information.                                        
+          Details: https://sg.run/ydNx                                                                       
+                                                                                                             
+          176┆ logger.warning(
+          177┆     "API key missing for provider - session_id: %s, provider: %s",
+          178┆     session_id,
+          179┆     provider,
+          180┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "Provider API key for session %s:
+          %s" being logged. This may lead to secret credentials being exposed. Make sure that the logger is
+          not logging  sensitive information.                                                              
+          Details: https://sg.run/ydNx                                                                     
+                                                                                                           
+          241┆ logger.debug(
+          242┆     "Provider API key for session %s: %s", session_id, provider_api_key[:5]
+          243┆ )
+                                                               
+  [36m[22m[24m  services/chatbot/src/chatbot/chat_service.py[0m
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "Processing user message -        
+          session_id: %s, model_name: %s, provider: %s, has_api_key: %s, has_jwt: %s" being logged. This may
+          lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive     
+          information.                                                                                      
+          Details: https://sg.run/ydNx                                                                      
+                                                                                                            
+           32┆ logger.info(
+           33┆     "Processing user message - session_id: %s, model_name: %s, provider: %s, has_api_key:
+               %s, has_jwt: %s",                                                                        
+           34┆     session_id,
+           35┆     model_name or "(default)",
+           36┆     Config.LLM_PROVIDER,
+           37┆     bool(api_key),
+           38┆     bool(user_jwt),
+           39┆ )
+                                                                  
+  [36m[22m[24m  services/chatbot/src/chatbot/langgraph_agent.py[0m
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "OpenAI Config - model: %s,         
+          base_url: %s, has_api_key: %s" being logged. This may lead to secret credentials being exposed. Make
+          sure that the logger is not logging  sensitive information.                                         
+          Details: https://sg.run/ydNx                                                                        
+                                                                                                              
+           69┆ logger.info(
+           70┆     "OpenAI Config - model: %s, base_url: %s, has_api_key: %s",
+           71┆     model_name,
+           72┆     Config.OPENAI_BASE_URL,
+           73┆     bool(api_key),
+           74┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "OpenAI Config - model: %s,  
+          base_url: (default), has_api_key: %s" being logged. This may lead to secret credentials being
+          exposed. Make sure that the logger is not logging  sensitive information.                    
+          Details: https://sg.run/ydNx                                                                 
+                                                                                                       
+           76┆ logger.info(
+           77┆     "OpenAI Config - model: %s, base_url: (default), has_api_key: %s",
+           78┆     model_name,
+           79┆     bool(api_key),
+           80┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "[BUILD_LLM] Failed to get Bedrock  
+          credentials: %s" being logged. This may lead to secret credentials being exposed. Make sure that the
+          logger is not logging  sensitive information.                                                       
+          Details: https://sg.run/ydNx                                                                        
+                                                                                                              
+          121┆ logger.error("[BUILD_LLM] Failed to get Bedrock credentials: %s", str(e))
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "Anthropic Config - model: %s,      
+          has_api_key: %s" being logged. This may lead to secret credentials being exposed. Make sure that the
+          logger is not logging  sensitive information.                                                       
+          Details: https://sg.run/ydNx                                                                        
+                                                                                                              
+          150┆ logger.info(
+          151┆     "Anthropic Config - model: %s, has_api_key: %s", model_name, bool(api_key)
+          152┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "Groq Config - model: %s,           
+          has_api_key: %s" being logged. This may lead to secret credentials being exposed. Make sure that the
+          logger is not logging  sensitive information.                                                       
+          Details: https://sg.run/ydNx                                                                        
+                                                                                                              
+          155┆ logger.info(
+          156┆     "Groq Config - model: %s, has_api_key: %s",
+          157┆     model_name,
+          158┆     bool(Config.GROQ_API_KEY),
+          159┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "Mistral Config - model: %s,        
+          has_api_key: %s" being logged. This may lead to secret credentials being exposed. Make sure that the
+          logger is not logging  sensitive information.                                                       
+          Details: https://sg.run/ydNx                                                                        
+                                                                                                              
+          162┆ logger.info(
+          163┆     "Mistral Config - model: %s, has_api_key: %s",
+          164┆     model_name,
+          165┆     bool(Config.MISTRAL_API_KEY),
+          166┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "Cohere Config - model: %s,         
+          has_api_key: %s" being logged. This may lead to secret credentials being exposed. Make sure that the
+          logger is not logging  sensitive information.                                                       
+          Details: https://sg.run/ydNx                                                                        
+                                                                                                              
+          169┆ logger.info(
+          170┆     "Cohere Config - model: %s, has_api_key: %s",
+          171┆     model_name,
+          172┆     bool(Config.COHERE_API_KEY),
+          173┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "Building LangGraph agent -         
+          has_api_key: %s, model_name: %s, has_user_jwt: %s" being logged. This may lead to secret credentials
+          being exposed. Make sure that the logger is not logging  sensitive information.                     
+          Details: https://sg.run/ydNx                                                                        
+                                                                                                              
+          180┆ logger.info(
+          181┆     "Building LangGraph agent - has_api_key: %s, model_name: %s, has_user_jwt: %s",
+          182┆     bool(api_key),
+          183┆     model_name or "(will use default)",
+          184┆     bool(user_jwt),
+          185┆ )
+                                                                  
+  [36m[22m[24m  services/chatbot/src/chatbot/retriever_utils.py[0m
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "Bedrock Embeddings Credentials -
+          region: %s, has_explicit_credentials: %s" being logged. This may lead to secret credentials being
+          exposed. Make sure that the logger is not logging  sensitive information.                        
+          Details: https://sg.run/ydNx                                                                     
+                                                                                                           
+          146┆ logger.info(
+          147┆     "Bedrock Embeddings Credentials - region: %s, has_explicit_credentials: %s",
+          148┆     bedrock_kwargs.get("region_name", "(not set)"),
+          149┆     bool(bedrock_kwargs.get("aws_access_key_id")),
+          150┆ )
+                                                                  
+  [36m[22m[24m  services/chatbot/src/chatbot/session_service.py[0m
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "API key source - session_id: %s,  
+          provider: %s, source: environment" being logged. This may lead to secret credentials being exposed.
+          Make sure that the logger is not logging  sensitive information.                                   
+          Details: https://sg.run/ydNx                                                                       
+                                                                                                             
+           50┆ logger.debug(
+           51┆     "API key source - session_id: %s, provider: %s, source: environment",
+           52┆     session_id,
+           53┆     provider,
+           54┆ )
+            ⋮┆----------------------------------------
+           57┆ logger.debug(
+           58┆     "API key source - session_id: %s, provider: %s, source: environment",
+           59┆     session_id,
+           60┆     provider,
+           61┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "API key not required for provider -
+          session_id: %s, provider: %s" being logged. This may lead to secret credentials being exposed. Make 
+          sure that the logger is not logging  sensitive information.                                         
+          Details: https://sg.run/ydNx                                                                        
+                                                                                                              
+           64┆ logger.debug(
+           65┆     "API key not required for provider - session_id: %s, provider: %s",
+           66┆     session_id,
+           67┆     provider,
+           68┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "API key not found in session -    
+          session_id: %s, provider: %s" being logged. This may lead to secret credentials being exposed. Make
+          sure that the logger is not logging  sensitive information.                                        
+          Details: https://sg.run/ydNx                                                                       
+                                                                                                             
+           79┆ logger.debug(
+           80┆     "API key not found in session - session_id: %s, provider: %s",
+           81┆     session_id,
+           82┆     provider,
+           83┆ )
+            ⋮┆----------------------------------------
+    ❯❱ python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected a python logger call with a potential hardcoded secret "API key source - session_id: %s,
+          provider: %s, source: session_stored" being logged. This may lead to secret credentials being    
+          exposed. Make sure that the logger is not logging  sensitive information.                        
+          Details: https://sg.run/ydNx                                                                     
+                                                                                                           
+           85┆ logger.debug(
+           86┆     "API key source - session_id: %s, provider: %s, source: session_stored",
+           87┆     session_id,
+           88┆     provider,
+           89┆ )
+                                                             
+  [36m[22m[24m  services/chatbot/src/mcpserver/__main__.py[0m
+    ❯❱ python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Running flask app with host 0.0.0.0 could expose the server publicly.
+          Details: https://sg.run/eLby                                         
+                                                                               
+           15┆ app.run(transport="streamable-http", host="0.0.0.0", port=mcp_server_port)
+                                                
+  [36m[22m[24m  services/community/Dockerfile[0m
+   ❯❯❱ dockerfile.security.missing-user.missing-user
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          By not specifying a USER, a program in the container may run as 'root'. This is a security hazard.
+          If an attacker can control a process running as root, they may have control over the container.   
+          Ensure that the last USER in a Dockerfile is a USER other than 'root'.                            
+          Details: https://sg.run/Gbvn                                                                      
+                                                                                                            
+           ▶▶┆ Autofix ▶ USER non-root CMD /app/main
+           46┆ CMD /app/main
+                                                       
+  [36m[22m[24m  services/community/api/auth/token.go[0m
+    ❯❱ go.lang.security.audit.crypto.missing-ssl-minversion.missing-ssl-minversion
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          `MinVersion` is missing from this TLS configuration.  By default, as of Go 1.22, TLS 1.2 is         
+          currently used as the minimum. General purpose web applications should default to TLS 1.3 with all  
+          other protocols disabled.  Only where it is known that a web server must support legacy clients with
+          unsupported an insecure browsers (such as Internet Explorer 10), it may be necessary to enable TLS  
+          1.0 to provide support. Add `MinVersion: tls.VersionTLS13' to the TLS configuration to bump the     
+          minimum version to TLS 1.3.                                                                         
+          Details: https://sg.run/oxEN                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ tls.Config{ InsecureSkipVerify: true, MinVersion: tls.VersionTLS13 }
+           56┆ http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify:
+               true}                                                                                    
+   
+    ❯❱ problem-based-packs.insecure-transport.go-stdlib.bypass-tls-verification.bypass-tls-verification
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Checks for disabling of TLS/SSL certificate verification. This should only be used for debugging
+          purposes because it leads to vulnerability to MTM attacks.                                      
+          Details: https://sg.run/4xj5                                                                    
+                                                                                                          
+           56┆ http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify:
+               true}                                                                                    
+   
+    ❯❱ go.jwt-go.security.audit.jwt-parse-unverified.jwt-go-parse-unverified
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected the decoding of a JWT token without a verify step. Don't use `ParseUnverified` unless you
+          know what you're doing This method parses the token but doesn't validate the signature. It's only 
+          ever useful in cases where you know the signature is valid (because it has been checked previously
+          in the stack) and you want to extract values from it.                                             
+          Details: https://sg.run/Av66                                                                      
+                                                                                                            
+           81┆ token, _, err := new(jwt.Parser).ParseUnverified(tokenString, jwt.MapClaims{})
+                                                           
+  [36m[22m[24m  services/community/api/responses/json.go[0m
+    ❯❱ go.lang.security.audit.xss.no-fprintf-to-responsewriter.no-fprintf-to-responsewriter
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected 'Fprintf' or similar writing to 'http.ResponseWriter'. This bypasses HTML escaping that 
+          prevents cross-site scripting vulnerabilities. Instead, use the 'html/template' package to render
+          data to users.                                                                                   
+          Details: https://sg.run/7oqR                                                                     
+                                                                                                           
+           29┆ if _, writeErr := fmt.Fprintf(w, "%s", err.Error()); writeErr != nil {
+                                                   
+  [36m[22m[24m  services/community/api/server.go[0m
+    ❯❱ go.lang.security.audit.crypto.missing-ssl-minversion.missing-ssl-minversion
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          `MinVersion` is missing from this TLS configuration.  By default, as of Go 1.22, TLS 1.2 is         
+          currently used as the minimum. General purpose web applications should default to TLS 1.3 with all  
+          other protocols disabled.  Only where it is known that a web server must support legacy clients with
+          unsupported an insecure browsers (such as Internet Explorer 10), it may be necessary to enable TLS  
+          1.0 to provide support. Add `MinVersion: tls.VersionTLS13' to the TLS configuration to bump the     
+          minimum version to TLS 1.3.                                                                         
+          Details: https://sg.run/oxEN                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ tls.Config{ InsecureSkipVerify: true, MinVersion: tls.VersionTLS13 }
+           47┆ http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify:
+               true}                                                                                    
+   
+    ❯❱ problem-based-packs.insecure-transport.go-stdlib.bypass-tls-verification.bypass-tls-verification
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Checks for disabling of TLS/SSL certificate verification. This should only be used for debugging
+          purposes because it leads to vulnerability to MTM attacks.                                      
+          Details: https://sg.run/4xj5                                                                    
+                                                                                                          
+           47┆ http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify:
+               true}                                                                                    
+                                                      
+  [36m[22m[24m  services/community/certs/server.key[0m
+   ❯❯❱ generic.secrets.security.detected-private-key.detected-private-key
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead,
+          store this in a separate, private file.                                                        
+          Details: https://sg.run/b7dr                                                                   
+                                                                                                         
+            1┆ -----BEGIN PRIVATE KEY-----
+            2┆ MIIJRAIBADANBgkqhkiG9w0BAQEFAASCCS4wggkqAgEAAoICAQD17BcGoFYiZupD
+                                                      
+  [36m[22m[24m  services/gateway-service/Dockerfile[0m
+   ❯❯❱ dockerfile.security.missing-user.missing-user
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          By not specifying a USER, a program in the container may run as 'root'. This is a security hazard.
+          If an attacker can control a process running as root, they may have control over the container.   
+          Ensure that the last USER in a Dockerfile is a USER other than 'root'.                            
+          Details: https://sg.run/Gbvn                                                                      
+                                                                                                            
+           ▶▶┆ Autofix ▶ USER non-root CMD ["/app/server"]
+           33┆ CMD ["/app/server"]
+                                                   
+  [36m[22m[24m  services/gateway-service/main.go[0m
+    ❯❱ go.lang.security.audit.crypto.math_random.math-random-used
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Do not use `math/rand`. Use `crypto/rand` instead.
+          Details: https://sg.run/6nK6                      
+                                                            
+           ▶▶┆ Autofix ▶ crypto/rand
+            9┆ "math/rand"
+   
+    ❯❱ go.lang.security.audit.xss.no-direct-write-to-responsewriter.no-direct-write-to-responsewriter
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected directly writing or similar in 'http.ResponseWriter.write()'. This bypasses HTML escaping
+          that prevents cross-site scripting vulnerabilities. Instead, use the 'html/template' package and  
+          render data using 'template.Execute()'.                                                           
+          Details: https://sg.run/EkbA                                                                      
+                                                                                                            
+          107┆ w.Write(response)
+            ⋮┆----------------------------------------
+          150┆ w.Write(response_body)
+                                                      
+  [36m[22m[24m  services/gateway-service/server.key[0m
+   ❯❯❱ generic.secrets.security.detected-private-key.detected-private-key
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead,
+          store this in a separate, private file.                                                        
+          Details: https://sg.run/b7dr                                                                   
+                                                                                                         
+            1┆ -----BEGIN PRIVATE KEY-----
+            2┆ MIIJQgIBADANBgkqhkiG9w0BAQEFAASCCSwwggkoAgEAAoICAQDYican+Cm2w1bu
+                                               
+  [36m[22m[24m  services/identity/Dockerfile[0m
+   ❯❯❱ dockerfile.security.missing-user.missing-user
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          By not specifying a USER, a program in the container may run as 'root'. This is a security hazard.
+          If an attacker can control a process running as root, they may have control over the container.   
+          Ensure that the last USER in a Dockerfile is a USER other than 'root'.                            
+          Details: https://sg.run/Gbvn                                                                      
+                                                                                                            
+           ▶▶┆ Autofix ▶ USER non-root CMD [ "/entrypoint.sh"]
+           47┆ CMD [ "/entrypoint.sh"]
+                                                                                          
+  [36m[22m[24m  services/identity/src/main/java/com/crapi/config/WebSecurityConfig.java[0m
+    ❯❱ java.spring.security.audit.spring-csrf-disabled.spring-csrf-disabled
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          CSRF protection is disabled for this configuration. This is a security risk.
+          Details: https://sg.run/jRnl                                                
+                                                                                      
+           98┆ http.csrf().disable();
+                                                                                                          
+  [36m[22m[24m  services/identity/src/main/java/com/crapi/service/Impl/VehicleOwnershipServiceImpl.java[0m
+    ❯❱ java.lang.security.audit.crypto.ssl.insecure-hostname-verifier.insecure-hostname-verifier
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Insecure HostnameVerifier implementation detected. This will accept any SSL certificate with any
+          hostname, which creates the possibility for man-in-the-middle attacks.                          
+          Details: https://sg.run/5QoD                                                                    
+                                                                                                          
+           29┆ import org.apache.http.conn.ssl.NoopHostnameVerifier;
+   
+    ❯❱ problem-based-packs.insecure-transport.java-stdlib.disallow-old-tls-versions1.disallow-old-tls-versions1
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detects direct creations of SSLConnectionSocketFactories that don't disallow SSL v2, SSL v3, and TLS
+          v1. SSLSocketFactory can be used to validate the identity of the HTTPS server against a list of     
+          trusted certificates. These protocols are deprecated due to POODLE, man in the middle attacks, and  
+          other vulnerabilities.                                                                              
+          Details: https://sg.run/l25E                                                                        
+                                                                                                              
+           73┆ SSLConnectionSocketFactory csf =
+           74┆     new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
+                                                                        
+  [36m[22m[24m  services/identity/src/main/resources/certs/server.key[0m
+   ❯❯❱ generic.secrets.security.detected-private-key.detected-private-key
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead,
+          store this in a separate, private file.                                                        
+          Details: https://sg.run/b7dr                                                                   
+                                                                                                         
+            1┆ -----BEGIN PRIVATE KEY-----
+            2┆ MIIJRAIBADANBgkqhkiG9w0BAQEFAASCCS4wggkqAgEAAoICAQD17BcGoFYiZupD
+                                          
+  [36m[22m[24m  services/web/Dockerfile[0m
+   ❯❯❱ dockerfile.security.missing-user.missing-user
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          By not specifying a USER, a program in the container may run as 'root'. This is a security hazard.
+          If an attacker can control a process running as root, they may have control over the container.   
+          Ensure that the last USER in a Dockerfile is a USER other than 'root'.                            
+          Details: https://sg.run/Gbvn                                                                      
+                                                                                                            
+           ▶▶┆ Autofix ▶ USER non-root CMD [ "/etc/nginx/nginx-wrapper.sh" ]
+           47┆ CMD [ "/etc/nginx/nginx-wrapper.sh" ]
+                                                
+  [36m[22m[24m  services/web/certs/server.key[0m
+   ❯❯❱ generic.secrets.security.detected-private-key.detected-private-key
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead,
+          store this in a separate, private file.                                                        
+          Details: https://sg.run/b7dr                                                                   
+                                                                                                         
+            1┆ -----BEGIN PRIVATE KEY-----
+            2┆ MIIJRAIBADANBgkqhkiG9w0BAQEFAASCCS4wggkqAgEAAoICAQD17BcGoFYiZupD
+                                                   
+  [36m[22m[24m  services/web/nginx.conf.template[0m
+    ❯❱ generic.nginx.security.request-host-used.request-host-used
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          '$http_host' and '$host' variables may contain a malicious value from attacker controlled 'Host'
+          request header. Use an explicitly configured host value or a allow list for validation.         
+          Details: https://sg.run/4x3Z                                                                    
+                                                                                                          
+           30┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+           33┆ sub_filter "://${COMMUNITY_SERVICE}" "://$http_host";
+            ⋮┆----------------------------------------
+           48┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+           63┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+           66┆ sub_filter "${HTTP_PROTOCOL}://${WORKSHOP_SERVICE}" "$scheme://$http_host";
+            ⋮┆----------------------------------------
+           81┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+           84┆ sub_filter "://${CHATBOT_SERVICE}" "://$http_host";
+            ⋮┆----------------------------------------
+          118┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+          120┆ sub_filter "http://${MAILHOG_WEB_SERVICE}" "$scheme://$http_host";
+            ⋮┆----------------------------------------
+          157┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+          160┆ sub_filter "://${COMMUNITY_SERVICE}" "://$http_host";
+            ⋮┆----------------------------------------
+          175┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+          190┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+          193┆ sub_filter "${HTTP_PROTOCOL}://${WORKSHOP_SERVICE}" "$scheme://$http_host";
+            ⋮┆----------------------------------------
+          208┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+          211┆ sub_filter "${HTTP_PROTOCOL}://${CHATBOT_SERVICE}" "$scheme://$http_host";
+            ⋮┆----------------------------------------
+          247┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+          249┆ sub_filter "http://${MAILHOG_WEB_SERVICE}" "$scheme://$http_host";
+                                                       
+  [36m[22m[24m  services/web/nginx.ssl.conf.template[0m
+    ❯❱ generic.nginx.security.request-host-used.request-host-used
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          '$http_host' and '$host' variables may contain a malicious value from attacker controlled 'Host'
+          request header. Use an explicitly configured host value or a allow list for validation.         
+          Details: https://sg.run/4x3Z                                                                    
+                                                                                                          
+           30┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+           33┆ sub_filter "${HTTP_PROTOCOL}://${COMMUNITY_SERVICE}" "$scheme://$http_host";
+            ⋮┆----------------------------------------
+           50┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+           67┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+           70┆ sub_filter "${HTTP_PROTOCOL}://${WORKSHOP_SERVICE}" "$scheme://$http_host";
+            ⋮┆----------------------------------------
+           87┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+           90┆ sub_filter "${HTTP_PROTOCOL}://${CHATBOT_SERVICE}" "$scheme://$http_host";
+            ⋮┆----------------------------------------
+          128┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+          130┆ sub_filter "http://${MAILHOG_WEB_SERVICE}" "$scheme://$http_host";
+            ⋮┆----------------------------------------
+          169┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+          172┆ sub_filter "${HTTP_PROTOCOL}://${COMMUNITY_SERVICE}" "$scheme://$http_host";
+            ⋮┆----------------------------------------
+          187┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+          202┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+          205┆ sub_filter "${HTTP_PROTOCOL}://${WORKSHOP_SERVICE}" "$scheme://$http_host";
+            ⋮┆----------------------------------------
+          220┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+          223┆ sub_filter "://${CHATBOT_SERVICE}" "://$http_host";
+            ⋮┆----------------------------------------
+          257┆ proxy_set_header X-Forwarded-Host $http_host;
+            ⋮┆----------------------------------------
+          259┆ sub_filter "http://${MAILHOG_WEB_SERVICE}" "$scheme://$http_host";
+                                               
+  [36m[22m[24m  services/workshop/Dockerfile[0m
+   ❯❯❱ dockerfile.security.missing-user.missing-user
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          By not specifying a USER, a program in the container may run as 'root'. This is a security hazard.
+          If an attacker can control a process running as root, they may have control over the container.   
+          Ensure that the last USER in a Dockerfile is a USER other than 'root'.                            
+          Details: https://sg.run/Gbvn                                                                      
+                                                                                                            
+           ▶▶┆ Autofix ▶ USER non-root CMD ["/app/runner.sh"]
+           48┆ CMD ["/app/runner.sh"]
+                                                     
+  [36m[22m[24m  services/workshop/certs/server.key[0m
+   ❯❯❱ generic.secrets.security.detected-private-key.detected-private-key
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead,
+          store this in a separate, private file.                                                        
+          Details: https://sg.run/b7dr                                                                   
+                                                                                                         
+            1┆ -----BEGIN PRIVATE KEY-----
+            2┆ MIIJRAIBADANBgkqhkiG9w0BAQEFAASCCS4wggkqAgEAAoICAQD17BcGoFYiZupD
+                                                                              
+  [36m[22m[24m  services/workshop/core/management/commands/seed_database.py[0m
+   ❯❯❱ python.requests.security.disabled-cert-validation.disabled-cert-validation
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Certificate verification has been explicitly disabled. This permits insecure connections to insecure
+          servers. Re-enable certification validation.                                                        
+          Details: https://sg.run/AlYp                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ requests.get(identity_health_url, headers, verify=True)
+          220┆ request = requests.get(identity_health_url, headers, verify=False)
+                                                            
+  [36m[22m[24m  services/workshop/crapi/mechanic/views.py[0m
+    ❯❱ python.django.security.audit.csrf-exempt.no-csrf-exempt
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected usage of @csrf_exempt, which indicates that there is no CSRF token set for this route. This
+          could lead to an attacker manipulating the user's account and exfiltration of private data. Instead,
+          create a function without this decorator.                                                           
+          Details: https://sg.run/rd5e                                                                        
+                                                                                                              
+           54┆ @csrf_exempt
+           55┆ def post(self, request):
+           56┆     """
+           57┆     creates a new Mechanic in the db
+           58┆     :param request: http request for the view
+           59┆         method allowed: POST
+           60┆         mandatory fields: ['name', 'email', 'number', 'password', 'mechanic_code']
+           61┆     :returns Response object with
+           62┆         mechanics list and 200 status if no error
+           63┆         message and corresponding status if error
+             [hid 59 additional lines, adjust with --max-lines-per-finding] 
+   
+    ❯❱ python.flask.security.xss.audit.direct-use-of-jinja2.direct-use-of-jinja2
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected direct use of jinja2. If not done properly, this may bypass HTML escaping which opens up
+          the application to cross-site scripting (XSS) vulnerabilities. Prefer using the Flask method     
+          'render_template()' and templates with a '.html' extension in order to prevent XSS.              
+          Details: https://sg.run/RoKe                                                                     
+                                                                                                           
+          427┆ html_string = template.render({'service': response_data})
+                                                            
+  [36m[22m[24m  services/workshop/crapi/merchant/views.py[0m
+   ❯❯❱ python.requests.security.disabled-cert-validation.disabled-cert-validation
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Certificate verification has been explicitly disabled. This permits insecure connections to insecure
+          servers. Re-enable certification validation.                                                        
+          Details: https://sg.run/AlYp                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ requests.get( request_url, params=request_data, headers={"Authorization":
+              request.META.get("HTTP_AUTHORIZATION")}, verify=True, )                             
+           87┆ mechanic_response = requests.get(
+           88┆     request_url,
+           89┆     params=request_data,
+           90┆     headers={"Authorization": request.META.get("HTTP_AUTHORIZATION")},
+           91┆     verify=False,
+           92┆ )
+                                                        
+  [36m[22m[24m  services/workshop/crapi/shop/views.py[0m
+   ❯❯❱ python.requests.security.disabled-cert-validation.disabled-cert-validation
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Certificate verification has been explicitly disabled. This permits insecure connections to insecure
+          servers. Re-enable certification validation.                                                        
+          Details: https://sg.run/AlYp                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ requests.post( gateway_endpoint, headers={ "Authorization": gateway_credential, "Content-Type":
+              "application/json", }, json=data, verify=True, timeout=5, )                                               
+          141┆ payment_response = requests.post(
+          142┆     gateway_endpoint,
+          143┆     headers={
+          144┆         "Authorization": gateway_credential,
+          145┆         "Content-Type": "application/json",
+          146┆     },
+          147┆     json=data,
+          148┆     verify=False,
+          149┆     timeout=5,
+          150┆ )
+   
+   ❯❯❱ python.sqlalchemy.security.sqlalchemy-execute-raw-query.sqlalchemy-execute-raw-query
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Avoiding SQL string concatenation: untrusted input concatenated with raw SQL query can result in SQL
+          Injection. In order to execute raw query safely, prepared statement should be used. SQLAlchemy      
+          provides TextualSQL to easily used prepared statement with named parameters. For complex SQL        
+          composition, use SQL Expression Language or Schema Definition Language. In most cases, SQLAlchemy   
+          ORM will be a better option.                                                                        
+          Details: https://sg.run/2b1L                                                                        
+                                                                                                              
+          388┆ cursor.execute(
+          389┆     "SELECT coupon_code from applied_coupon WHERE user_id = "
+          390┆     + str(user.id)
+          391┆     + " AND coupon_code = '"
+          392┆     + coupon_request_body["coupon_code"]
+          393┆     + "'"
+          394┆ )
+   
+   ❯❯❱ python.django.security.injection.tainted-sql-string.tainted-sql-string
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected user input used to manually construct a SQL string. This is usually bad practice because 
+          manual construction could accidentally result in a SQL injection. An attacker could use a SQL     
+          injection to steal or modify contents of the database. Instead, use a parameterized query which is
+          available by default in most database engines. Alternatively, consider using the Django object-   
+          relational mappers (ORM) instead of raw SQL queries.                                              
+          Details: https://sg.run/PbZp                                                                      
+                                                                                                            
+          389┆ "SELECT coupon_code from applied_coupon WHERE user_id = "
+          390┆ + str(user.id)
+          391┆ + " AND coupon_code = '"
+          392┆ + coupon_request_body["coupon_code"]
+          393┆ + "'"
+                                                           
+  [36m[22m[24m  services/workshop/crapi_site/settings.py[0m
+    ❯❱ python.django.security.audit.django-rest-framework.missing-throttle-config.missing-throttle-config
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Django REST framework configuration is missing default rate- limiting options. This could        
+          inadvertently allow resource starvation or Denial of Service (DoS) attacks. Add                  
+          'DEFAULT_THROTTLE_CLASSES' and 'DEFAULT_THROTTLE_RATES' to add rate-limiting to your application.
+          Details: https://sg.run/vzBY                                                                     
+                                                                                                           
+          128┆ REST_FRAMEWORK = {
+                                                 
+  [36m[22m[24m  services/workshop/utils/jwt.py[0m
+   ❯❯❱ python.requests.security.disabled-cert-validation.disabled-cert-validation
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Certificate verification has been explicitly disabled. This permits insecure connections to insecure
+          servers. Re-enable certification validation.                                                        
+          Details: https://sg.run/AlYp                                                                        
+                                                                                                              
+           ▶▶┆ Autofix ▶ requests.post( identity_url, json=tokenJson, verify=True )
+           53┆ token_verify_response = requests.post(
+           54┆     identity_url, json=tokenJson, verify=False
+           55┆ )
+   
+   ❯❯❱ python.jwt.security.unverified-jwt-decode.unverified-jwt-decode
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected JWT token decoded with 'verify=False'. This bypasses any integrity checks for the token
+          which means the token could be tampered with by malicious actors. Ensure that the JWT token is  
+          verified.                                                                                       
+          Details: https://sg.run/6nyB                                                                    
+                                                                                                          
+           ▶▶┆ Autofix ▶ True
+           61┆ decoded = jwt.decode(token, options={"verify_signature": False})
+
