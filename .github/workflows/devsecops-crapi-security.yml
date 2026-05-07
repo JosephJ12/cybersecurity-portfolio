@@ -23,44 +23,44 @@ permissions:
   actions: read
 
 jobs:
-    semgrep-sast:
-      name: Semgrep SAST
-      runs-on: ubuntu-latest
+  semgrep-sast:
+    name: Semgrep SAST
+    runs-on: ubuntu-latest
 
-      container:
-          image: semgrep/semgrep:latest
+    container:
+      image: semgrep/semgrep:latest
 
-      defaults:
-          run:
-          working-directory: appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi
+    defaults:
+      run:
+        working-directory: appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi
 
-      steps:
-          - name: Checkout repository
-          uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-          - name: Confirm Semgrep scan paths
-          run: |
-              echo "Current directory:"
-              pwd
+      - name: Confirm Semgrep scan paths
+        run: |
+          echo "Current directory:"
+          pwd
 
-              echo "Project parent:"
-              ls -la ..
+          echo "Project parent:"
+          ls -la ..
 
-              echo "Custom rules:"
-              ls -la ../semgrep/custom-rules
+          echo "Custom rules:"
+          ls -la ../semgrep/custom-rules
 
-          - name: Run Semgrep baseline rules
-          run: |
-              semgrep scan \
-              --config p/default \
-              --config p/owasp-top-ten \
-              .
+      - name: Run Semgrep baseline rules
+        run: |
+          semgrep scan \
+            --config p/default \
+            --config p/owasp-top-ten \
+            .
 
-          - name: Run custom crAPI Semgrep rules
-          run: |
-              semgrep scan \
-              --config ../semgrep/custom-rules \
-              .
+      - name: Run custom crAPI Semgrep rules
+        run: |
+          semgrep scan \
+            --config ../semgrep/custom-rules \
+            .  
 
   trivy-filesystem-scan:
     name: Trivy Filesystem Scan
