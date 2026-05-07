@@ -1,0 +1,77 @@
+name: crAPI Identity Dependency Remediation Validation
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/**'
+      - 'renovate-crapi-identity.json'
+      - '.github/workflows/devsecops-crapi-identity-remediation.yml'
+
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+jobs:
+  trivy-identity-image-scan:
+    name: Trivy Identity Image Scan
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify Docker Compose service exists
+        run: |
+          docker compose -f deploy/docker/docker-compose.yml config --services
+
+      - name: Build crAPI identity image
+        run: |
+          docker compose -f deploy/docker/docker-compose.yml build --pull --no-cache crapi-identity
+
+      - name: Resolve identity image ID
+        id: image
+        run: |
+          IMAGE_ID="$(docker compose -f deploy/docker/docker-compose.yml images -q crapi-identity | head -n 1)"
+
+          if [ -z "$IMAGE_ID" ]; then
+            echo "ERROR: Could not resolve crapi-identity image ID."
+            docker compose -f deploy/docker/docker-compose.yml images
+            exit 1
+          fi
+
+          echo "image_id=$IMAGE_ID" >> "$GITHUB_OUTPUT"
+          echo "Resolved image ID: $IMAGE_ID"
+
+      - name: Trivy scan identity image for critical vulnerabilities
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'image'
+          image-ref: '${{ steps.image.outputs.image_id }}'
+          scanners: 'vuln'
+          severity: 'CRITICAL'
+          ignore-unfixed: true
+          format: 'sarif'
+          output: 'trivy-crapi-identity-critical.sarif'
+          exit-code: '1'
+
+      - name: Upload Trivy SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-crapi-identity-critical.sarif'
+
+      - name: Upload Trivy evidence artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trivy-crapi-identity-critical-scan
+          path: trivy-crapi-identity-critical.sarif
