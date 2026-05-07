@@ -1,6 +1,13 @@
 name: crAPI Identity Dependency Remediation Validation
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/**'
+      - 'renovate-crapi-identity.json'
+      - '.github/workflows/devsecops-crapi-identity-remediation.yml'
   pull_request:
     branches:
       - main
