@@ -12,7 +12,7 @@
 
 
 # Java Maven Build
-FROM gradle:8.1-jdk17-focal AS gradlebuild
+FROM gradle:8.10.2-jdk17 AS gradlebuild
 WORKDIR /app
 COPY *.gradle.kts ./
 COPY gradle.properties ./
