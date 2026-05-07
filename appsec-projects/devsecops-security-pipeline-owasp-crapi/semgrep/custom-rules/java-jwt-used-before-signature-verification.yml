@@ -4,9 +4,9 @@ rules:
       - java
     severity: WARNING
     message: >
-      JWT claims appear to be read after parsing the token, but without verifying
-      the token signature first. Do not trust token claims until the JWT signature,
-      algorithm, issuer, audience, and expiration have been validated.
+      JWT claims appear to be read from a parsed token before visible signature
+      verification. Parsing a JWT is not validation. Verify the signature and
+      validate algorithm, expiration, issuer, and audience before trusting claims.
     metadata:
       category: security
       cwe:
@@ -20,33 +20,114 @@ rules:
         - jwt
         - nimbus-jose-jwt
       project: "OWASP crAPI"
+
     patterns:
-      - pattern-inside: |
-          $JWT = SignedJWT.parse($TOKEN);
-          ...
+      # Case 1: JWT is declared and parsed in the same statement
       - pattern-either:
-          - pattern: $JWT.getJWTClaimsSet()
-          - pattern: $JWT.getJWTClaimsSet().$METHOD(...)
-          - pattern: $CLAIMS = $JWT.getJWTClaimsSet()
+          - pattern-inside: |
+              $RET $METHOD(...) {
+                ...
+                SignedJWT $JWT = SignedJWT.parse($TOKEN);
+                ...
+              }
+
+          # Case 2: JWT variable already exists, then receives parsed token
+          - pattern-inside: |
+              $RET $METHOD(...) {
+                ...
+                $JWT = SignedJWT.parse($TOKEN);
+                ...
+              }
+
+      # Claim access after parsing
+      - pattern-either:
+          - pattern: $JWT.getJWTClaimsSet();
+          - pattern: $JWT.getJWTClaimsSet().$CLAIM_METHOD(...);
+          - pattern: $CLAIMS = $JWT.getJWTClaimsSet();
+          - pattern: JWTClaimsSet $CLAIMS = $JWT.getJWTClaimsSet();
+          - pattern: $TYPE $VALUE = $JWT.getJWTClaimsSet().$CLAIM_METHOD(...);
+
+      # Safe pattern: claims are only read inside a positive verification branch
       - pattern-not-inside: |
-          $JWT = SignedJWT.parse($TOKEN);
-          ...
-          $JWT.verify($VERIFIER);
-          ...
-          $JWT.getJWTClaimsSet()
-      - pattern-not-inside: |
-          $JWT = SignedJWT.parse($TOKEN);
-          ...
-          if (!$JWT.verify($VERIFIER)) {
+          $RET $METHOD(...) {
+            ...
+            SignedJWT $JWT = SignedJWT.parse($TOKEN);
+            ...
+            if ($JWT.verify($VERIFIER)) {
+              ...
+              $JWT.getJWTClaimsSet();
+              ...
+            }
             ...
           }
-          ...
-          $JWT.getJWTClaimsSet()
+
       - pattern-not-inside: |
-          $JWT = SignedJWT.parse($TOKEN);
-          ...
-          if ($JWT.verify($VERIFIER)) {
+          $RET $METHOD(...) {
             ...
-            $JWT.getJWTClaimsSet()
+            $JWT = SignedJWT.parse($TOKEN);
+            ...
+            if ($JWT.verify($VERIFIER)) {
+              ...
+              $JWT.getJWTClaimsSet();
+              ...
+            }
+            ...
+          }
+
+      # Safe pattern: invalid signature causes an exception before claims are read
+      - pattern-not-inside: |
+          $RET $METHOD(...) {
+            ...
+            SignedJWT $JWT = SignedJWT.parse($TOKEN);
+            ...
+            if (!$JWT.verify($VERIFIER)) {
+              ...
+              throw $EXCEPTION;
+            }
+            ...
+            $JWT.getJWTClaimsSet();
+            ...
+          }
+
+      - pattern-not-inside: |
+          $RET $METHOD(...) {
+            ...
+            $JWT = SignedJWT.parse($TOKEN);
+            ...
+            if (!$JWT.verify($VERIFIER)) {
+              ...
+              throw $EXCEPTION;
+            }
+            ...
+            $JWT.getJWTClaimsSet();
+            ...
+          }
+
+      # Safe pattern: invalid signature returns before claims are read
+      - pattern-not-inside: |
+          $RET $METHOD(...) {
+            ...
+            SignedJWT $JWT = SignedJWT.parse($TOKEN);
+            ...
+            if (!$JWT.verify($VERIFIER)) {
+              ...
+              return $RETURN;
+            }
+            ...
+            $JWT.getJWTClaimsSet();
+            ...
+          }
+
+      - pattern-not-inside: |
+          $RET $METHOD(...) {
+            ...
+            $JWT = SignedJWT.parse($TOKEN);
+            ...
+            if (!$JWT.verify($VERIFIER)) {
+              ...
+              return $RETURN;
+            }
+            ...
+            $JWT.getJWTClaimsSet();
             ...
           }
