@@ -8,6 +8,7 @@ on:
       - 'appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/**'
       - 'renovate-crapi-identity.json'
       - '.github/workflows/devsecops-crapi-identity-remediation.yml'
+
   pull_request:
     branches:
       - main
@@ -22,6 +23,12 @@ permissions:
   contents: read
   security-events: write
   actions: read
+
+env:
+  COMPOSE_FILE: deploy/docker/docker-compose.yml
+  SERVICE_NAME: crapi-identity
+  VERSION: ${{ github.sha }}
+  IMAGE_REF: crapi/crapi-identity:${{ github.sha }}
 
 jobs:
   trivy-identity-image-scan:
@@ -38,31 +45,47 @@ jobs:
 
       - name: Verify Docker Compose service exists
         run: |
-          docker compose -f deploy/docker/docker-compose.yml config --services
+          echo "Available Compose services:"
+          docker compose -f "$COMPOSE_FILE" config --services
 
-      - name: Build crAPI identity image
-        run: |
-          docker compose -f deploy/docker/docker-compose.yml build --pull --no-cache crapi-identity
-
-      - name: Resolve identity image ID
-        id: image
-        run: |
-          IMAGE_ID="$(docker compose -f deploy/docker/docker-compose.yml images -q crapi-identity | head -n 1)"
-
-          if [ -z "$IMAGE_ID" ]; then
-            echo "ERROR: Could not resolve crapi-identity image ID."
-            docker compose -f deploy/docker/docker-compose.yml images
+          if ! docker compose -f "$COMPOSE_FILE" config --services | grep -Fxq "$SERVICE_NAME"; then
+            echo "ERROR: Compose service '$SERVICE_NAME' does not exist."
             exit 1
           fi
 
-          echo "image_id=$IMAGE_ID" >> "$GITHUB_OUTPUT"
-          echo "Resolved image ID: $IMAGE_ID"
+      - name: Show resolved crAPI identity Compose config
+        run: |
+          echo "VERSION=$VERSION"
+          echo "IMAGE_REF=$IMAGE_REF"
+          docker compose -f "$COMPOSE_FILE" config | sed -n "/$SERVICE_NAME:/,/^[a-zA-Z0-9_-]*:/p"
+
+      - name: Build crAPI identity image from local source
+        run: |
+          docker compose -f "$COMPOSE_FILE" build --pull --no-cache "$SERVICE_NAME"
+
+      - name: Verify expected image exists
+        id: image
+        run: |
+          echo "Expected image: $IMAGE_REF"
+          echo "Docker images after build:"
+          docker images
+
+          if ! docker image inspect "$IMAGE_REF" >/dev/null 2>&1; then
+            echo "ERROR: Expected image '$IMAGE_REF' was not created."
+            echo
+            echo "Resolved Compose config:"
+            docker compose -f "$COMPOSE_FILE" config | sed -n "/$SERVICE_NAME:/,/^[a-zA-Z0-9_-]*:/p"
+            exit 1
+          fi
+
+          echo "image_ref=$IMAGE_REF" >> "$GITHUB_OUTPUT"
+          echo "Resolved image ref: $IMAGE_REF"
 
       - name: Trivy scan identity image for critical vulnerabilities
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'image'
-          image-ref: '${{ steps.image.outputs.image_id }}'
+          image-ref: '${{ steps.image.outputs.image_ref }}'
           scanners: 'vuln'
           severity: 'CRITICAL'
           ignore-unfixed: true
