@@ -24,43 +24,43 @@ permissions:
 
 jobs:
     semgrep-sast:
-        name: Semgrep SAST
-        runs-on: ubuntu-latest
-    
-        container:
+      name: Semgrep SAST
+      runs-on: ubuntu-latest
+
+      container:
           image: semgrep/semgrep:latest
-    
-        defaults:
+
+      defaults:
           run:
-            working-directory: appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi
-    
-        steps:
+          working-directory: appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi
+
+      steps:
           - name: Checkout repository
-            uses: actions/checkout@v4
-    
+          uses: actions/checkout@v4
+
           - name: Confirm Semgrep scan paths
-            run: |
+          run: |
               echo "Current directory:"
               pwd
-    
+
               echo "Project parent:"
               ls -la ..
-    
+
               echo "Custom rules:"
               ls -la ../semgrep/custom-rules
-    
+
           - name: Run Semgrep baseline rules
-            run: |
+          run: |
               semgrep scan \
-                --config p/default \
-                --config p/owasp-top-ten \
-                .
-    
+              --config p/default \
+              --config p/owasp-top-ten \
+              .
+
           - name: Run custom crAPI Semgrep rules
-            run: |
+          run: |
               semgrep scan \
-                --config ../semgrep/custom-rules \
-                .
+              --config ../semgrep/custom-rules \
+              .
 
   trivy-filesystem-scan:
     name: Trivy Filesystem Scan
