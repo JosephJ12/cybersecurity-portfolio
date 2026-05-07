@@ -95,39 +95,78 @@ jobs:
       run:
         working-directory: appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi
 
+    env:
+      COMPOSE_PROJECT_NAME: crapi-security
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build crAPI Docker images
+      - name: Confirm Docker Compose file exists
         run: |
-          docker compose -f deploy/docker/docker-compose.yml build
+          pwd
+          ls -la deploy/docker
+          test -f deploy/docker/docker-compose.yml
 
-      - name: List built Docker images
+      - name: Show Docker environment before crAPI build
         run: |
+          echo "Existing runner images before crAPI build:"
           docker images
 
-      - name: Scan all crAPI-related Docker images with Trivy
+      - name: Pull and build crAPI Docker images
+        run: |
+          docker compose -f deploy/docker/docker-compose.yml pull --ignore-pull-failures
+          docker compose -f deploy/docker/docker-compose.yml build
+
+      - name: Start crAPI containers
+        run: |
+          docker compose -f deploy/docker/docker-compose.yml up -d --build
+
+      - name: List crAPI Compose containers
+        run: |
+          docker ps \
+            --filter "label=com.docker.compose.project=${COMPOSE_PROJECT_NAME}" \
+            --format "table {{.Names}}\t{{.Image}}\t{{.Status}}"
+
+      - name: Build crAPI image inventory
         run: |
           mkdir -p ../evidence/container
 
-          docker images --format "{{.Repository}}:{{.Tag}}" \
-            | grep -Ei "crapi|identity|community|workshop|web" \
+          docker ps \
+            --filter "label=com.docker.compose.project=${COMPOSE_PROJECT_NAME}" \
+            --format "{{.Image}}" \
             | sort -u \
-            | while read image; do
-                safe_name=$(echo "$image" | sed 's#[/:]#_#g')
-                echo "Scanning $image"
+            | tee ../evidence/container/crapi-image-inventory.txt
 
-                docker run --rm \
-                  -v /var/run/docker.sock:/var/run/docker.sock \
-                  -v "$PWD/../evidence/container:/output" \
-                  aquasec/trivy:latest \
-                  image \
-                  --severity HIGH,CRITICAL \
-                  --ignore-unfixed \
-                  --format table \
-                  "$image" | tee "../evidence/container/trivy-${safe_name}.txt"
-              done
+          echo "crAPI images discovered:"
+          cat ../evidence/container/crapi-image-inventory.txt
+
+          if [ ! -s ../evidence/container/crapi-image-inventory.txt ]; then
+            echo "ERROR: No crAPI images found from Docker Compose project ${COMPOSE_PROJECT_NAME}."
+            exit 1
+          fi
+
+      - name: Scan crAPI Docker images with Trivy
+        run: |
+          while read image; do
+            safe_name=$(echo "$image" | sed 's#[/:]#_#g')
+            echo "Scanning crAPI image: $image"
+
+            docker run --rm \
+              -v /var/run/docker.sock:/var/run/docker.sock \
+              -v "$PWD/../evidence/container:/output" \
+              aquasec/trivy:latest \
+              image \
+              --severity HIGH,CRITICAL \
+              --ignore-unfixed \
+              --format table \
+              "$image" | tee "../evidence/container/trivy-${safe_name}.txt"
+          done < ../evidence/container/crapi-image-inventory.txt
+
+      - name: Stop crAPI containers
+        if: always()
+        run: |
+          docker compose -f deploy/docker/docker-compose.yml down -v || true
 
       - name: Upload Trivy container scan evidence
         uses: actions/upload-artifact@v4
