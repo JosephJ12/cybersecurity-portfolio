@@ -66,7 +66,7 @@ dependencies {
     implementation("com.google.cloud:libraries-bom:26.81.0")
     implementation("org.apache.httpcomponents:httpclient:4.5.14")
     implementation("com.google.cloud:google-cloud-storage:2.68.0")
-    implementation("org.apache.httpcomponents.client5:httpclient5:5.3")
+    implementation("org.apache.httpcomponents.client5:httpclient5:5.6.1")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
     testImplementation("org.projectlombok:lombok:${lombokVersion}")
