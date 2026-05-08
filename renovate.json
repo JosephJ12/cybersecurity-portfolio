@@ -7,7 +7,7 @@
     ],
     "dependencyDashboard": true,
     "includePaths": [
-      "appsec-projects/devsecops-security-pipeline-owasp-crapi/**",
+      "appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/services/identity**",
       ".github/workflows/devsecops-crapi-identity-remediation.yml"
     ],
     "labels": ["dependencies", "security", "devsecops"],
