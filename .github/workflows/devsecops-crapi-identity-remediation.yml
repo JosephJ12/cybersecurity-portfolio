@@ -80,5 +80,6 @@ jobs:
         if: always()
         with:
           name: trivy-crapi-identity-critical-scan
-          path: trivy-crapi-identity-critical.sarif
-          path: trivy-crapi-identity-critical.txt
+          path: |
+            trivy-crapi-identity-critical.sarif
+            trivy-crapi-identity-critical.txt
