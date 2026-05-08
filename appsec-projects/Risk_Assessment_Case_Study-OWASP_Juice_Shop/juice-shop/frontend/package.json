@@ -69,7 +69,7 @@
     "@types/express-serve-static-core": "^4.17.9",
     "@types/file-saver": "^2.0.1",
     "@types/jasmine": "~5.1.0",
-    "@types/jasminewd2": "^2.0.10",
+    "@types/jasminewd2": "^2.0.13",
     "@types/jwt-decode": "^2.2.1",
     "@types/node": "^20.17.19",
     "@types/socket.io-client": "^1.4.33",
