@@ -34,7 +34,7 @@ pluginManager.withPlugin("java") {
     }
 }
 dependencies {
-    val lombokVersion = "1.18.30"
+    val lombokVersion = "1.18.46"
     val mockito = "5.2.0"
     val springBootVersion = "3.5.14"
     val springSecurityVersion = "6.5.10"
@@ -44,9 +44,9 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
     annotationProcessor("jakarta.annotation:jakarta.annotation-api:2.1.1")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-    annotationProcessor("jakarta.xml.bind:jakarta.xml.bind-api:4.0.1")
+    annotationProcessor("jakarta.xml.bind:jakarta.xml.bind-api:4.0.5")
     testAnnotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
-    implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.1")
+    implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.5")
     implementation("org.springframework.boot:spring-boot-starter:${springBootVersion}")
     implementation("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
     implementation("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
@@ -64,7 +64,7 @@ dependencies {
     implementation("org.apache.logging.log4j:log4j-core:${log4jVersion}")
     implementation("org.apache.logging.log4j:log4j-web:${log4jVersion}")
     implementation("com.google.cloud:libraries-bom:26.32.0")
-    implementation("org.apache.httpcomponents:httpclient:4.5.13")
+    implementation("org.apache.httpcomponents:httpclient:4.5.14")
     implementation("com.google.cloud:google-cloud-storage:2.10.0")
     implementation("org.apache.httpcomponents.client5:httpclient5:5.3")
     testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
