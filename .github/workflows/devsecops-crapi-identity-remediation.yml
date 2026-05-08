@@ -50,8 +50,20 @@ jobs:
             --no-cache \
             -t crapi/crapi-identity:${{ github.sha }} \
             services/identity
+
+      - name: Scan rebuilt image with Trivy - Text output
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: image
+          image-ref: crapi/crapi-identity:${{ github.sha }}
+          scanners: vuln
+          severity: CRITICAL
+          ignore-unfixed: true
+          format: table
+          output: trivy-crapi-identity-critical.txt
+          exit-code: '0'
       
-      - name: Scan rebuilt image with Trivy
+      - name: Scan rebuilt image with Trivy - Sarif output
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: image
