@@ -67,10 +67,14 @@ dependencies {
     implementation("org.apache.httpcomponents:httpclient:4.5.14")
     implementation("com.google.cloud:google-cloud-storage:2.68.0")
     implementation("org.apache.httpcomponents.client5:httpclient5:5.3")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
     testImplementation("org.projectlombok:lombok:${lombokVersion}")
     testImplementation("org.mockito:mockito-junit-jupiter:${mockito}")
     testImplementation("org.mockito:mockito-core:${mockito}")
     testImplementation("org.mockito:mockito-inline:${mockito}")
     testImplementation("junit:junit:4.13.2")
+    testImplementation('org.apache.logging.log4j:log4j-core:2.20.0')
+    testImplementation('org.apache.logging.log4j:log4j-api:2.20.0')
+    testImplementation('org.apache.logging.log4j:log4j-slf4j-impl:2.20.0')
 }
