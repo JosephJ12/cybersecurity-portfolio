@@ -6,6 +6,10 @@
       "security:openssf-scorecard"
     ],
     "dependencyDashboard": true,
+    "includePaths": [
+      "appsec-projects/devsecops-security-pipeline-owasp-crapi/**",
+      ".github/workflows/devsecops-crapi-identity-remediation.yml"
+    ],
     "labels": ["dependencies", "security", "devsecops"],
     "prHourlyLimit": 4,
     "prConcurrentLimit": 10,

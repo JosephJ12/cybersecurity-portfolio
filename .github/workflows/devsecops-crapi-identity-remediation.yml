@@ -59,6 +59,8 @@ jobs:
           scanners: vuln
           severity: CRITICAL
           ignore-unfixed: true
+          format: sarif
+          output: trivy-crapi-identity-critical.sarif
           exit-code: '1'
 
       - name: Upload Trivy evidence artifact
