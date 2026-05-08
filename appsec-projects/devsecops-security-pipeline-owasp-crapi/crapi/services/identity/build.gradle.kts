@@ -38,7 +38,7 @@ dependencies {
     val mockito = "5.2.0"
     val springBootVersion = "3.2.2"
     val springSecurityVersion = "6.0.3"
-    val log4jVersion = "2.14.0"
+    val log4jVersion = "2.26.0"
     compileOnly("org.projectlombok:lombok:${lombokVersion}")
     testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
     annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
