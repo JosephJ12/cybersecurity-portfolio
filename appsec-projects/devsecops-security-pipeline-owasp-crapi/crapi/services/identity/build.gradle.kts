@@ -63,7 +63,7 @@ dependencies {
     implementation("org.apache.logging.log4j:log4j-api:${log4jVersion}")
     implementation("org.apache.logging.log4j:log4j-core:${log4jVersion}")
     implementation("org.apache.logging.log4j:log4j-web:${log4jVersion}")
-    implementation("com.google.cloud:libraries-bom:26.32.0")
+    implementation("com.google.cloud:libraries-bom:26.81.0")
     implementation("org.apache.httpcomponents:httpclient:4.5.14")
     implementation("com.google.cloud:google-cloud-storage:2.68.0")
     implementation("org.apache.httpcomponents.client5:httpclient5:5.3")
