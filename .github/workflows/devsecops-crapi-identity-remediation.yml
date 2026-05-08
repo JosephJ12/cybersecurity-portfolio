@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/**'
+      - 'appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/services/identity/**'
       - 'renovate.json'
       - '.github/workflows/devsecops-crapi-identity-remediation.yml'
 
@@ -13,7 +13,7 @@ on:
     branches:
       - main
     paths:
-      - 'appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/**'
+      - 'appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/services/identity/**'
       - 'renovate.json'
       - '.github/workflows/devsecops-crapi-identity-remediation.yml'
 
