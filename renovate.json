@@ -1,85 +1,81 @@
 {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "description": "Automated dependency remediation for the crapi-identity authentication service for OWASP crAPI DevSecOps pipeline project.",
-    "extends": [
-      "config:recommended",
-      "security:openssf-scorecard"
-    ],
-    "dependencyDashboard": true,
-    "includePaths": [
-      "appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/services/identity**",
-      ".github/workflows/devsecops-crapi-identity-remediation.yml"
-    ],
-    "labels": ["dependencies", "security", "devsecops"],
-    "prHourlyLimit": 4,
-    "prConcurrentLimit": 10,
-    "rangeStrategy": "bump",
-    "packageRules": [
-      {
-        "description": "Prioritize critical security fixes",
-        "matchDatasources": ["maven"],
-        "matchUpdateTypes": ["patch", "minor"],
-        "labels": ["security", "critical-remediation"],
-        "automerge": true,
-        "automergeType": "pr",
-        "requiredStatusChecks": [
-          "Trivy Identity Image Scan",
-          "Semgrep SAST"
-        ]
-      },
-      {
-        "description": "Group Spring ecosystem updates",
-        "matchPackagePatterns": [
-          "^org\\.springframework",
-          "^org\\.springframework\\.boot",
-          "^org\\.springframework\\.security"
-        ],
-        "groupName": "spring ecosystem security updates",
-        "labels": ["spring", "security"]
-      },
-      {
-        "description": "Group Tomcat embedded updates",
-        "matchPackagePatterns": [
-          "^org\\.apache\\.tomcat\\.embed"
-        ],
-        "groupName": "tomcat embedded security updates",
-        "labels": ["tomcat", "security"]
-      },
-      {
-        "description": "Group Log4j updates",
-        "matchPackagePatterns": [
-          "^org\\.apache\\.logging\\.log4j"
-        ],
-        "groupName": "log4j security updates",
-        "labels": ["log4j", "security"]
-      },
-      {
-        "description": "Group PostgreSQL JDBC updates",
-        "matchPackagePatterns": [
-          "^org\\.postgresql"
-        ],
-        "groupName": "postgresql jdbc security updates",
-        "labels": ["postgresql", "security"]
-      },
-      {
-        "description": "Require manual review for major updates",
-        "matchUpdateTypes": ["major"],
-        "automerge": false,
-        "labels": ["major-update", "manual-review-required"]
-      },
-      {
-        "description": "Update GitHub Actions safely",
-        "matchManagers": ["github-actions"],
-        "groupName": "github actions updates",
-        "automerge": true,
-        "automergeType": "pr"
-      },
-      {
-        "description": "Update Docker images safely",
-        "matchDatasources": ["docker"],
-        "groupName": "docker base image updates",
-        "automerge": false,
-        "labels": ["container-security", "manual-review-required"]
-      }
-    ]
-  }
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Automated dependency remediation for the crAPI identity service in the OWASP crAPI DevSecOps pipeline project.",
+  "extends": [
+    "config:recommended"
+  ],
+  "dependencyDashboard": true,
+
+  "enabledManagers": [
+    "gradle",
+    "gradle-wrapper"
+  ],
+
+  "includePaths": [
+    "appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/services/identity/build.gradle.kts",
+    "appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/services/identity/settings.gradle.kts",
+    "appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/services/identity/gradle.properties",
+    "appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/services/identity/gradle/wrapper/gradle-wrapper.properties"
+  ],
+
+  "labels": [
+    "dependencies",
+    "security",
+    "devsecops",
+    "crapi-identity"
+  ],
+
+  "prHourlyLimit": 4,
+  "prConcurrentLimit": 10,
+  "rangeStrategy": "bump",
+
+  "packageRules": [
+    {
+      "description": "Group Spring ecosystem updates for crAPI identity",
+      "matchManagers": ["gradle"],
+      "matchDatasources": ["maven"],
+      "matchPackageNames": [
+        "/^org\\.springframework/",
+        "/^org\\.springframework\\.boot/",
+        "/^org\\.springframework\\.security/"
+      ],
+      "matchFileNames": [
+        "appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/services/identity/build.gradle.kts"
+      ],
+      "groupName": "crapi identity spring security updates",
+      "labels": ["spring", "security", "crapi-identity"]
+    },
+    {
+      "description": "Group Log4j updates for crAPI identity",
+      "matchManagers": ["gradle"],
+      "matchDatasources": ["maven"],
+      "matchPackageNames": [
+        "/^org\\.apache\\.logging\\.log4j/"
+      ],
+      "matchFileNames": [
+        "appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/services/identity/build.gradle.kts"
+      ],
+      "groupName": "crapi identity log4j security updates",
+      "labels": ["log4j", "security", "crapi-identity"]
+    },
+    {
+      "description": "Group PostgreSQL JDBC updates for crAPI identity",
+      "matchManagers": ["gradle"],
+      "matchDatasources": ["maven"],
+      "matchPackageNames": [
+        "/^org\\.postgresql/"
+      ],
+      "matchFileNames": [
+        "appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/services/identity/build.gradle.kts"
+      ],
+      "groupName": "crapi identity postgresql jdbc updates",
+      "labels": ["postgresql", "security", "crapi-identity"]
+    },
+    {
+      "description": "Require manual review for major dependency updates",
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "labels": ["major-update", "manual-review-required"]
+    }
+  ]
+}

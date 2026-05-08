@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/**'
-      - 'renovate-crapi-identity.json'
+      - 'renovate.json'
       - '.github/workflows/devsecops-crapi-identity-remediation.yml'
 
   pull_request:
@@ -14,7 +14,7 @@ on:
       - main
     paths:
       - 'appsec-projects/devsecops-security-pipeline-owasp-crapi/crapi/**'
-      - 'renovate-crapi-identity.json'
+      - 'renovate.json'
       - '.github/workflows/devsecops-crapi-identity-remediation.yml'
 
   workflow_dispatch: {}
