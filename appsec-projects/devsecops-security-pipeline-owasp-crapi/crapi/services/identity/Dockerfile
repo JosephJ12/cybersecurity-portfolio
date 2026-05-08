@@ -18,7 +18,8 @@ COPY *.gradle.kts ./
 COPY gradle.properties ./
 # Only download dependencies
 # Eat the expected build failure since no source code has been copied yet
-RUN gradle clean build --no-daemon > /dev/null 2>&1 || true
+#RUN gradle clean build --no-daemon > /dev/null 2>&1 || true
+RUN gradle clean build --no-daemon --warning-mode all --stacktrace || true
 COPY src src
 RUN gradle build
 RUN gradle bootJar
