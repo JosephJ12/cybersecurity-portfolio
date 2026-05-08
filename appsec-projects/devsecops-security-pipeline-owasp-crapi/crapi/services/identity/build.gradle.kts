@@ -56,7 +56,7 @@ dependencies {
     implementation("org.springframework.security:spring-security-config:${springSecurityVersion}")
     implementation("io.jsonwebtoken:jjwt:0.12.5")
     implementation("com.nimbusds:nimbus-jose-jwt:9.48")
-    implementation("jakarta.validation:jakarta.validation-api:3.0.2")
+    implementation("jakarta.validation:jakarta.validation-api:3.1.1")
     implementation("org.postgresql:postgresql:runtime")
     implementation("org.postgresql:postgresql:42.4.0")
     implementation("com.google.cloud:google-cloud-storage:2.68.0")
