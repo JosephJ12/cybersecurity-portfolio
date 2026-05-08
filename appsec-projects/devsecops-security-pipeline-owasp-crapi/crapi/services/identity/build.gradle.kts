@@ -38,7 +38,7 @@ dependencies {
     val mockito = "5.2.0"
     val springBootVersion = "3.5.14"
     val springSecurityVersion = "6.5.10"
-    val log4jVersion = "2.14.0"
+    val log4jVersion = "2.26.0"
     compileOnly("org.projectlombok:lombok:${lombokVersion}")
     testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
     annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
@@ -74,7 +74,7 @@ dependencies {
     testImplementation("org.mockito:mockito-core:${mockito}")
     testImplementation("org.mockito:mockito-inline:${mockito}")
     testImplementation("junit:junit:4.13.2")
-    testImplementation("org.apache.logging.log4j:log4j-core:2.20.0")
-    testImplementation("org.apache.logging.log4j:log4j-api:2.20.0")
-    testImplementation("org.apache.logging.log4j:log4j-slf4j-impl:2.20.0")
+    testImplementation("org.apache.logging.log4j:log4j-core:2.26.0")
+    testImplementation("org.apache.logging.log4j:log4j-api:2.26.0")
+    testImplementation("org.apache.logging.log4j:log4j-slf4j-impl:2.26.0")
 }
