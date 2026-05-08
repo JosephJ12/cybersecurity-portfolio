@@ -34,7 +34,7 @@ pluginManager.withPlugin("java") {
     }
 }
 dependencies {
-    val lombokVersion = "1.18.30"
+    val lombokVersion = "1.18.46"
     val mockito = "5.2.0"
     val springBootVersion = "3.2.2"
     val springSecurityVersion = "6.0.3"
