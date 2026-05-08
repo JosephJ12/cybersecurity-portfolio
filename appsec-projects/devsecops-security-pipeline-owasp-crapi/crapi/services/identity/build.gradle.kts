@@ -54,7 +54,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-mail:${springBootVersion}")
     implementation("org.springframework.boot:spring-boot-starter-validation:${springBootVersion}")
     implementation("org.springframework.security:spring-security-config:${springSecurityVersion}")
-    implementation("io.jsonwebtoken:jjwt:0.12.5")
+    implementation("io.jsonwebtoken:jjwt:0.13.0")
     implementation("com.nimbusds:nimbus-jose-jwt:9.48")
     implementation("jakarta.validation:jakarta.validation-api:3.0.2")
     implementation("org.postgresql:postgresql:runtime")
