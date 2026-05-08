@@ -81,3 +81,4 @@ jobs:
         with:
           name: trivy-crapi-identity-critical-scan
           path: trivy-crapi-identity-critical.sarif
+          path: trivy-crapi-identity-critical.txt
