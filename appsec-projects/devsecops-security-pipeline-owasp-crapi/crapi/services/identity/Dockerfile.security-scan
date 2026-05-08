@@ -1,0 +1,43 @@
+# Security scan build image
+# Purpose: package crAPI identity for container vulnerability scanning.
+# Unit tests are intentionally excluded here because test validation is handled as a separate CI concern.
+
+FROM gradle:8.10.2-jdk17 AS gradlebuild
+
+WORKDIR /app
+
+COPY *.gradle.kts ./
+COPY gradle.properties ./
+
+# Warm Gradle dependencies. This may fail because source code is not copied yet.
+RUN gradle clean build --no-daemon --warning-mode all --stacktrace || true
+
+COPY src src
+
+# Build only the executable Spring Boot artifact needed for image scanning.
+RUN gradle clean bootJar -x test --no-daemon --warning-mode all --stacktrace
+
+
+FROM eclipse-temurin:17-noble
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY --from=gradlebuild /app/build/libs/identity-service-1.0-SNAPSHOT.jar /app/identity-service-1.0-SNAPSHOT.jar
+
+ARG SERVER_PORT
+EXPOSE ${SERVER_PORT}
+EXPOSE 10001 8080 8989
+
+ENV JAVA_TOOL_OPTIONS="-Xmx128m"
+
+COPY jwks.json /app/default_jwks.json
+COPY entrypoint.sh /entrypoint.sh
+COPY health.sh /app/health.sh
+
+CMD ["/entrypoint.sh"]

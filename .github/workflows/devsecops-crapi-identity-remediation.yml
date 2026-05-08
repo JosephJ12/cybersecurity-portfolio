@@ -49,6 +49,7 @@ jobs:
             --pull \
             --no-cache \
             -t crapi/crapi-identity:${{ github.sha }} \
+            -f services/identity/Dockerfile.security-scan \
             services/identity
 
       - name: Scan rebuilt image with Trivy - Text output
