@@ -74,7 +74,7 @@ dependencies {
     testImplementation("org.mockito:mockito-core:${mockito}")
     testImplementation("org.mockito:mockito-inline:${mockito}")
     testImplementation("junit:junit:4.13.2")
-    testImplementation('org.apache.logging.log4j:log4j-core:2.20.0')
-    testImplementation('org.apache.logging.log4j:log4j-api:2.20.0')
-    testImplementation('org.apache.logging.log4j:log4j-slf4j-impl:2.20.0')
+    testImplementation("org.apache.logging.log4j:log4j-core:2.20.0")
+    testImplementation("org.apache.logging.log4j:log4j-api:2.20.0")
+    testImplementation("org.apache.logging.log4j:log4j-slf4j-impl:2.20.0")
 }
