@@ -42,7 +42,7 @@ dependencies {
     compileOnly("org.projectlombok:lombok:${lombokVersion}")
     testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
     annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
-    annotationProcessor("jakarta.annotation:jakarta.annotation-api:2.1.1")
+    annotationProcessor("jakarta.annotation:jakarta.annotation-api:3.0.0")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("jakarta.xml.bind:jakarta.xml.bind-api:4.0.5")
     testAnnotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
