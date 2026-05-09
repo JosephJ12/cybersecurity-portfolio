@@ -30,7 +30,6 @@ The project focuses on practical API risks that matter in real companies:
 crAPI is a deliberately vulnerable microservice API application. The assessment focused on user-facing API flows and backend service authorization decisions.
 
 ```mermaid
-```mermaid
 flowchart LR
     User[User / Browser] --> Web[crAPI Web Client]
     Web --> Identity[Identity Service]
@@ -59,7 +58,6 @@ flowchart LR
         DB
         VectorDB
     end
-```
 ```
 
 ## Data Flow Reviewed
