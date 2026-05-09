@@ -4,40 +4,10 @@ Report Summary
 ┌──────────────────────────────────────────────────────────────────────────────┬────────┬─────────────────┐
 │                                    Target                                    │  Type  │ Vulnerabilities │
 ├──────────────────────────────────────────────────────────────────────────────┼────────┼─────────────────┤
-│ crapi/crapi-identity:5de21619d81e44321891ae73e1c41b8c93f1bac2 (ubuntu 24.04) │ ubuntu │        0        │
+│ crapi/crapi-identity:21d95372e1c733c5221abee3bcc3ad3419ec4be1 (ubuntu 24.04) │ ubuntu │        0        │
 ├──────────────────────────────────────────────────────────────────────────────┼────────┼─────────────────┤
-│ app/identity-service-1.0-SNAPSHOT.jar                                        │  jar   │        3        │
+│ app/identity-service-1.0-SNAPSHOT.jar                                        │  jar   │        0        │
 └──────────────────────────────────────────────────────────────────────────────┴────────┴─────────────────┘
 Legend:
 - '-': Not scanned
 - '0': Clean (no security findings detected)
-
-
-For OSS Maintainers: VEX Notice
---------------------------------
-If you're an OSS maintainer and Trivy has detected vulnerabilities in your project that you believe are not actually exploitable, consider issuing a VEX (Vulnerability Exploitability eXchange) statement.
-VEX allows you to communicate the actual status of vulnerabilities in your project, improving security transparency and reducing false positives for your users.
-Learn more and start using VEX: https://trivy.dev/docs/v0.70/guide/supply-chain/vex/repo#publishing-vex-documents
-
-To disable this notice, set the TRIVY_DISABLE_VEX_NOTICE environment variable.
-
-
-Java (jar)
-==========
-Total: 3 (CRITICAL: 3)
-
-┌───────────────────────────────────────────────────┬────────────────┬──────────┬────────┬───────────────────┬───────────────────────────┬──────────────────────────────────────────────────────────────┐
-│                      Library                      │ Vulnerability  │ Severity │ Status │ Installed Version │       Fixed Version       │                            Title                             │
-├───────────────────────────────────────────────────┼────────────────┼──────────┼────────┼───────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────┤
-│ org.apache.tomcat.embed:tomcat-embed-core         │ CVE-2026-29145 │ CRITICAL │ fixed  │ 10.1.40           │ 9.0.116, 10.1.53, 11.0.20 │ Apache Tomcat: Apache Tomcat: Authentication bypass due to   │
-│ (identity-service-1.0-SNAPSHOT.jar)               │                │          │        │                   │                           │ CLIENT_CERT soft fail misconfiguration...                    │
-│                                                   │                │          │        │                   │                           │ https://avd.aquasec.com/nvd/cve-2026-29145                   │
-├───────────────────────────────────────────────────┼────────────────┤          │        ├───────────────────┼───────────────────────────┼──────────────────────────────────────────────────────────────┤
-│ org.springframework.security:spring-security-core │ CVE-2025-41232 │          │        │ 6.4.5             │ 6.4.6                     │ Spring-Security: Spring Security authorization bypass for    │
-│ (identity-service-1.0-SNAPSHOT.jar)               │                │          │        │                   │                           │ method security annotations on private methods...            │
-│                                                   │                │          │        │                   │                           │ https://avd.aquasec.com/nvd/cve-2025-41232                   │
-├───────────────────────────────────────────────────┼────────────────┤          │        │                   ├───────────────────────────┼──────────────────────────────────────────────────────────────┤
-│ org.springframework.security:spring-security-web  │ CVE-2026-22732 │          │        │                   │ 6.5.9, 7.0.4              │ Spring Security: Spring Security: Security policy bypass and │
-│ (identity-service-1.0-SNAPSHOT.jar)               │                │          │        │                   │                           │ information disclosure due to...                             │
-│                                                   │                │          │        │                   │                           │ https://avd.aquasec.com/nvd/cve-2026-22732                   │
-└───────────────────────────────────────────────────┴────────────────┴──────────┴────────┴───────────────────┴───────────────────────────┴──────────────────────────────────────────────────────────────┘
