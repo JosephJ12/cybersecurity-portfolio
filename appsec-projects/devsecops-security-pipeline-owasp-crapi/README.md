@@ -11,7 +11,7 @@ The pipeline is intentionally scoped to the `crapi-identity` service so it resem
 ## Pipeline Goal
 
 ```text
-Developer / Renovate PR
+Developer push / Renovate PR
         ↓
 Renovate scans crAPI identity Gradle dependencies
         ↓
@@ -43,7 +43,7 @@ Security gate fails if critical findings remain
 flowchart LR
     Dev[Developer Push / Renovate PR] --> GH[GitHub Repository]
     GH --> Renovate[Renovate Dependency Scan]
-    Renovate --> PR[Grouped Dependency PR]
+    Renovate --> PR[Grouped Dependency Remediation PR]
     PR --> Actions[GitHub Actions]
     Actions --> Build[Docker Build: crAPI Identity]
     Build --> Image[Local Image: crapi/crapi-identity:SHA]
@@ -73,9 +73,9 @@ This scope is deliberate. A remediation pipeline should be narrow enough that a 
 
 ## Renovate Design
 
-Renovate should be configured to scan only the identity service Gradle files.
+Renovate was configured to scan only the crapi-identity service Gradle files.
 
-Recommended config pattern:
+My Renovate config pattern:
 
 ```json
 {
@@ -96,7 +96,7 @@ Recommended config pattern:
 
 ## GitHub Actions Design
 
-The workflow should do four things:
+The workflow does four things:
 
 1. Check out the repository.
 2. Build the identity image from local source.
@@ -195,7 +195,7 @@ jobs:
 
 ## Docker Build Strategy
 
-The security scan image should be built from local source. If the inherited unit tests are unstable, use a dedicated scan Dockerfile and keep unit tests visible in a separate job.
+The security scan image was built from local source instead of pulling from the official remote source. After updating the dependencies, the inherited unit tests became unstable, prompting me to create a separate Dockerfile for the Trivy container scan only. I used a dedicated scan Dockerfile and kept the unit tests included version in the `devsecops-crapi-security.yml.disabled` file.
 
 ```dockerfile
 # Dockerfile.security-scan
@@ -232,11 +232,11 @@ Expected artifact:
 
 ```text
 trivy-crapi-identity-critical-scan/
-├── trivy-crapi-identity-critical.txt
+├── trivy-crapi-identity-critical.txt --> /evidence/trivy-crapi-identity-after-remediation.txt
 └── trivy-crapi-identity-critical.sarif
 ```
 
-The text report is human-readable. The SARIF report is machine-readable and can be uploaded to GitHub code scanning or archived for security evidence.
+The text report is human-readable and uploaded to the `/evidence` folder. The SARIF report is machine-readable and can be uploaded to GitHub code scanning or archived for security evidence.
 
 ## Troubleshooting Lessons Learned
 
