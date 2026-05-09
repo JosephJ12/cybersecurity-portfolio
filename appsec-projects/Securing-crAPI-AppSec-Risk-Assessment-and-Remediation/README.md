@@ -21,7 +21,7 @@ The project focuses on practical API risks that matter in real companies:
 | API Security | BOLA/IDOR, excessive data exposure, broken authentication |
 | Threat Modeling | STRIDE, DFDs, trust boundaries, service/data flow mapping |
 | Secure Code Review | Java/Spring service-layer review and authorization logic analysis |
-| Remediation Design | Ownership checks, DTO response shaping, auth validation improvements |
+| Remediation Design | Ownership checks, separate models for public and private use, auth validation improvements |
 | Risk Communication | Findings grouped by OWASP API Top 10 impact and remediation priority |
 | Engineering Judgment | Focused on root causes instead of superficial scanner output |
 
