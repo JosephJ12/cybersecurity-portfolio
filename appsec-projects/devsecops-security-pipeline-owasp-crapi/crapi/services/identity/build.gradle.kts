@@ -35,7 +35,7 @@ pluginManager.withPlugin("java") {
 }
 dependencies {
     val lombokVersion = "1.18.46"
-    val mockito = "5.2.0"
+    val mockito = "5.23.0"
     val springBootVersion = "3.5.14"
     val springSecurityVersion = "6.5.10"
     val log4jVersion = "2.26.0"
