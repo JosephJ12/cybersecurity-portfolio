@@ -4,7 +4,7 @@
 
 ## Executive Summary
 
-This project demonstrates how I would approach a real API security assessment as an Application Security Engineer. I reviewed crAPI's microservice architecture, modeled trust boundaries, identified high-impact OWASP API Top 10 risks, validated exploitability, and proposed or implemented code-level remediations.
+This project demonstrates how I would approach a real API security assessment as an Application Security Engineer. I reviewed crAPI's microservice architecture, modeled trust boundaries, identified high-impact OWASP API Top 10 risks, validated exploitability with evidence of vulnerability, and implemented code-level remediations.
 
 The project focuses on practical API risks that matter in real companies:
 
