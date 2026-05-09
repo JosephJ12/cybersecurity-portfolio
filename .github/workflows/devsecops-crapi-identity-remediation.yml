@@ -52,7 +52,7 @@ jobs:
             -f services/identity/Dockerfile.security-scan \
             services/identity
 
-      - name: Scan rebuilt image with Trivy - Text output
+      - name: Scan rebuilt image with Trivy - Text report
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: image
@@ -64,7 +64,7 @@ jobs:
           output: trivy-crapi-identity-critical.txt
           exit-code: '0'
       
-      - name: Scan rebuilt image with Trivy - Sarif output
+      - name: Scan rebuilt image with Trivy - SARIF report
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: image
@@ -74,8 +74,8 @@ jobs:
           ignore-unfixed: true
           format: sarif
           output: trivy-crapi-identity-critical.sarif
-          exit-code: '1'
-
+          exit-code: '0'
+      
       - name: Upload Trivy evidence artifact
         uses: actions/upload-artifact@v4
         if: always()
@@ -84,3 +84,14 @@ jobs:
           path: |
             trivy-crapi-identity-critical.sarif
             trivy-crapi-identity-critical.txt
+      
+      - name: Enforce Trivy critical vulnerability gate
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: image
+          image-ref: crapi/crapi-identity:${{ github.sha }}
+          scanners: vuln
+          severity: CRITICAL
+          ignore-unfixed: true
+          format: table
+          exit-code: '1'
