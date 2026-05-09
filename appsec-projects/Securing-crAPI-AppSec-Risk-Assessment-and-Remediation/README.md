@@ -30,6 +30,7 @@ The project focuses on practical API risks that matter in real companies:
 crAPI is a deliberately vulnerable microservice API application. The assessment focused on user-facing API flows and backend service authorization decisions.
 
 ```mermaid
+```mermaid
 flowchart LR
     User[User / Browser] --> Web[crAPI Web Client]
     Web --> Identity[Identity Service]
@@ -42,22 +43,23 @@ flowchart LR
     Workshop --> DB
     Chatbot --> VectorDB[(ChromaDB)]
 
-    subgraph Public Boundary
+    subgraph public_boundary["Public Boundary"]
         User
         Web
     end
 
-    subgraph Service Boundary
+    subgraph service_boundary["Service Boundary"]
         Identity
         Community
         Workshop
         Chatbot
     end
 
-    subgraph Data Boundary
+    subgraph data_boundary["Data Boundary"]
         DB
         VectorDB
     end
+```
 ```
 
 ## Data Flow Reviewed
