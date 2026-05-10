@@ -1,256 +1,239 @@
-# 🔐 OWASP Juice Shop — Application Security Case Study
+# OWASP Juice Shop AppSec Assessment & Remediation
 
-## 📌 Overview
+**Risk-based application security assessment of OWASP Juice Shop covering threat modeling, manual exploitation, secure code remediation, and CI/CD SAST automation.**
 
-This project is a **risk-based Application Security (AppSec) assessment and remediation** of the vulnerable web application **OWASP Juice Shop**.
+## Executive Summary
 
-The goal was to simulate how a junior Application Security Engineer would evaluate a real-world application:
-- Understand system architecture
-- Identify and exploit vulnerabilities
-- Determine root causes
-- Implement secure, production-aligned fixes
-- Integrate security into the development lifecycle (DevSecOps)
+This project simulates the workflow of an Application Security Engineer assessing a production-like web application. I analyzed the system architecture, modeled threats, manually validated vulnerabilities, implemented code-level remediations, and added automated security scanning to CI/CD.
 
----
+The strongest security outcomes in this project were:
 
-## 🎯 Objectives
+- Identified and remediated SQL injection in backend query handling.
+- Identified brute-force risk in the login flow and implemented account/IP-aware rate limiting.
+- Built a Semgrep-based SAST workflow to detect insecure code patterns earlier in the SDLC.
+- Documented findings using a risk-based format: root cause, impact, exploitability, and remediation.
 
-- Perform **end-to-end AppSec assessment**
-- Apply **threat modeling (STRIDE, DFDs, trust boundaries)**
-- Identify vulnerabilities aligned with **OWASP Top 10**
-- Implement **secure coding fixes**
-- Integrate **security into CI/CD pipelines**
+## Security Skills Demonstrated
 
----
+| Area | Evidence |
+|---|---|
+| Threat Modeling | DFDs, trust boundaries, STRIDE analysis |
+| Manual AppSec Testing | Burp Suite, request/response manipulation, authentication testing |
+| Secure Code Review | Reviewed vulnerable backend logic and mapped weaknesses to root causes |
+| Remediation | Parameterized queries, rate limiting, validation improvements |
+| DevSecOps | GitHub Actions + Semgrep CI pipeline |
+| Risk Communication | Findings written with impact, likelihood, remediation, and business risk |
 
-## 🏗️ Application Architecture & Scope
+## Application Scope
 
-The application follows a typical modern web architecture:
+OWASP Juice Shop is a deliberately vulnerable web application with a modern web architecture:
 
-- **Frontend:** Angular (client-side)
-- **Backend:** Node.js / Express API
-- **Database:** SQLite
-- **Authentication:** Session-based login
+```text
+User Browser
+    ↓
+Angular Frontend
+    ↓
+Node.js / Express API
+    ↓
+SQLite Database
+```
 
-### Scope of Assessment
+Assessment focus:
 
-Focus areas:
-- Authentication and login flows
-- Input handling and database interactions
-- API endpoints and business logic
+- Login and authentication flows
+- Search/input handling
+- Backend API routes
+- Database query construction
+- Security automation in CI/CD
 
----
-
-## 🧠 Methodology
+## Methodology
 
 ### 1. Architecture Review
-- Created **Data Flow Diagrams (DFD)**
-- Identified **trust boundaries**
-- Mapped data movement between components
+
+I started by understanding the request flow, trust boundaries, and major data stores before testing individual bugs. This matters because real AppSec work is not just running tools; it is understanding where user input crosses trust boundaries and where sensitive operations occur.
 
 ### 2. Threat Modeling
-Applied **STRIDE** to key components:
-- Authentication
-- Search functionality
-- User input handling
 
-### 3. Security Testing
-- Dynamic testing using **Burp Suite**
-- Manual exploitation of vulnerabilities
-- Request/response manipulation
+I applied STRIDE against authentication, API endpoints, and database interactions.
 
-### 4. Remediation
-- Implemented secure coding fixes
-- Addressed root causes (not just symptoms)
+| Risk ID | Area | STRIDE | Risk | Expected Control |
+|---|---|---|---|---|
+| AUTH-01 | Login | Spoofing | Brute-force login attempts | Account/IP-based throttling |
+| AUTH-02 | Session/Auth | Tampering | Token/session manipulation | Signed and validated tokens/session controls |
+| AUTH-03 | Login | Repudiation | Weak auditability of login attempts | Security logging |
+| AUTH-04 | Login | Information Disclosure | Verbose login responses | Generic authentication errors |
+| AUTH-05 | Search/Login Query | Elevation of Privilege | SQL injection | Parameterized queries |
 
-### 5. DevSecOps Integration
-- Integrated **Semgrep (SAST)** into CI/CD using GitHub Actions
-- Automated detection of insecure patterns
-- Code-level remediation and rescan
+### 3. Manual Vulnerability Validation
 
----
+I used Burp Suite and manual testing to validate exploitability instead of relying only on scanner output.
 
-## 🚨 Key Findings
+Testing included:
 
-### 1. SQL Injection (High)
+- Intercepting requests
+- Modifying parameters
+- Testing authentication bypass behavior
+- Validating whether input reached unsafe backend query logic
+- Confirming whether remediation changed application behavior
 
-**Vulnerability:**  
-User-controlled input was directly concatenated into SQL queries.
+## Key Findings & Remediations
 
-**Impact:**  
-- Authentication bypass  
-- Unauthorized data access  
+### Finding 1: SQL Injection in Backend Query Handling
 
-**Root Cause:**  
-Lack of parameterized queries / input sanitization
+**Severity:** High  
+**Category:** OWASP Top 10 — Injection  
+**Root cause:** User-controlled input was concatenated into backend SQL queries instead of being passed through parameterized statements.
 
-**Remediation:**  
-- Replaced SQL queries with **parameterized queries**
+#### Security Impact
 
----
+An attacker could potentially manipulate SQL query logic to bypass authentication or access unauthorized data.
 
-### 2. Brute Force Authentication (High)
+#### Remediation
 
-**Vulnerability:**  
-Login endpoint allowed unlimited attempts.
+Replaced unsafe query construction with parameterized database access.
 
-**Impact:**  
-- Account takeover risk  
-- Credential stuffing attacks  
-
-**Root Cause:**  
-No rate limiting or account lockout mechanism
-
-**Remediation:**  
-- Implemented **combined rate limiting**:
-  - Per-IP throttling
-  - Per-account throttling
-- Configured time-based reset logic
-
----
-
-## 🔧 Remediation Highlights
-
-### ✅ Secure Coding Improvements
-- Parameterized database queries
-
-### ✅ Authentication Hardening
-- Account + IP-based rate limiting
-- Protection against brute force and credential stuffing
-
-### ✅ Security Controls
-- Reduced attack surface
-- Improved resilience against common web attacks
-
----
-
-## ⚙️ DevSecOps Integration
-
-Security was integrated into the development lifecycle:
-
-- **SAST Tool:** Semgrep
-- **CI/CD:** GitHub Actions
-
-### Pipeline Capabilities:
-- Automated static code analysis on pull requests
-- Detection of insecure patterns
-- Early vulnerability identification
-
----
-
-## 📊 Risk-Based Approach
-
-Findings were prioritized based on:
-- Exploitability
-- Business impact
-- Likelihood of abuse
-
-Focus was placed on **high-impact vulnerabilities affecting authentication and data integrity**.
-
----
-
-
-## 🌟 Project Highlights
-
-### 1️⃣ Threat Modeling — STRIDE Application and Gap Analysis
-
-| Risk ID | Risk | STRIDE | Expected Control | Status | Gap | Impact | Recommended Remediation |
-|---|---|---|---|---|---|---|---|
-| AUTH-01 | Brute force login | Spoofing | Brute force login protection | Not evident | Rate limiting on login attempts does not seem to be present within the scope. | Increases the likelihood of user impersonation, which may lead to complete account compromise and sensitive information disclosure. | Lockout policy on failed login attempts and enforcing strong password policy upon account creation. | 
-| AUTH-02 | JWT Token forgery | Tampering | Token signing | Present within scope | Auth tokens should be signed to prevent tampering or impersonation. | Absence of token signing may allow attackers to craft or modify their own token to elevate privileges or impersonate another user. | Implement token signing and validation. |
-| AUTH-03 | No login audit logs | Repudiation | Logging login activity | Not evident | Auditing login attempts does not seem evident within the scope. | Increases likelihood of repudiation without audit logs. | Securely store logs on web server log files. | 
-| AUTH-04 | Verbose login error responses | Information Disclosure | Generic error messages upon failed login | Requires validation | Generic error messages should be given for all failed login cases to prevent attackers from enumerating valid users from them. | Increases the likelihood of user enumeration, which may be later used for further attacks. | Implement generic error messages for all login errors. | 
-| AUTH-05 | SQL Injection | Escalation of Privileges | Backend uses parameterized queries to query database | Not evident | the `login()` function does not utilize parameterized queries | SQL Injection may lead to the disclosure of sensitive information or in severe cases, bypassing authentication or remote code execution. | Parameterized queries should be implemented when querying the database. Also doing input santization on user input is highly recommended. |
-
-### 2️⃣ Vulnerability Discovery (DAST) — Code-Level Remediation
-
-SQL Injection Vulnerable Code:
-<img width="1806" height="274" alt="image" src="https://github.com/user-attachments/assets/f5a02e08-96ce-430d-b08a-a95b4b0a1f8b" />
-
-SQLI-Free Parameterized Query Code:
-<img width="1323" height="537" alt="image" src="https://github.com/user-attachments/assets/b305c08e-6462-496b-b144-28217df8e7b6" />
-
-------
-
-Login Endpoint Susceptible to Brute Force Attacks:
-
-
-Login Endpoint With IP and IP+Account Rate Limiting:
-
-
-
-### 3️⃣ Secure Coding Practices — SAST Integration and Automation
-
-**Semgrep.yml File**
+```ts
+// SQLI VULNERABLE CODE PATTERN
+models.sequelize.query(
+  `
+  SELECT * 
+  FROM Users 
+  WHERE email = '${req.body.email || ''}' 
+  AND password = '${security.hash(req.body.password || '')}' 
+  AND deletedAt IS NULL`, 
+  { 
+    model: UserModel, 
+    plain: true 
+  }
+)
 ```
-name: Semgrep CI
 
+```ts
+// SAFER PATTERN USING PARAMETERIZED QUERY
+const email = req.body.email || '';
+const passwordHash = security.hash(req.body.password || '');
+
+models.sequelize.query(
+  `
+  SELECT * 
+  FROM Users 
+  WHERE email = $email 
+  AND password = $password 
+  AND deletedAt IS NULL
+  `,
+  {
+    bind: {
+        email: email,
+        password: passwordHash,
+    },
+    model: UserModel,
+    plain: true,
+  }
+)
+```
+
+#### Why This Works
+
+Parameterized queries separate executable SQL structure from user-controlled data. The database treats the input as a value, not as query syntax.
+
+---
+
+### Finding 2: Brute Force Risk on Login Endpoint
+
+**Severity:** High  
+**Category:** Broken Authentication  
+**Root cause:** The login endpoint did not enforce meaningful rate limiting and lockout across repeated failed attempts.
+
+#### Security Impact
+
+An attacker could automate credential guessing, credential stuffing, or password spraying against valid accounts. A successful attempt would mean the compromise of the account.
+
+#### Remediation
+
+Implemented layered rate limiting:
+
+- Per-IP throttling --> mitigates password spraying attacks
+- Per-account and per-IP throttling --> help defend against brute force attacks
+- Time-window reset behavior --> account lockout policy
+- Generic error messaging to reduce enumeration risk --> mitigate username enumeration from error messages
+
+```ts
+// lockout for 15 minutes after 10 failed login attempts from 1 IP
+const loginIpRateLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10, // total login attempts per IP in window
+  standardHeaders: true,
+  legacyHeaders: false,
+  skipSuccessfulRequests: true,
+  message: {
+    status: 'error',
+    message: 'Too many login attempts from this IP address. Please try again later.\n'
+  }
+})
+
+// lockout for 15 minutes after 5 failed login attempts from 1 IP for the same account
+const loginAccountIpRateLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // attempts per email+IP pair in window
+  standardHeaders: true,
+  legacyHeaders: false,
+  skipSuccessfulRequests: true,
+  keyGenerator: (req) => {
+    const email = normalizeLoginIdentifier(req.body?.email)
+    const ip = req.ip || 'unknown'
+    return `${email}:${ip}`
+  },
+  message: {
+    status: 'error',
+    message: 'Too many login attempts for this account. Please try again later.\n'
+  }
+})
+```
+
+#### Why This Works
+
+Per-IP throttling mitigates against password spraying attacks. Per-account rate limiting protects against brute force attacks.
+
+---
+
+### Finding 3: Missing Early Detection in CI/CD
+
+**Severity:** Medium  
+**Category:** SDLC / DevSecOps Gap  
+**Root cause:** Vulnerable patterns could be reintroduced without automated checks.
+
+#### Remediation
+
+Added Semgrep scanning to GitHub Actions.
+
+```yaml
+name: Semgrep CI
 on:
   pull_request:
-    paths:
-      - 'Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop/**'
-      - '.github/workflows/semgrep.yml'
   push:
-    branches:
-      - main
-      - master
-    paths:
-      - 'Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop/**'
-      - '.github/workflows/semgrep.yml'
-  workflow_dispatch: {}
-
-permissions:
-  contents: read
+    branches: [main]
 
 jobs:
   semgrep:
-    name: semgrep
     runs-on: ubuntu-latest
-
     container:
       image: semgrep/semgrep:latest
-
-    defaults:
-      run:
-        working-directory: 'Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop'
-
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Run Semgrep CI
-        run: semgrep ci
-        env:
-          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+      - uses: actions/checkout@v4
+      - run: semgrep ci
 ```
 
-**.Semgrepignore File**
+#### Why This Works
 
-```
-# We will configure Semgrep to only scan 2 files:
-# juice-shop/routes/search.ts and juice-shop/package.json
-# Therefore, we will ignore every file and reintroduce just those 2 to scan
+SAST does not replace manual testing, but it catches known insecure patterns earlier and prevents regression after remediation.
 
-# Ignore everything
-*
+## How to Review This Project
 
-# Re-allow required directory and file
-!routes
-!routes/search.ts
+1. Start with the threat model to understand system risk.
+2. Review the findings to see exploitability and business impact.
+3. Review the remediation notes to see how code-level fixes map to root causes.
+4. Review the CI/CD workflow to see how security checks are automated.
 
-# Allow dependency file
-!package.json
-```
+## What This Project Proves
 
----
-
-## 🧠 Key Learnings
-
-- Security must be embedded **early in the SDLC**
-- Many vulnerabilities stem from **design and logic flaws**, not just code issues
-- Effective remediation requires understanding **root cause and system behavior**
-- Automation (DevSecOps) is essential for **scaling security practices**
-
----
+This project shows that I can move beyond vulnerability identification into AppSec engineering work: understanding architecture, validating exploitability, fixing root causes, and adding automation to prevent regressions.
