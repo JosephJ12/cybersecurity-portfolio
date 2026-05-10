@@ -208,19 +208,46 @@ Added Semgrep scanning to GitHub Actions.
 
 ```yaml
 name: Semgrep CI
+
 on:
   pull_request:
+    paths:
+      - 'Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop/**'
+      - '.github/workflows/semgrep.yml'
   push:
-    branches: [main]
+    branches:
+      - main
+      - master
+    paths:
+      - 'Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop/**'
+      - '.github/workflows/semgrep.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
 
 jobs:
   semgrep:
+    name: semgrep
     runs-on: ubuntu-latest
+
     container:
       image: semgrep/semgrep:latest
+
+    defaults:
+      run:
+        working-directory: 'Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop'
+
     steps:
-      - uses: actions/checkout@v4
-      - run: semgrep ci
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Semgrep CI
+        run: semgrep ci
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
 ```
 
 #### Why This Works
