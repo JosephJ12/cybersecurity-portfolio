@@ -108,9 +108,3 @@ For the strongest signal, review the projects in this order:
 
 Across the projects, the pattern is the same: understand the architecture, prove the risk, fix the root cause, and add automation where it helps.
 
----
-
-## Contact
-
-- GitHub: [JosephJ12](https://github.com/JosephJ12)
-- LinkedIn: [josephjung12](https://www.linkedin.com/in/josephjung12)
