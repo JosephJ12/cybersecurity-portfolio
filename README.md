@@ -1,112 +1,110 @@
-# 🔐 Joseph Jung — Application Security & DevSecOps Portfolio
+# Joseph Jung — Application Security Engineering Portfolio
 
-🚀 Junior Application Security Engineer focused on securing modern web applications and APIs through **threat modeling, vulnerability discovery, secure coding, and DevSecOps integration**.
+Application Security Engineer candidate with a software engineering background, focused on secure code review, API security, vulnerability remediation, threat modeling, and DevSecOps automation.
 
----
-
-## 👋 About Me
-
-I am a security-focused engineer specializing in **Application Security (AppSec) and DevSecOps**, with hands-on experience identifying, exploiting, and remediating real-world vulnerabilities in modern applications.
-
-My work goes beyond finding bugs — I focus on:
-- Understanding **how systems are built**
-- Identifying **why vulnerabilities exist**
-- Implementing **real, production-aligned fixes**
-- Integrating security into the **software development lifecycle (SDLC)**
+This portfolio shows how I approach AppSec work: understand the system, identify trust boundaries, validate exploitability, fix the root cause in code, and add automation to prevent regressions.
 
 ---
 
-## 🧠 Core Skills
+## Featured Work
 
-### 🔐 Application Security
-- OWASP Top 10 & API Security Top 10
-- Threat Modeling (STRIDE, DFDs, Trust Boundaries)
-- Secure Code Review (SAST)
-- Dynamic Testing (DAST)
-- Code-Level Vulnerability Remediation
+### 1. OWASP crAPI API Security Assessment & Code Remediation
 
-### ⚙️ DevSecOps
-- CI/CD Security Integration (GitHub Actions)
-- Static Analysis (Semgrep)
-- Dependency Scanning (SCA)
-- Secure Pipeline Design
+**Focus:** API security, IDOR/BOLA, JWT validation, excessive data exposure, and server-side authorization.
 
-### 🌐 API & Web Security
-- Authentication & Authorization (JWT, session-based auth)
-- Access Control (BOLA, BFLA)
-- Input Validation & Injection Prevention
-- Rate Limiting & Abuse Prevention
+[View project](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation)  
+[Findings](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation/docs/findings) ·
+[Evidence](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation/evidence) ·
+[Remediation Notes](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation/docs/remediation.md) ·
+[Threat Model](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation/docs/threat-model.md)
 
----
+Performed an end-to-end API security assessment of OWASP crAPI and implemented code-level fixes for common production API risks.
 
-## ⭐ Featured Project: Risk-Based AppSec Assessment (OWASP Juice Shop)
+**Key work:**
 
-📁 `Risk_Assessment_Case_Study-OWASP_Juice_Shop/`
+- Remediated IDOR/BOLA by replacing object-ID-based access with user-scoped authorization checks
+- Hardened JWT handling by enforcing signature validation and rejecting unsigned or unexpected tokens
+- Reduced excessive data exposure by separating public response DTOs from internal user/domain models
+- Added server-side role enforcement for privileged operations
+- Documented root cause, exploit scenario, impact, remediation, and validation evidence
 
-A full end-to-end **Application Security assessment and remediation project** on a vulnerable production-like web application.
-
-### 🔍 What I Did
-
-- Modeled system architecture using:
-  - Data Flow Diagrams (DFD)
-  - Trust Boundaries
-  - STRIDE Threat Modeling
-
-- Performed security testing:
-  - DAST using Burp Suite
-  - Manual vulnerability analysis
-
-- Identified critical vulnerabilities:
-  - SQL Injection
-  - Broken Authentication (Brute Force)
-  - Input Validation Issues
-
-- Implemented real fixes:
-  - Parameterized queries (SQLi mitigation)
-  - Rate limiting (account + IP-based)
-  - Improved input validation
-
-- Integrated DevSecOps:
-  - Semgrep SAST pipeline via GitHub Actions
-  - Automated security checks in CI/CD
-
-### 🧠 Key Takeaways
-
-- Security must be integrated **early in the SDLC**
-- Fixing vulnerabilities requires understanding **root causes, not just symptoms**
-- Automation is critical for **scaling security in real systems**
+**Skills shown:** API Security, Secure Code Review, Java/Spring, Authorization Design, JWT Security, OWASP API Top 10
 
 ---
 
-## 🔬 Additional Work
+### 2. OWASP crAPI DevSecOps Security Pipeline
 
-### 🧪 Vulnerability Management
-- Risk identification and prioritization
-- Mapping vulnerabilities to OWASP & CWE
+**Focus:** CI/CD security automation, dependency remediation, container scanning, and release-blocking gates.
 
-### 🕵️ Threat Hunting & Security Analysis
-- Investigation of attack patterns and behaviors
-- Security event reasoning
+[View project](./appsec-projects/devsecops-security-pipeline-owasp-crapi)  
+[GitHub Actions Workflow](./appsec-projects/devsecops-security-pipeline-owasp-crapi/.github/workflows) ·
+[Renovate Config](./appsec-projects/devsecops-security-pipeline-owasp-crapi/renovate.json) ·
+[Trivy Evidence](./appsec-projects/devsecops-security-pipeline-owasp-crapi/evidence) ·
+[Pipeline Notes](./appsec-projects/devsecops-security-pipeline-owasp-crapi/docs)
 
-### 📊 Incident Response
-- Analysis of security incidents and response workflows
+Built a targeted DevSecOps pipeline for the crAPI identity service to make security scanning scoped, reviewable, and enforceable.
 
-### 🧩 CTF Walkthroughs
-- Hands-on exploitation of real vulnerabilities
-- Focus on learning attacker mindset
+**Key work:**
 
----
+- Scoped Renovate dependency remediation to the identity service Gradle files
+- Rebuilt the service Docker image from local source in GitHub Actions
+- Added Trivy scanning for critical container vulnerabilities
+- Preserved both text output and SARIF artifacts for review
+- Designed the workflow so evidence is saved before the release gate fails
 
-## 🏗️ Current Focus
-
-I am actively deepening my skills in:
-- Secure API Architecture (OAuth2, modern auth flows)
-- Advanced Threat Modeling
-- Microservices Security
-- DevSecOps at scale
+**Skills shown:** GitHub Actions, Renovate, Trivy, Docker, Gradle, SCA, Container Security, CI/CD Security Gates
 
 ---
 
-## ⚠️ Note
+### 3. OWASP Juice Shop AppSec Assessment & Remediation
 
-All projects in this repository are for **educational and defensive security purposes only**. The goal is to understand vulnerabilities in order to **build more secure systems**.
+**Focus:** Threat modeling, SQL injection remediation, brute-force protection, and SAST automation.
+
+[View project](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop)  
+[Threat Model](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop/docs/threat-model.md) ·
+[Findings](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop/docs/findings) ·
+[Evidence](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop/evidence) ·
+[Semgrep Workflow](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop/.github/workflows)
+
+Assessed OWASP Juice Shop using architecture review, STRIDE threat modeling, manual validation, code remediation, and CI/CD scanning.
+
+**Key work:**
+
+- Built a threat model using data-flow diagrams, trust boundaries, and STRIDE
+- Validated SQL injection through manual testing and backend code review
+- Replaced unsafe SQL construction with parameterized queries
+- Identified brute-force risk and implemented account/IP-aware rate limiting
+- Added Semgrep scanning to GitHub Actions to detect insecure patterns before merge
+
+**Skills shown:** Threat Modeling, STRIDE, Burp Suite, SQL Injection, Rate Limiting, Semgrep, Secure Code Review
+
+---
+
+## Technical Skills
+
+| Area | Skills |
+|---|---|
+| AppSec | Secure Code Review, API Security, OWASP Top 10, OWASP API Top 10, Threat Modeling |
+| Vulnerabilities | IDOR/BOLA, Broken Authentication, Excessive Data Exposure, SQL Injection, Brute Force, BFLA |
+| Remediation | Ownership Checks, Parameterized Queries, JWT Validation, DTO Separation, Rate Limiting |
+| DevSecOps | GitHub Actions, Semgrep, Trivy, Renovate, SARIF, CI/CD Security Gates |
+| Engineering | Java, Spring, TypeScript, JavaScript, Node.js/Express, SQL, Docker, Gradle |
+
+---
+
+## Review Guide
+
+For the strongest signal, review the projects in this order:
+
+1. **crAPI API Security Assessment & Code Remediation** — secure code review, authorization fixes, JWT hardening, and API remediation
+2. **crAPI DevSecOps Security Pipeline** — CI/CD security automation, dependency remediation, container scanning, and evidence handling
+3. **Juice Shop AppSec Assessment & Remediation** — threat modeling, manual testing, SQL injection remediation, brute-force mitigation, and SAST
+
+Across the projects, the pattern is the same: understand the architecture, prove the risk, fix the root cause, and add automation where it helps.
+
+---
+
+## Contact
+
+- GitHub: [JosephJ12](https://github.com/JosephJ12)
+- LinkedIn: [josephjung12](https://www.linkedin.com/in/josephjung12)
