@@ -12,11 +12,12 @@ This portfolio shows how I approach AppSec work: understand the system, identify
 
 **Focus:** API security, IDOR/BOLA, JWT validation, excessive data exposure, and server-side authorization.
 
-[View project](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation)  
-[Findings](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation/docs/findings) ·
+[View Project](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation) ·
+[Findings](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation/findings) ·
 [Evidence](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation/evidence) ·
-[Remediation Notes](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation/docs/remediation.md) ·
-[Threat Model](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation/docs/threat-model.md)
+[Remediations](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation/remediations) ·
+[Threat Model](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation/diagrams/threat-model.md) ·
+[Architecture](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation/diagrams/system-architecture.md)
 
 Performed an end-to-end API security assessment of OWASP crAPI and implemented code-level fixes for common production API risks.
 
@@ -24,7 +25,7 @@ Performed an end-to-end API security assessment of OWASP crAPI and implemented c
 
 - Remediated IDOR/BOLA by replacing object-ID-based access with user-scoped authorization checks
 - Hardened JWT handling by enforcing signature validation and rejecting unsigned or unexpected tokens
-- Reduced excessive data exposure by separating public response DTOs from internal user/domain models
+- Reduced excessive data exposure by separating public response models from internal user/domain models
 - Added server-side role enforcement for privileged operations
 - Documented root cause, exploit scenario, impact, remediation, and validation evidence
 
@@ -36,11 +37,14 @@ Performed an end-to-end API security assessment of OWASP crAPI and implemented c
 
 **Focus:** CI/CD security automation, dependency remediation, container scanning, and release-blocking gates.
 
-[View project](./appsec-projects/devsecops-security-pipeline-owasp-crapi)  
-[GitHub Actions Workflow](./appsec-projects/devsecops-security-pipeline-owasp-crapi/.github/workflows) ·
-[Renovate Config](./appsec-projects/devsecops-security-pipeline-owasp-crapi/renovate.json) ·
-[Trivy Evidence](./appsec-projects/devsecops-security-pipeline-owasp-crapi/evidence) ·
-[Pipeline Notes](./appsec-projects/devsecops-security-pipeline-owasp-crapi/docs)
+[View Project](./appsec-projects/devsecops-security-pipeline-owasp-crapi) ·
+[GitHub Actions Workflow](./.github/workflows/devsecops-crapi-identity-remediation.yml) ·
+[Renovate Config](./renovate.json) ·
+[Pipeline Design](./appsec-projects/devsecops-security-pipeline-owasp-crapi/diagrams/devsecops-pipeline-design.md) ·
+[Container Evidence](./appsec-projects/devsecops-security-pipeline-owasp-crapi/evidence/container) ·
+[SAST Evidence](./appsec-projects/devsecops-security-pipeline-owasp-crapi/evidence/sast) ·
+[Trivy Commands](./appsec-projects/devsecops-security-pipeline-owasp-crapi/trivy/scan-commands.md) ·
+[Remediation Script](./appsec-projects/devsecops-security-pipeline-owasp-crapi/remediations/crapi-identity/crapi_identity_remediate_criticals.sh)
 
 Built a targeted DevSecOps pipeline for the crAPI identity service to make security scanning scoped, reviewable, and enforceable.
 
@@ -49,7 +53,7 @@ Built a targeted DevSecOps pipeline for the crAPI identity service to make secur
 - Scoped Renovate dependency remediation to the identity service Gradle files
 - Rebuilt the service Docker image from local source in GitHub Actions
 - Added Trivy scanning for critical container vulnerabilities
-- Preserved both text output and SARIF artifacts for review
+- Preserved human-readable and machine-readable scan evidence
 - Designed the workflow so evidence is saved before the release gate fails
 
 **Skills shown:** GitHub Actions, Renovate, Trivy, Docker, Gradle, SCA, Container Security, CI/CD Security Gates
@@ -60,11 +64,13 @@ Built a targeted DevSecOps pipeline for the crAPI identity service to make secur
 
 **Focus:** Threat modeling, SQL injection remediation, brute-force protection, and SAST automation.
 
-[View project](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop)  
-[Threat Model](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop/docs/threat-model.md) ·
-[Findings](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop/docs/findings) ·
-[Evidence](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop/evidence) ·
-[Semgrep Workflow](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop/.github/workflows)
+[View Project](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop) ·
+[Threat Modeling](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop/Part%201%20-%20Threat%20Modeling.md) ·
+[DAST & Remediation](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop/Part%202%20-%20DAST%20and%20Remediation.md) ·
+[SAST CI/CD Implementation](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop/Part%203%20-%20SAST%20Implementation%20to%20CICD%20Pipeline.md) ·
+[Semgrep Setup](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop/Semgrep%20Account%20Setup.md) ·
+[Juice Shop Codebase](./appsec-projects/Risk_Assessment_Case_Study-OWASP_Juice_Shop/juice-shop) ·
+[Semgrep Workflow](./.github/workflows/semgrep.yml)
 
 Assessed OWASP Juice Shop using architecture review, STRIDE threat modeling, manual validation, code remediation, and CI/CD scanning.
 
