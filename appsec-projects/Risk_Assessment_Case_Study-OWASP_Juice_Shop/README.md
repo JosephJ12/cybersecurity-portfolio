@@ -1,3 +1,5 @@
+<img width="1672" height="941" alt="ChatGPT Image May 11, 2026, 04_06_55 PM" src="https://github.com/user-attachments/assets/2bbd54bf-c5a8-4e0a-8be4-5f5db01601c9" />
+
 # OWASP Juice Shop AppSec Assessment & Remediation
 
 **Risk-based application security assessment of OWASP Juice Shop covering threat modeling, manual exploitation, secure code remediation, and CI/CD SAST automation.**
