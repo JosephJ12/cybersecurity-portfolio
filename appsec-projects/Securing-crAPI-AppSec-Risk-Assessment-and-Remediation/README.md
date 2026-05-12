@@ -1,3 +1,5 @@
+<img width="1672" height="941" alt="ChatGPT Image May 11, 2026, 04_07_15 PM" src="https://github.com/user-attachments/assets/716c1186-efc5-4448-9bcb-b0d57225e978" />
+
 # Securing crAPI: API Security Risk Assessment & Remediation
 
 **End-to-end API security assessment of OWASP crAPI focused on broken object-level authorization, authentication weaknesses, excessive data exposure, and secure code remediation.**
