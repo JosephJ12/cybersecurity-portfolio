@@ -1,6 +1,6 @@
 # Joseph Jung — Application Security Engineering Portfolio
 
-Application Security Engineer candidate with a software engineering background, focused on secure code review, API security, vulnerability remediation, threat modeling, and DevSecOps automation.
+Application Security Engineer with a software engineering background, focused on secure code review, API security, vulnerability remediation, threat modeling, and DevSecOps automation.
 
 This portfolio shows how I approach AppSec work: understand the system, identify trust boundaries, validate exploitability, fix the root cause in code, and add automation to prevent regressions.
 
