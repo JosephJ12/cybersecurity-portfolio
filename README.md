@@ -10,6 +10,8 @@ This portfolio shows how I approach AppSec work: understand the system, identify
 
 ### 1. OWASP crAPI API Security Assessment & Code Remediation
 
+<img width="1672" height="941" alt="ChatGPT Image May 11, 2026, 04_07_15 PM" src="https://github.com/user-attachments/assets/31ea4009-8e2b-4ade-8e05-7770621aa726" />
+
 **Focus:** API security, IDOR/BOLA, JWT validation, excessive data exposure, and server-side authorization.
 
 [View Project](./appsec-projects/Securing-crAPI-AppSec-Risk-Assessment-and-Remediation) ·
@@ -34,6 +36,8 @@ Performed an end-to-end API security assessment of OWASP crAPI and implemented c
 ---
 
 ### 2. OWASP crAPI DevSecOps Security Pipeline
+
+<img width="1672" height="941" alt="ChatGPT Image May 11, 2026, 04_07_03 PM" src="https://github.com/user-attachments/assets/560f9464-74bd-4a25-9d35-4f693f4ba0c5" />
 
 **Focus:** CI/CD security automation, dependency remediation, container scanning, and release-blocking gates.
 
@@ -61,6 +65,8 @@ Built a targeted DevSecOps pipeline for the crAPI identity service to make secur
 ---
 
 ### 3. OWASP Juice Shop AppSec Assessment & Remediation
+
+<img width="1672" height="941" alt="ChatGPT Image May 11, 2026, 04_06_55 PM" src="https://github.com/user-attachments/assets/49d6a85a-7068-4b22-a2e3-a69e8fc59cdd" />
 
 **Focus:** Threat modeling, SQL injection remediation, brute-force protection, and SAST automation.
 
