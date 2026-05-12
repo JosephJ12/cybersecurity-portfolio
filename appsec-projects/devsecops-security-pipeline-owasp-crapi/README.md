@@ -1,3 +1,5 @@
+<img width="1672" height="941" alt="ChatGPT Image May 11, 2026, 04_07_03 PM" src="https://github.com/user-attachments/assets/4f70b117-628c-4f18-8991-c571ca223c41" />
+
 # Automated DevSecOps Remediation Pipeline for OWASP crAPI
 
 **Automated dependency remediation and container vulnerability validation pipeline for the crAPI identity service using Renovate, GitHub Actions, Gradle, Docker, and Trivy.**
