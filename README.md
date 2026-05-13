@@ -103,14 +103,3 @@ Assessed OWASP Juice Shop using architecture review, STRIDE threat modeling, man
 | Engineering | Java, Spring, TypeScript, JavaScript, Node.js/Express, SQL, Docker, Gradle |
 
 ---
-
-## Review Guide
-
-For the strongest signal, review the projects in this order:
-
-1. **crAPI API Security Assessment & Code Remediation** — secure code review, authorization fixes, JWT hardening, and API remediation
-2. **crAPI DevSecOps Security Pipeline** — CI/CD security automation, dependency remediation, container scanning, and evidence handling
-3. **Juice Shop AppSec Assessment & Remediation** — threat modeling, manual testing, SQL injection remediation, brute-force mitigation, and SAST
-
-Across the projects, the pattern is the same: understand the architecture, prove the risk, fix the root cause, and add automation where it helps.
-
