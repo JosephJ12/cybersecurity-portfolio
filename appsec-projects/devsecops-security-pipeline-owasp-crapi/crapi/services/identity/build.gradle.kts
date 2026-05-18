@@ -1,7 +1,7 @@
 plugins {
   application
   id("java")
-  id("org.springframework.boot") version "3.5.14"
+  id("org.springframework.boot") version "4.0.6"
   id("io.spring.dependency-management") version "1.1.7"
   id("com.diffplug.spotless") version "5.17.1"
 }
@@ -36,8 +36,8 @@ pluginManager.withPlugin("java") {
 dependencies {
     val lombokVersion = "1.18.46"
     val mockito = "5.23.0"
-    val springBootVersion = "3.5.14"
-    val springSecurityVersion = "6.5.10"
+    val springBootVersion = "4.0.6"
+    val springSecurityVersion = "7.0.5"
     val log4jVersion = "2.26.0"
     compileOnly("org.projectlombok:lombok:${lombokVersion}")
     testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
